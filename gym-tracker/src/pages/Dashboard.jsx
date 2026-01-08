@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import styles from './HomePage.module.css'
+import styles from './Dashboard.module.css'
 
-export default function HomePage() {
+export default function Dashboard() {
   return (
     <>
     <header>
