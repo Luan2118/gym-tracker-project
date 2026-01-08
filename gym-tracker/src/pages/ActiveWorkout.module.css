@@ -1,0 +1,32 @@
+.content-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.content-header, .content-main  {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-radius: 1rem;
+  padding: 2rem;
+  background-color: rgb(41, 41, 41);
+}
+
+
+.start-workout-button {
+  font-weight: 600;
+  font-size: 2rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.start-workout-button:hover {
+  opacity: 0.9;
+}
+
+.start-workout-button:active {
+  opacity: 0.8;
+}

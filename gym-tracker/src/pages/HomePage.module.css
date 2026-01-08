@@ -1,0 +1,13 @@
+.content-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  min-width: 0;
+}
+
+
+section {
+  background-color: rgb(41, 41, 41);
+  padding: 8rem;
+  text-align: center;
+}

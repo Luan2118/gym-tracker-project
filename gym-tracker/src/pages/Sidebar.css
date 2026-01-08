@@ -15,14 +15,39 @@ a:hover{
   opacity: 0.8;
 }
 
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  background: #313131;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  z-index: 1000;
+}
+
 .layout {
   display: flex;
+  min-height: 100vh;
 }
+
+main {
+  flex-grow: 1;
+  margin: 0 2rem;
+}
+
+
 
 .sidebar {
   display: block;
-  position:sticky;
-  height: 100vw;
+  flex-direction: column;
   margin-right: 1rem;
   background-color: rgb(41, 41, 41);
   padding: 1rem;
