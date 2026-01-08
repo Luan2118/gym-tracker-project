@@ -23,7 +23,7 @@ export default function Dashboard() {
 
       <section>
         <h2>
-          Training Split
+          <Link to='/training-split' >Training Split</Link>
         </h2>
       </section>
 

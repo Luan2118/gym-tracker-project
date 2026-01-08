@@ -4,10 +4,10 @@
   gap: 2rem;
 }
 
-.content-header, .content-main  {
+.start-workout-button-wrapper, .content-main  {
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: auto;
   border-radius: 1rem;
   padding: 2rem;
   background-color: rgb(41, 41, 41);

@@ -1,0 +1,72 @@
+.content-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.add-training-wrapper  {
+  display: flex;
+  justify-content: center;
+  width: auto;
+  border-radius: 1rem;
+  padding: 2rem;
+  background-color: rgb(41, 41, 41);
+}
+
+.content-main {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  border-radius: 1rem;
+  padding: 2rem;
+  background-color: rgb(41, 41, 41);
+}
+
+hr {
+  background-color: white;
+  width: 100%;
+  margin: 4rem 0;
+}
+
+.all-training-splits {
+  text-align: start;
+  font-size: 2rem;
+  margin: 0;
+}
+
+
+.add-training-button {
+  font-weight: 600;
+  font-size: 2rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.add-training-button:hover {
+  opacity: 0.9;
+}
+
+.add-training-button:active {
+  opacity: 0.8;
+}
+
+.training-split-wrapper {
+  display: flex;
+  width: auto;
+  justify-content: space-between;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: rgb(36, 36, 36);
+}
+
+.button-wrapper {
+  align-self: center;
+}
+
+.modify-button {
+  margin-right: 0.5rem;
+  
+}
+

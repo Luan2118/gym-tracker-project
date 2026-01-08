@@ -10,11 +10,11 @@ export default function ActiveWorkout() {
 
     <div className={styles["content-wrapper"]}>
 
-      <section className={styles["content-header"]}>
+      <div className={styles["start-workout-button-wrapper"]}>
         <button className={styles["start-workout-button"]}>
           Start  Workout
         </button>
-      </section>
+      </div>
 
       
       <section className={styles["content-main"]}>

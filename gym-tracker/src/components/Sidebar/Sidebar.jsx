@@ -1,10 +1,10 @@
 import { Outlet, Link } from 'react-router-dom'
-import dashboard from '../assets/dashboard.png'
-import exercises from '../assets/exercises.png'
-import title from '../assets/title.png'
-import progress from '../assets/progress.png'
-import active from '../assets/active-workout.png'
-import history from '../assets/history.png'
+import dashboard from '../../assets/dashboard.png'
+import exercises from '../../assets/exercises.png'
+import title from '../../assets/title.png'
+import progress from '../../assets/progress.png'
+import active from '../../assets/active-workout.png'
+import history from '../../assets/history.png'
 
 import './Sidebar.css'
 
