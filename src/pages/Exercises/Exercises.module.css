@@ -1,0 +1,46 @@
+.content-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.filter-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  border-radius: 1rem;
+  padding: 2rem;
+  background-color: rgb(41, 41, 41);
+}
+
+.filter-input-link {
+  margin-bottom: 2rem;
+}
+
+.filter-text {
+  margin: 0;
+}
+
+.filter-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.search-exercise-input,
+.by-muscle-category-input,
+.by-muscle-category-label,
+.all-exercises,
+.upper-body-exercises {
+  margin-right: 2rem;
+}
+
+.content-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: auto;
+  border-radius: 1rem;
+  padding: 2rem;
+  background-color: rgb(41, 41, 41);
+}

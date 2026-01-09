@@ -43,9 +43,11 @@ export default function Sidebar() {
                 <div>Workout History</div>
             </li>
 
-            <li className='sidebar-nav-link'>
+            <li>
+              <Link className='sidebar-nav-link' to="/exercises">
                 <img src={exercises} alt='' aria-hidden="true"/>
                 <div>Exercises</div>
+              </Link>
             </li>
 
              <li className='sidebar-nav-link'>
