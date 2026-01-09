@@ -1,6 +1,18 @@
+import { useState } from 'react'
+import TrainingSplitList from './components/TrainingSplitList'
 import styles from './TrainingSplit.module.css'
 
 export default function TrainingSplit() {
+
+  const trainingSplitData = [
+    {
+      name: 'Upper Lower', id: crypto.randomUUID()
+    }, 
+    {
+      name: 'PPL', id: crypto.randomUUID()
+    }]
+  
+  const [trainingSplits, setTrainingSplits] = useState(trainingSplitData)
   return (
     <>
       <header>
@@ -18,25 +30,9 @@ export default function TrainingSplit() {
 
           <hr />
 
-          <section className={styles["training-split-wrapper"]}>
-            <h3>Upper / Lower</h3>
-
-            <div className={styles["button-wrapper"]}>
-              <button className={styles["modify-button"]}>Modify</button> 
-              <button className={styles["delete-button"]}>Delete</button>
-            </div>
+        
+          <TrainingSplitList  trainingSplits={trainingSplits}/>
             
-          </section >
-
-          <section className={styles["training-split-wrapper"]}>
-            <h3>Upper / Lower</h3>
-
-            <div className={styles["button-wrapper"]}>
-              <button className={styles["modify-button"]}>Modify</button> 
-              <button className={styles["delete-button"]}>Delete</button>
-            </div>
-            
-          </section >
         </section>
       </div>
     </>

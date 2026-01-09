@@ -1,0 +1,18 @@
+.training-split-wrapper {
+  display: flex;
+  width: auto;
+  justify-content: space-between;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: rgb(36, 36, 36);
+}
+
+
+.button-wrapper {
+  align-self: center;
+}
+
+.modify-button {
+  margin-right: 0.5rem;
+  
+}
