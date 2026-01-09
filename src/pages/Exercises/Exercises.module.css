@@ -36,11 +36,13 @@
 }
 
 .content-main {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
   align-items: flex-start;
   width: auto;
   border-radius: 1rem;
   padding: 2rem;
   background-color: rgb(41, 41, 41);
 }
+

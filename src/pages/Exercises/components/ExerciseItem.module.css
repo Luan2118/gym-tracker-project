@@ -1,0 +1,31 @@
+.exercise-item-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: rgb(31, 31, 31);
+  padding: 1.5rem;
+  cursor: pointer;
+  border: none;
+  color: white;
+  border-radius: 1rem;
+}
+
+.exercise-item-wrapper:hover {
+  opacity: 0.75;
+}
+
+.exercise-item-wrapper:active {
+  opacity: 0.6;
+}
+
+
+.exercise-item-img {
+  margin-right: 2rem;
+  max-width: 7rem;
+  max-height: 7rem;
+}
+
+.exercise-item-name {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 2rem;
+}
