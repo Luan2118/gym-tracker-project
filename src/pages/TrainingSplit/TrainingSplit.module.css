@@ -52,5 +52,84 @@ hr {
   opacity: 0.8;
 }
 
+.training-split-name-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
 
+.add-training-split-dialog {
+   background-color: rgb(29, 29, 29);
+   border: none;
+   border-radius: 1rem;
+   padding: 3rem;
+}
 
+.training-split-name-input {
+  font-size: 2rem;
+  padding: 0.7rem 2rem;
+  border-radius: 1rem;
+  border: none;
+  margin-right: 2rem;
+}
+
+.add-workout-button {
+  font-size: 2rem;
+  padding: 0.7rem 2rem;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.add-workout-button:hover {
+  opacity: 0.9
+}
+
+.add-workout-button:active {
+  opacity: 0.7
+}
+
+.workout-day-input {
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  padding: 0.7rem 1.7rem;
+  border: none;
+  margin-right: 1rem;
+}
+
+.close-dialog-button {
+  background-color: rgb(29, 29, 29);
+  border: none;
+  cursor: pointer;
+  margin-left: 10rem;
+}
+
+.close-dialog-img {
+  max-width: 2.5rem;
+}
+
+.close-dialog-img:hover {
+  opacity: 0.8;
+}
+
+.workout-day-button {
+  background-color: rgb(29, 29, 29);
+  border: none;
+  cursor: pointer;
+}
+
+.workout-day-button:hover {
+  opacity: 0.8;
+}
+
+.workout-day-button:active {
+  opacity: 0.7;
+}
+
+.workout-day-wrapper{
+  display: flex;
+
+}
+.checkmark-icon {
+ 
+  max-width: 3rem;
+}
