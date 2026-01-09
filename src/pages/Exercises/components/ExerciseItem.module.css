@@ -20,12 +20,12 @@
 
 .exercise-item-img {
   margin-right: 2rem;
-  max-width: 7rem;
-  max-height: 7rem;
+  max-width: 8.5rem;
+  max-height: 8.5rem;
 }
 
 .exercise-item-name {
   margin-left: auto;
   margin-right: auto;
-  font-size: 2rem;
+  font-size: 2.5rem;
 }

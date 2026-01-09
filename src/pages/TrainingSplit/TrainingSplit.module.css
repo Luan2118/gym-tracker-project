@@ -30,15 +30,15 @@ hr {
 
 .all-training-splits {
   text-align: start;
-  font-size: 2rem;
+  font-size: 2.7rem;
   margin: 0;
 }
 
 
 .add-training-button {
   font-weight: 600;
-  font-size: 2rem;
-  padding: 1rem;
+  font-size: 3rem;
+  padding: 1rem 2rem;
   border: none;
   border-radius: 1rem;
   cursor: pointer;
