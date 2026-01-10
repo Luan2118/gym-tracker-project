@@ -1,6 +1,8 @@
 import { useState, useRef } from 'react'
 import TrainingSplitList from './components/TrainingSplitList'
 import checkmark from '../../assets/training-split/checkmark.png'
+import deleteWorkoutDayIcon from '../../assets/training-split/delete-workout-day.png'
+import editIcon from '../../assets/training-split/edit.png'
 import close from '../../assets/training-split/x-close.png'
 import styles from './TrainingSplit.module.css'
 
@@ -14,17 +16,64 @@ export default function TrainingSplit() {
       name: 'PPL', id: crypto.randomUUID()
     }]
   
-  const [trainingSplits, setTrainingSplits] = useState(trainingSplitData)
-  const dialogRef = useRef(null) 
+  const [trainingSplits, setTrainingSplits] = useState(trainingSplitData);
+  const dialogRef = useRef(null); 
+  const [workoutDays, setWorkoutDays] = useState([]);
 
-  function addTrainingSplit() {
-    dialogRef.current.showModal()
+  function openDialog() {
+    dialogRef.current.showModal();
     
+  }
+  
+  function closeDialog() {
+    dialogRef.current.close();
   }
 
   function addTrainingDay() {
-
+    setWorkoutDays(prev => [
+      ...prev,
+      {name: '', id: crypto.randomUUID(), confirm: false}
+    ])
   }
+
+  function deleteWorkoutDay(id) {
+    const newArray = workoutDays.filter((workoutDay) => workoutDay.id !== id)
+    setWorkoutDays(newArray)
+  }
+
+  function handleWorkoutDayInputText(id, e) {
+    const value = (e.target.value);
+
+    setWorkoutDays(prev => 
+      prev.map((workoutDay => {
+        if (workoutDay.id === id) {
+          return {
+            ...workoutDay,
+            name: value
+          }
+        }
+        return workoutDay
+      }))
+    )
+  }
+
+  function confirmWorkoutDay(id) {
+
+    setWorkoutDays(prev => 
+      prev.map((workoutDay) => {
+        
+        if (workoutDay.id !== id) return workoutDay;
+
+        if(workoutDay.name.trim().length === 0) return workoutDay
+
+        return {
+          ...workoutDay,
+          confirm: !workoutDay.confirm
+        }
+      })
+    )
+  }
+
   return (
     <>
       <header>
@@ -34,7 +83,7 @@ export default function TrainingSplit() {
       <div className={styles["content-wrapper"]}>
 
         <div className={styles["add-training-wrapper"]}>
-          <button className={styles["add-training-button"]} onClick={addTrainingSplit}>Add Training Split</button>
+          <button className={styles["add-training-button"]} onClick={openDialog}>Add Training Split</button>
         </div>
 
         <dialog ref={dialogRef} className={styles["add-training-split-dialog"]}>
@@ -46,23 +95,38 @@ export default function TrainingSplit() {
 
               <button className={styles["add-workout-button"]} onClick={addTrainingDay}>Add a Workout</button>
 
-              <button className={styles["close-dialog-button"]} aria-label='Close dialog'>
+              <button className={styles["close-dialog-button"]} aria-label='Close dialog' onClick={closeDialog} ref={dialogRef}>
                 <img className={styles["close-dialog-img"]} src={close} alt=''/>
               </button>
             </div>
 
             <hr aria-hidden="true"/>
 
-            <div className={styles["workout-day-wrapper"]}>
-              <label htmlFor="workout-day" />
-              <input type="text" id="workout-day" placeholder='Upper, Push, Legs' className={styles["workout-day-input"]}/>
-              
-              <span></span>
-              
-              <button className={styles["workout-day-button"]} aria-label='Confirm Workout Day'>
-                <img className={styles["checkmark-icon"]}  src={checkmark} alt=''/>
-                </button>
-            </div>
+            {workoutDays.map((workoutDay) => {
+              return (
+                <div className={styles["workout-day-wrapper"]} key={workoutDay.id}>
+                  
+                  {
+                    workoutDay.confirm ?
+                    <div className={styles["workout-day-name-text"]}>{workoutDay.name}</div> :
+                    <>
+                      <label htmlFor="workout-day" />
+                      <input type="text" id="workout-day" placeholder='Upper, Push, Legs' className={styles["workout-day-input"]} onChange={(e) => handleWorkoutDayInputText(workoutDay.id, e)} value={workoutDay.name}/> 
+                    </>
+                  }
+      
+                
+                  
+                  <button className={styles["workout-day-button"]} aria-label='Confirm Workout Day' onClick={() => confirmWorkoutDay(workoutDay.id)}  disabled={workoutDay.name.trim().length === 0 ? true : false}>
+                    {workoutDay.confirm ? <img className={styles["edit-icon"]}  src={editIcon} alt=''/> : <img className={styles["checkmark-icon"]}  src={checkmark} alt=''/>}
+                  </button> 
+
+                  <button className={styles["delete-workout-day-button"]} aria-label='Delete Workout Day' onClick={() => deleteWorkoutDay(workoutDay.id)}>
+                    <img className={styles["delete-workout-day-icon"]}  src={deleteWorkoutDayIcon} alt=''/>
+                  </button> 
+                </div>
+              )
+            })}
 
 
           </div>

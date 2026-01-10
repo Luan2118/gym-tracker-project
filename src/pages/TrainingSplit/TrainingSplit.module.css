@@ -62,6 +62,7 @@ hr {
    border: none;
    border-radius: 1rem;
    padding: 3rem;
+   max-height: 70rem;
 }
 
 .training-split-name-input {
@@ -111,25 +112,43 @@ hr {
   opacity: 0.8;
 }
 
-.workout-day-button {
+.workout-day-button,
+.delete-workout-day-button {
   background-color: rgb(29, 29, 29);
   border: none;
   cursor: pointer;
 }
 
-.workout-day-button:hover {
+.workout-day-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.workout-day-button:hover,
+.delete-workout-day-button:hover {
   opacity: 0.8;
 }
 
-.workout-day-button:active {
+.workout-day-button:active,
+.delete-workout-day-button:active {
   opacity: 0.7;
 }
 
 .workout-day-wrapper{
   display: flex;
-
+  margin-bottom: 2rem;
 }
-.checkmark-icon {
- 
-  max-width: 3rem;
+
+.checkmark-icon,
+.delete-workout-day-icon,
+.edit-icon{
+  max-width: 2.5rem;
+}
+
+.workout-day-name-text {
+  font-size: 1.5rem;
+  background-color: white;
+  align-self: center;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
 }
