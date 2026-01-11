@@ -1,3 +1,17 @@
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+
 .content-wrapper{
   display: flex;
   flex-direction: column;
@@ -113,7 +127,8 @@ hr {
 }
 
 .workout-day-button,
-.delete-workout-day-button {
+.delete-workout-day-button,
+.add-exercise-button {
   background-color: rgb(29, 29, 29);
   border: none;
   cursor: pointer;
@@ -141,9 +156,11 @@ hr {
 
 .checkmark-icon,
 .delete-workout-day-icon,
-.edit-icon{
+.edit-icon,
+.add-exercise-icon{
   max-width: 2.5rem;
 }
+
 
 .workout-day-name-text {
   font-size: 1.5rem;

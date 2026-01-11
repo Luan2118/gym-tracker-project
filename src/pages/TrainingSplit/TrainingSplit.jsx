@@ -3,6 +3,7 @@ import TrainingSplitList from './components/TrainingSplitList'
 import checkmark from '../../assets/training-split/checkmark.png'
 import deleteWorkoutDayIcon from '../../assets/training-split/delete-workout-day.png'
 import editIcon from '../../assets/training-split/edit.png'
+import plusIcon from '../../assets/training-split/plus-icon.png'
 import close from '../../assets/training-split/x-close.png'
 import styles from './TrainingSplit.module.css'
 
@@ -32,7 +33,7 @@ export default function TrainingSplit() {
   function addTrainingDay() {
     setWorkoutDays(prev => [
       ...prev,
-      {name: '', id: crypto.randomUUID(), confirm: false}
+      {name: '', id: crypto.randomUUID(), confirm: false, exercises: []}
     ])
   }
 
@@ -74,6 +75,23 @@ export default function TrainingSplit() {
     )
   }
 
+  function addExercise(id) {
+    setWorkoutDays((prev) => 
+    prev.map((workoutDay) => {
+      if (workoutDay.id !== id) return workoutDay;
+
+      return {
+        ...workoutDay,
+        exercises: [
+          ...workoutDay.exercises,
+          {
+          exercise: '', id: crypto.randomUUID(), sets: 0, reps: []
+        }]
+      }
+    }))
+
+  }
+
   return (
     <>
       <header>
@@ -104,27 +122,48 @@ export default function TrainingSplit() {
 
             {workoutDays.map((workoutDay) => {
               return (
-                <div className={styles["workout-day-wrapper"]} key={workoutDay.id}>
-                  
-                  {
-                    workoutDay.confirm ?
-                    <div className={styles["workout-day-name-text"]}>{workoutDay.name}</div> :
-                    <>
-                      <label htmlFor="workout-day" />
-                      <input type="text" id="workout-day" placeholder='Upper, Push, Legs' className={styles["workout-day-input"]} onChange={(e) => handleWorkoutDayInputText(workoutDay.id, e)} value={workoutDay.name}/> 
-                    </>
-                  }
-      
-                
-                  
-                  <button className={styles["workout-day-button"]} aria-label='Confirm Workout Day' onClick={() => confirmWorkoutDay(workoutDay.id)}  disabled={workoutDay.name.trim().length === 0 ? true : false}>
-                    {workoutDay.confirm ? <img className={styles["edit-icon"]}  src={editIcon} alt=''/> : <img className={styles["checkmark-icon"]}  src={checkmark} alt=''/>}
-                  </button> 
+                  <div key={workoutDay.id}>
+                    <div className={styles["workout-day-wrapper"]} >
+                      {
+                        workoutDay.confirm ?
+                        <div className={styles["workout-day-name-text"]}>{workoutDay.name}</div> :
+                        <>
+                          <label htmlFor={workoutDay.id} className={styles["sr-only"]}>Workout day</label>
+                          <input type="text" id={workoutDay.id} placeholder='Upper, Push, Legs' className={styles["workout-day-input"]} onChange={(e) => handleWorkoutDayInputText(workoutDay.id, e)} value={workoutDay.name}/> 
+                        </>
+                      }
+          
+                    
+                      
+                      <button className={styles["workout-day-button"]} aria-label='Confirm Workout Day' onClick={() => confirmWorkoutDay(workoutDay.id)}  disabled={workoutDay.name.trim().length === 0 ? true : false}>
+                        {workoutDay.confirm ? <img className={styles["edit-icon"]}  src={editIcon} alt=''/> : <img className={styles["checkmark-icon"]}  src={checkmark} alt=''/>}
+                      </button> 
 
-                  <button className={styles["delete-workout-day-button"]} aria-label='Delete Workout Day' onClick={() => deleteWorkoutDay(workoutDay.id)}>
-                    <img className={styles["delete-workout-day-icon"]}  src={deleteWorkoutDayIcon} alt=''/>
-                  </button> 
-                </div>
+                      <button className={styles["delete-workout-day-button"]} aria-label='Delete Workout Day' onClick={() => deleteWorkoutDay(workoutDay.id)}>
+                        <img className={styles["delete-workout-day-icon"]}  src={deleteWorkoutDayIcon} alt=''/>
+                      </button>
+                      <button className={styles["add-exercise-button"]} aria-label='Add exercise' onClick={() => addExercise(workoutDay.id)}>
+                        <img className={styles["add-exercise-icon"]}  src={plusIcon} alt=''/>
+                      </button> 
+                    </div>
+
+                    {workoutDay.exercises.map((ex) => {
+                      return (
+                        <div key={ex.id}>
+                          <label htmlFor={ex.id} className={styles["sr-only"]}>Search exercise</label>
+                          <input type="text" id={ex.id}/>
+                          
+                          <div>
+                            Bicep curls
+                          </div>
+
+                          <div>
+                            Bench Press
+                          </div>
+                        </div>  
+                      )
+                    })}
+                  </div>
               )
             })}
 
