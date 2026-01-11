@@ -169,3 +169,61 @@ hr {
   padding: 1rem 2rem;
   border-radius: 1rem;
 }
+
+.search-exercise-wrapper{
+  max-width: 27.6rem;
+}
+.search-exercise-input {
+  max-width: 24rem;
+  padding: 0.7rem 1.8rem;
+  border: none;
+  border-radius: 1rem;
+  width: 100%;
+}
+
+.search-exercise-list-wrapper {
+  background-color: rgb(37, 37, 37);
+  max-height: 18rem;
+  margin-top: 0.5rem;
+  border-radius: 1.2rem;
+  overflow-y: auto;
+}
+
+.search-exercise-list-wrapper::-webkit-scrollbar {
+  width: 0.5rem;            /* makes it smaller */
+}
+
+.search-exercise-list-wrapper::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 6px;
+}
+
+.search-exercise-list-wrapper::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+
+.search-exercise-list {
+  margin-bottom: 0.3rem;
+  background-color: rgb(37, 37, 37);
+  padding: 0.7rem 1.8rem;
+  display: flex;
+}
+
+.search-exercise-icon {
+  max-width: 4rem;
+}
+.search-exercise-list-button {
+  background-color: rgb(37, 37, 37);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.8rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+.search-exercise-list:hover {
+  background-color: rgb(46, 46, 46);
+}
+.search-exercise-list:hover .search-exercise-list-button {
+  background-color: rgb(46, 46, 46);
+}

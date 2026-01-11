@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import { useOutletContext } from 'react-router-dom'
 import TrainingSplitList from './components/TrainingSplitList'
 import checkmark from '../../assets/training-split/checkmark.png'
 import deleteWorkoutDayIcon from '../../assets/training-split/delete-workout-day.png'
@@ -20,6 +21,8 @@ export default function TrainingSplit() {
   const [trainingSplits, setTrainingSplits] = useState(trainingSplitData);
   const dialogRef = useRef(null); 
   const [workoutDays, setWorkoutDays] = useState([]);
+  const { exercises, setExercises } = useOutletContext();
+  const [searchExerciseText, setSearchExerciseText] = useState('');
 
   function openDialog() {
     dialogRef.current.showModal();
@@ -149,17 +152,26 @@ export default function TrainingSplit() {
 
                     {workoutDay.exercises.map((ex) => {
                       return (
-                        <div key={ex.id}>
+                        <div key={ex.id} className={styles["search-exercise-wrapper"]}>
                           <label htmlFor={ex.id} className={styles["sr-only"]}>Search exercise</label>
-                          <input type="text" id={ex.id}/>
+                          <input className={styles["search-exercise-input"]} type="text" id={ex.id} placeholder='Search exercise' onChange={(e) => setSearchExerciseText(e.target.value)} />
                           
-                          <div>
-                            Bicep curls
-                          </div>
+                          <ul className={styles["search-exercise-list-wrapper"]}>
+                            {
+                              exercises.filter((exercise) => exercise.name.toLowerCase().includes(searchExerciseText.toLowerCase()))
+                              .map((ex) => {
+                                // if(searchExerciseText.length === 0) return;
+                                return (
+                                  <li key={ex.id} className={styles["search-exercise-list"]}>
+                                    <img className={styles["search-exercise-icon"]} src={ex.icon} />
+                                    <button className={styles["search-exercise-list-button"]}>{ex.name}</button>
+                                  </li>
+                                )
+                              })
+                            }
+                          </ul>
 
-                          <div>
-                            Bench Press
-                          </div>
+
                         </div>  
                       )
                     })}
