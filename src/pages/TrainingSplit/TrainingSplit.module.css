@@ -80,8 +80,8 @@ hr {
 }
 
 .training-split-name-input {
-  font-size: 2rem;
-  padding: 0.7rem 2rem;
+  font-size: 2.5rem;
+  padding: 1rem 2rem;
   border-radius: 1rem;
   border: none;
   margin-right: 2rem;
@@ -89,7 +89,7 @@ hr {
 
 .add-workout-button {
   font-size: 2rem;
-  padding: 0.7rem 2rem;
+  padding: 1rem 2rem;
   border-radius: 1rem;
   border: none;
   cursor: pointer;
@@ -104,7 +104,7 @@ hr {
 }
 
 .workout-day-input {
-  font-size: 1.5rem;
+  font-size: 2rem;
   border-radius: 1rem;
   padding: 0.7rem 1.7rem;
   border: none;
@@ -163,19 +163,22 @@ hr {
 
 
 .workout-day-name-text {
-  font-size: 1.5rem;
-  background-color: white;
+  background-color: rgb(37, 37, 37);
+  font-size: 2.5rem;
+  color:white;
   align-self: center;
-  padding: 1rem 2rem;
+  padding: 1.4rem 2.5rem;
   border-radius: 1rem;
+  margin-right: 3rem;
 }
 
 .search-exercise-wrapper{
-  max-width: 27.6rem;
+  max-width: 33.6rem;
 }
 .search-exercise-input {
-  max-width: 24rem;
-  padding: 0.7rem 1.8rem;
+  font-size: 2.2rem;
+  max-width: 30rem;
+  padding: 1rem 2rem;
   border: none;
   border-radius: 1rem;
   width: 100%;
@@ -204,26 +207,33 @@ hr {
 
 .search-exercise-list {
   margin-bottom: 0.3rem;
-  background-color: rgb(37, 37, 37);
-  padding: 0.7rem 1.8rem;
-  display: flex;
 }
 
-.search-exercise-icon {
-  max-width: 4rem;
-}
 .search-exercise-list-button {
+  display: flex;
+  align-items: center;
   background-color: rgb(37, 37, 37);
   color: white;
   border: none;
-  padding: 0.7rem 1.8rem;
+  font-size: 2rem;
+  padding: 1rem 2rem;
   width: 100%;
   cursor: pointer;
 }
 
-.search-exercise-list:hover {
+.search-exercise-icon {
+  max-width: 6rem;
+}
+
+.search-exercise-name {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-exercise-list-button:hover {
   background-color: rgb(46, 46, 46);
 }
-.search-exercise-list:hover .search-exercise-list-button {
-  background-color: rgb(46, 46, 46);
+
+.search-exercise-list-button:active {
+  opacity: 0.8;
 }

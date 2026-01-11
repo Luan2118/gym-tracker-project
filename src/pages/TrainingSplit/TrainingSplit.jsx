@@ -163,8 +163,10 @@ export default function TrainingSplit() {
                                 // if(searchExerciseText.length === 0) return;
                                 return (
                                   <li key={ex.id} className={styles["search-exercise-list"]}>
-                                    <img className={styles["search-exercise-icon"]} src={ex.icon} />
-                                    <button className={styles["search-exercise-list-button"]}>{ex.name}</button>
+                                    <button className={styles["search-exercise-list-button"]}>
+                                      <img className={styles["search-exercise-icon"]} src={ex.icon} />
+                                      <span className={styles["search-exercise-name"]}>{ex.name}</span>
+                                      </button>
                                   </li>
                                 )
                               })
