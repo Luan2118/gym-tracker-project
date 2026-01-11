@@ -6,6 +6,7 @@ import deleteWorkoutDayIcon from '../../assets/training-split/delete-workout-day
 import editIcon from '../../assets/training-split/edit.png'
 import plusIcon from '../../assets/training-split/plus-icon.png'
 import close from '../../assets/training-split/x-close.png'
+import deleteExerciseIcon from '../../assets/training-split/x-delete.png'
 import styles from './TrainingSplit.module.css'
 
 export default function TrainingSplit() {
@@ -33,7 +34,7 @@ export default function TrainingSplit() {
     dialogRef.current.close();
   }
 
-  function addTrainingDay() {
+  function addWorkoutDay() {
     setWorkoutDays(prev => [
       ...prev,
       {name: '', id: crypto.randomUUID(), confirm: false, exercises: []}
@@ -80,19 +81,37 @@ export default function TrainingSplit() {
 
   function addExercise(id) {
     setWorkoutDays((prev) => 
-    prev.map((workoutDay) => {
-      if (workoutDay.id !== id) return workoutDay;
+      prev.map((workoutDay) => {
+        if (workoutDay.id !== id) return workoutDay;
 
-      return {
-        ...workoutDay,
-        exercises: [
-          ...workoutDay.exercises,
-          {
-          exercise: '', id: crypto.randomUUID(), sets: 0, reps: []
-        }]
-      }
+        return {
+          ...workoutDay,
+          exercises: [
+            ...workoutDay.exercises,
+            {
+            exercise: '', id: crypto.randomUUID(), sets: 0, reps: []
+          }]
+        }
     }))
 
+  }
+
+  console.log(workoutDays)
+
+  function deleteExercise(workoutDayId, excerciseId) {
+    setWorkoutDays((prev) => 
+      prev.map((workoutday) => {
+        if (workoutDayId !== workoutday.id) return workoutday;
+
+        const result = workoutday.exercises.filter((ex) => ex.id !== excerciseId)
+
+        return {
+          ...workoutday,
+          exercises: result
+        }
+      })
+
+    )
   }
 
   return (
@@ -114,7 +133,7 @@ export default function TrainingSplit() {
               <label htmlFor="training-split-name"></label>
               <input type="text"  id="training-split-name" placeholder='Training Split Name' className={styles["training-split-name-input"]}/>
 
-              <button className={styles["add-workout-button"]} onClick={addTrainingDay}>Add a Workout</button>
+              <button className={styles["add-workout-button"]} onClick={addWorkoutDay}>Add a Workout</button>
 
               <button className={styles["close-dialog-button"]} aria-label='Close dialog' onClick={closeDialog} ref={dialogRef}>
                 <img className={styles["close-dialog-img"]} src={close} alt=''/>
@@ -145,28 +164,32 @@ export default function TrainingSplit() {
                       <button className={styles["delete-workout-day-button"]} aria-label='Delete Workout Day' onClick={() => deleteWorkoutDay(workoutDay.id)}>
                         <img className={styles["delete-workout-day-icon"]}  src={deleteWorkoutDayIcon} alt=''/>
                       </button>
-                      <button className={styles["add-exercise-button"]} aria-label='Add exercise' onClick={() => addExercise(workoutDay.id)}>
-                        <img className={styles["add-exercise-icon"]}  src={plusIcon} alt=''/>
-                      </button> 
                     </div>
 
                     {workoutDay.exercises.map((ex) => {
                       return (
                         <div key={ex.id} className={styles["search-exercise-wrapper"]}>
-                          <label htmlFor={ex.id} className={styles["sr-only"]}>Search exercise</label>
-                          <input className={styles["search-exercise-input"]} type="text" id={ex.id} placeholder='Search exercise' onChange={(e) => setSearchExerciseText(e.target.value)} />
-                          
+
+                          <div className={styles["search-exercise-input-wrapper"]}>
+                            <label htmlFor={ex.id} className={styles["sr-only"]}>Search exercise</label>
+                            <input className={styles["search-exercise-input"]} type="text" id={ex.id} placeholder='Search exercise' onChange={(e) => setSearchExerciseText(e.target.value)} />
+                            
+                            <button className={styles["search-exercise-delete-button"]} aria-label='Delete Exercise' onClick={() => deleteExercise(workoutDay.id, ex.id)} >
+                              <img className={styles["search-exercise-delete-icon"]}  src={deleteExerciseIcon} alt=''/>
+                            </button>
+                          </div>
+
                           <ul className={styles["search-exercise-list-wrapper"]}>
                             {
                               exercises.filter((exercise) => exercise.name.toLowerCase().includes(searchExerciseText.toLowerCase()))
                               .map((ex) => {
-                                // if(searchExerciseText.length === 0) return;
+                                if(searchExerciseText.length === 0) return;
                                 return (
                                   <li key={ex.id} className={styles["search-exercise-list"]}>
                                     <button className={styles["search-exercise-list-button"]}>
                                       <img className={styles["search-exercise-icon"]} src={ex.icon} />
                                       <span className={styles["search-exercise-name"]}>{ex.name}</span>
-                                      </button>
+                                    </button>
                                   </li>
                                 )
                               })
@@ -177,6 +200,11 @@ export default function TrainingSplit() {
                         </div>  
                       )
                     })}
+
+                    <button className={styles["add-exercise-button"]} aria-label='Add exercise' onClick={() => addExercise(workoutDay.id)}>
+                      <img className={styles["add-exercise-icon"]}  src={plusIcon} alt=''/>
+                    </button>
+
                   </div>
               )
             })}

@@ -126,9 +126,15 @@ hr {
   opacity: 0.8;
 }
 
+.add-exercise-button {
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
 .workout-day-button,
 .delete-workout-day-button,
-.add-exercise-button {
+.add-exercise-button,
+.search-exercise-delete-button {
   background-color: rgb(29, 29, 29);
   border: none;
   cursor: pointer;
@@ -140,27 +146,29 @@ hr {
 }
 
 .workout-day-button:hover,
-.delete-workout-day-button:hover {
+.delete-workout-day-button:hover,
+.add-exercise-button:hover {
   opacity: 0.8;
 }
 
 .workout-day-button:active,
-.delete-workout-day-button:active {
+.delete-workout-day-button:active,
+.add-exercise-button:active {
   opacity: 0.7;
 }
 
 .workout-day-wrapper{
   display: flex;
-  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 .checkmark-icon,
 .delete-workout-day-icon,
 .edit-icon,
-.add-exercise-icon{
+.add-exercise-icon,
+.search-exercise-delete-icon{
   max-width: 2.5rem;
 }
-
 
 .workout-day-name-text {
   background-color: rgb(37, 37, 37);
@@ -173,19 +181,27 @@ hr {
 }
 
 .search-exercise-wrapper{
-  max-width: 33.6rem;
+  margin-top: 2rem;
+  max-width: 38.6rem;
 }
+
+.search-exercise-input-wrapper {
+  display: flex;
+  width: 100%;
+}
+
 .search-exercise-input {
   font-size: 2.2rem;
-  max-width: 30rem;
   padding: 1rem 2rem;
   border: none;
   border-radius: 1rem;
   width: 100%;
+  margin-right: 1.8rem;
 }
 
 .search-exercise-list-wrapper {
   background-color: rgb(37, 37, 37);
+  max-width: 33rem;
   max-height: 18rem;
   margin-top: 0.5rem;
   border-radius: 1.2rem;
