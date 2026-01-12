@@ -23,7 +23,6 @@ export default function TrainingSplit() {
   const dialogRef = useRef(null); 
   const [workoutDays, setWorkoutDays] = useState([]);
   const { exercises, setExercises } = useOutletContext();
-  const [searchExerciseText, setSearchExerciseText] = useState('');
 
   function openDialog() {
     dialogRef.current.showModal();
@@ -89,14 +88,41 @@ export default function TrainingSplit() {
           exercises: [
             ...workoutDay.exercises,
             {
-            exercise: '', id: crypto.randomUUID(), sets: 0, reps: []
+            exerciseName: '', id: crypto.randomUUID(), sets: 0, reps: [], confirm: false, searchText: ''
           }]
         }
     }))
-
+    
   }
 
-  console.log(workoutDays)
+  function handleSearchExerciseText(e, workoutDayID, addedExerciseID) {
+    const value = e.target.value
+
+
+
+    const newArray = workoutDays.map((workouday) => {
+        if (workouday.id !== workoutDayID) return workouday;
+
+        const result = workouday.exercises.map((exercise) => {
+          if (exercise.id !== addedExerciseID) return exercise;
+
+          return {
+            ...exercise,
+            searchText: value
+          }
+        })
+
+        console.log(result)
+        return {
+          ...workouday,
+          exercises : result
+        }
+      })
+
+    console.log(newArray)
+    setWorkoutDays(newArray)
+  }
+
 
   function deleteExercise(workoutDayId, excerciseId) {
     setWorkoutDays((prev) => 
@@ -111,6 +137,31 @@ export default function TrainingSplit() {
         }
       })
 
+    )
+  }
+
+  function handleSelectExercise(workoutDayID, selectedExerciseId, addedExerciseId) {
+    const selectedExercise = exercises.find((exercise) => exercise.id === selectedExerciseId);
+            
+    setWorkoutDays((prev) => 
+      prev.map((workoutday) => {
+        if (workoutday.id !== workoutDayID) return workoutday;
+
+        const newExercisesArray = workoutday.exercises.map((ex) => {
+        if (ex.id !== addedExerciseId) return ex
+
+        return {
+          ...ex,
+          exerciseName: selectedExercise.name,
+          confirm: true
+        }
+        })
+
+        return {
+          ...workoutday,
+          exercises: newExercisesArray
+        }
+    })
     )
   }
 
@@ -135,7 +186,7 @@ export default function TrainingSplit() {
 
               <button className={styles["add-workout-button"]} onClick={addWorkoutDay}>Add a Workout</button>
 
-              <button className={styles["close-dialog-button"]} aria-label='Close dialog' onClick={closeDialog} ref={dialogRef}>
+              <button className={styles["close-dialog-button"]} aria-label='Close dialog' onClick={closeDialog}>
                 <img className={styles["close-dialog-img"]} src={close} alt=''/>
               </button>
             </div>
@@ -166,35 +217,45 @@ export default function TrainingSplit() {
                       </button>
                     </div>
 
-                    {workoutDay.exercises.map((ex) => {
+                    {workoutDay.exercises.map((addedExercise) => {
                       return (
-                        <div key={ex.id} className={styles["search-exercise-wrapper"]}>
+                        <div key={addedExercise.id} className={styles["search-exercise-wrapper"]}>
 
                           <div className={styles["search-exercise-input-wrapper"]}>
-                            <label htmlFor={ex.id} className={styles["sr-only"]}>Search exercise</label>
-                            <input className={styles["search-exercise-input"]} type="text" id={ex.id} placeholder='Search exercise' onChange={(e) => setSearchExerciseText(e.target.value)} />
+                            {addedExercise.confirm ?
+                            <div className={styles["search-exercise-list-button"]}>
+                              <span className={styles["search-exercise-name"]}>{addedExercise.exerciseName}</span>
+                            </div> :
+                            <>
+                              <label htmlFor={addedExercise.id} className={styles["sr-only"]}>Search exercise</label>
+                              <input className={styles["search-exercise-input"]} type="text" id={addedExercise.id} placeholder='Search exercise' onChange={(e)=> handleSearchExerciseText(e, workoutDay.id, addedExercise.id)} value={addedExercise.searchText}/>
+                            </>
+                            }
                             
-                            <button className={styles["search-exercise-delete-button"]} aria-label='Delete Exercise' onClick={() => deleteExercise(workoutDay.id, ex.id)} >
+                            <button className={styles["search-exercise-delete-button"]} aria-label='Delete Exercise' onClick={() => deleteExercise(workoutDay.id, addedExercise.id)} >
                               <img className={styles["search-exercise-delete-icon"]}  src={deleteExerciseIcon} alt=''/>
                             </button>
                           </div>
-
-                          <ul className={styles["search-exercise-list-wrapper"]}>
-                            {
-                              exercises.filter((exercise) => exercise.name.toLowerCase().includes(searchExerciseText.toLowerCase()))
-                              .map((ex) => {
-                                if(searchExerciseText.length === 0) return;
-                                return (
-                                  <li key={ex.id} className={styles["search-exercise-list"]}>
-                                    <button className={styles["search-exercise-list-button"]}>
-                                      <img className={styles["search-exercise-icon"]} src={ex.icon} />
-                                      <span className={styles["search-exercise-name"]}>{ex.name}</span>
-                                    </button>
-                                  </li>
-                                )
-                              })
-                            }
-                          </ul>
+                          
+                          {addedExercise.confirm ?  '' :
+                            <ul className={styles["search-exercise-list-wrapper"]}>
+                              {
+                                exercises.filter((exercise) => exercise.name.toLowerCase().includes(addedExercise.searchText.toLowerCase()))
+                                .map((exer) => {
+                                  if(addedExercise.searchText.length === 0) return;
+                                  return (
+                                    <li key={exer.id} className={styles["search-exercise-list"]}>
+                                      <button className={styles["search-exercise-list-button"]} onClick={() => handleSelectExercise(workoutDay.id, exer.id, addedExercise.id)}>
+                                        <img className={styles["search-exercise-icon"]} src={exer.icon} />
+                                        <span className={styles["search-exercise-name"]}>{exer.name}</span>
+                                      </button>
+                                    </li>
+                                  )
+                                })
+                              }
+                            </ul>
+                          }
+                          
 
 
                         </div>  
