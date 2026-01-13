@@ -221,14 +221,20 @@ export default function TrainingSplit() {
   function submitTrainingSplit(e) {
     e.preventDefault()
     
+    const name = trainingSplitInputText.trim()
+
+    if (!name) return;
+
+    const snapshotWorkoutDays = structuredClone(workoutDays);
+    
      setTrainingSplits((prev) => [
       ...prev,
-      {name: trainingSplitInputText, id: crypto.randomUUID()}
+      {name, id: crypto.randomUUID(), workoutDays: snapshotWorkoutDays}
     ])
     
     dialogRef.current.close()
   }
-
+  
 
   return (
     <>
