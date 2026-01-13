@@ -5,6 +5,7 @@ import checkmark from '../../assets/training-split/checkmark.png'
 import deleteWorkoutDayIcon from '../../assets/training-split/delete-workout-day.png'
 import editIcon from '../../assets/training-split/edit.png'
 import plusIcon from '../../assets/training-split/plus-icon.png'
+import addSet from '../../assets/training-split/add-set.png'
 import close from '../../assets/training-split/x-close.png'
 import deleteExerciseIcon from '../../assets/training-split/x-delete.png'
 import styles from './TrainingSplit.module.css'
@@ -249,10 +250,10 @@ export default function TrainingSplit() {
 
                           <div className={styles["search-exercise-input-wrapper"]}>
                             {addedExercise.confirm ?
-                            <button className={styles["added-exercise-button"]} onClick={() => handleSelectExerciseAgain(addedExercise.rowId, workoutDay.id)}>
-                              <img className={styles["added-exercise-icon"]}  src={addedExercise.icon} alt="" />
-                              <span className={styles["added-exercise-name"]}>{addedExercise.exerciseName}</span>
-                            </button> :
+                              <button className={styles["added-exercise-button"]} onClick={() => handleSelectExerciseAgain(addedExercise.rowId, workoutDay.id)}>
+                                <img className={styles["added-exercise-icon"]}  src={addedExercise.icon} alt="" />
+                                <span className={styles["added-exercise-name"]}>{addedExercise.exerciseName}</span>
+                              </button> :
                             <>
                               <label htmlFor={addedExercise.rowId} className={styles["sr-only"]}>Search exercise</label>
                               <input className={styles["search-exercise-input"]} type="text" id={addedExercise.rowId} placeholder='Search exercise' onChange={(e)=> handleSearchExerciseText(e, workoutDay.id, addedExercise.rowId)} value={addedExercise.searchText}/>
@@ -263,6 +264,11 @@ export default function TrainingSplit() {
                               <img className={styles["search-exercise-delete-icon"]}  src={deleteExerciseIcon} alt=''/>
                             </button>
                           </div>
+
+                          {addedExercise.confirm && <button className={styles["add-set-button"]} aria-label='Add set'>
+                            <img className={styles["add-set-icon"]}  src={plusIcon} alt=''/>
+                            <span>Add set</span>
+                          </button>}
                           
                           {addedExercise.confirm ?  '' :
                             <ul className={styles["search-exercise-list-wrapper"]}>
@@ -289,9 +295,7 @@ export default function TrainingSplit() {
                       )
                     })}
 
-                    <button className={styles["add-exercise-button"]} aria-label='Add exercise' onClick={() => addExercise(workoutDay.id)}>
-                      <img className={styles["add-exercise-icon"]}  src={plusIcon} alt=''/>
-                    </button>
+                    <button className={styles["add-exercise-button"]}  onClick={() => addExercise(workoutDay.id)}> <span className={styles["add-exercise-plus-symbol"]}>&#43;</span> Add exercise </button>
 
                   </div>
               )
