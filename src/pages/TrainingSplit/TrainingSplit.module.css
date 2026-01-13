@@ -159,6 +159,58 @@ hr {
   margin-right: 1rem;
 }
 
+.set-wrapper {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(37, 37, 37);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  margin-left: 4.3rem;
+  margin-top: 1.5rem;
+}
+
+.reps-input {
+  background-color: rgb(54, 54, 54);
+  border: none;
+  max-width: 3rem;
+  margin-right: 1rem;
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+}
+
+.reps-input-2 {
+  background-color: rgb(54, 54, 54);
+  border: none;
+  max-width: 3rem;
+  margin-left: 1rem;
+  font-size: 2rem;
+  color:white; 
+ text-align: center;
+}
+
+.delete-set-button {
+  background-color: rgb(37, 37, 37);
+  border: none;
+}
+
+.delete-set-button:hover {
+  opacity: 0.8
+}
+
+.delete-set-button:active {
+  opacity: 0.7
+}
+
+
+.delete-set-icon {
+  background-color: rgb(37, 37, 37);
+  border: none;
+  cursor: pointer;
+  max-width: 2rem;
+}
+
 
 .workout-day-button,
 .delete-workout-day-button,

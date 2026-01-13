@@ -5,7 +5,7 @@ import checkmark from '../../assets/training-split/checkmark.png'
 import deleteWorkoutDayIcon from '../../assets/training-split/delete-workout-day.png'
 import editIcon from '../../assets/training-split/edit.png'
 import plusIcon from '../../assets/training-split/plus-icon.png'
-import addSet from '../../assets/training-split/add-set.png'
+import deleteSetIcon from '../../assets/training-split/deleteSet.png'
 import close from '../../assets/training-split/x-close.png'
 import deleteExerciseIcon from '../../assets/training-split/x-delete.png'
 import styles from './TrainingSplit.module.css'
@@ -89,22 +89,22 @@ export default function TrainingSplit() {
           exercises: [
             ...workoutDay.exercises,
             {
-            exerciseName: '', rowId: crypto.randomUUID(), exerciseId:'', sets: 0, reps: [], confirm: false, searchText: '', icon: ''
+            exerciseName: '', rowId: crypto.randomUUID(), exerciseId:'', sets: [], confirm: false, searchText: '', icon: ''
           }]
         }
     }))
     
   }
 
-  function handleSearchExerciseText(e, workoutDayID, addedExerciseID) {
+  function handleSearchExerciseText(e, workoutDayID, addedExerciseRowId) {
     const value = e.target.value
 
     setWorkoutDays((prev) => 
       prev.map((workouday) => {
         if (workouday.id !== workoutDayID) return workouday;
 
-        const result = workouday.exercises.map((exercise) => {
-          if (exercise.rowId !== addedExerciseID) return exercise;
+        const newExercisesArray = workouday.exercises.map((exercise) => {
+          if (exercise.rowId !== addedExerciseRowId) return exercise;
 
           return {
             ...exercise,
@@ -114,7 +114,7 @@ export default function TrainingSplit() {
 
         return {
           ...workouday,
-          exercises : result
+          exercises : newExercisesArray
         }
       })
     )
@@ -126,18 +126,18 @@ export default function TrainingSplit() {
       prev.map((workoutday) => {
         if (workoutDayId !== workoutday.id) return workoutday;
 
-        const result = workoutday.exercises.filter((ex) => ex.rowId !== excerciseId)
+        const newExercisesArray = workoutday.exercises.filter((ex) => ex.rowId !== excerciseId)
 
         return {
           ...workoutday,
-          exercises: result
+          exercises: newExercisesArray
         }
       })
 
     )
   }
 
-  function handleSelectExercise(workoutDayID, selectedExerciseId, addedExerciseId) {
+  function selectExercise(workoutDayID, selectedExerciseId, addedExerciseRowId) {
     const selectedExercise = exercises.find((exercise) => exercise.id === selectedExerciseId);
     
     setWorkoutDays((prev) => 
@@ -145,7 +145,7 @@ export default function TrainingSplit() {
         if (workoutday.id !== workoutDayID) return workoutday;
         
         const newExercisesArray = workoutday.exercises.map((ex) => {
-          if (ex.rowId !== addedExerciseId) return ex
+          if (ex.rowId !== addedExerciseRowId) return ex
           
           return {
             ...ex,
@@ -165,9 +165,7 @@ export default function TrainingSplit() {
     
   }
 
-  function handleSelectExerciseAgain(rowId, workoutdayId) {
-    
-    console.log(workoutDays)
+  function selectExerciseAgain(rowId, workoutdayId) {
     setWorkoutDays((prev) => 
       prev.map((workoutday) => {
         if (workoutday.id !== workoutdayId) return workoutday;
@@ -189,6 +187,57 @@ export default function TrainingSplit() {
           exercises: newExercisesArray
         }
       })
+    )
+  }
+
+  function addSet(workoutdayId, addedExerciseRowId) {
+
+    setWorkoutDays((prev) => 
+      prev.map((workoutday) => {
+      if (workoutday.id !== workoutdayId) return workoutday;
+
+      const newExercisesArray = workoutday.exercises.map((ex) => {
+        if (ex.rowId !== addedExerciseRowId) return ex;
+
+        
+
+        return {
+          ...ex,
+          sets: [
+            ...ex.sets,
+            {id: crypto.randomUUID(), reps: '', weight: ''}
+          ]
+        }
+      })
+
+      return {
+        ...workoutday,
+        exercises : newExercisesArray
+      }
+    })
+    )
+  }
+
+  function deleteSet(setId) {
+
+    setWorkoutDays((prev) =>
+      prev.map((workouday) => {
+
+      const exercisesArray = workouday.exercises.map((ex) => {
+        const newSetArray = ex.sets.filter((set) => set.id !== setId)
+        
+        return {
+          ...ex,
+          sets: newSetArray
+        }
+      })
+
+      return {
+        ...workouday,
+        exercises: exercisesArray
+      }
+
+    })
     )
   }
 
@@ -250,7 +299,7 @@ export default function TrainingSplit() {
 
                           <div className={styles["search-exercise-input-wrapper"]}>
                             {addedExercise.confirm ?
-                              <button className={styles["added-exercise-button"]} onClick={() => handleSelectExerciseAgain(addedExercise.rowId, workoutDay.id)}>
+                              <button className={styles["added-exercise-button"]} onClick={() => selectExerciseAgain(addedExercise.rowId, workoutDay.id)}>
                                 <img className={styles["added-exercise-icon"]}  src={addedExercise.icon} alt="" />
                                 <span className={styles["added-exercise-name"]}>{addedExercise.exerciseName}</span>
                               </button> :
@@ -264,8 +313,25 @@ export default function TrainingSplit() {
                               <img className={styles["search-exercise-delete-icon"]}  src={deleteExerciseIcon} alt=''/>
                             </button>
                           </div>
+                          
+                          {addedExercise.sets.map((set, index) => {
+                            return (
+                              <div key={set.id}  className={styles["set-wrapper"]}>
+                                <div>Set {index + 1}:</div>
 
-                          {addedExercise.confirm && <button className={styles["add-set-button"]} aria-label='Add set'>
+                                <div className={styles["reps-input-wrapper"]}>
+                                  <input type="text"  className={styles["reps-input"]}/>
+                                  x
+                                  <input type="text"  className={styles["reps-input-2"]}/>
+                                </div>
+
+                                <button className={styles["delete-set-button"]} aria-label='Delete set' onClick={() => deleteSet(set.id)}>
+                                  <img className={styles["delete-set-icon"]}  src={deleteSetIcon} alt=''/>
+                                </button>
+                              </div>
+                            )
+                          })}
+                          {addedExercise.confirm && <button className={styles["add-set-button"]} aria-label='Add set' onClick={() => addSet(workoutDay.id, addedExercise.rowId)}>
                             <img className={styles["add-set-icon"]}  src={plusIcon} alt=''/>
                             <span>Add set</span>
                           </button>}
@@ -278,7 +344,7 @@ export default function TrainingSplit() {
                                   if(addedExercise.searchText.length === 0) return;
                                   return (
                                     <li key={exer.id} className={styles["search-exercise-list"]}>
-                                      <button className={styles["search-exercise-list-button"]} onClick={() => handleSelectExercise(workoutDay.id, exer.id, addedExercise.rowId)}>
+                                      <button className={styles["search-exercise-list-button"]} onClick={() => selectExercise(workoutDay.id, exer.id, addedExercise.rowId)}>
                                         <img className={styles["search-exercise-icon"]} src={exer.icon} />
                                         <span className={styles["search-exercise-name"]}>{exer.name}</span>
                                       </button>
