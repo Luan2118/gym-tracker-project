@@ -88,7 +88,7 @@ export default function TrainingSplit() {
           exercises: [
             ...workoutDay.exercises,
             {
-            exerciseName: '', rowId: crypto.randomUUID(), exerciseId:'', sets: 0, reps: [], confirm: false, searchText: ''
+            exerciseName: '', rowId: crypto.randomUUID(), exerciseId:'', sets: 0, reps: [], confirm: false, searchText: '', icon: ''
           }]
         }
     }))
@@ -137,7 +137,6 @@ export default function TrainingSplit() {
   }
 
   function handleSelectExercise(workoutDayID, selectedExerciseId, addedExerciseId) {
-     console.log('handleSelectExercise called:')
     const selectedExercise = exercises.find((exercise) => exercise.id === selectedExerciseId);
     
     setWorkoutDays((prev) => 
@@ -151,6 +150,7 @@ export default function TrainingSplit() {
             ...ex,
             exerciseName: selectedExercise.name,
             exerciseId : selectedExercise.id,
+            icon: selectedExercise.icon,
             confirm: true
           }
         })
@@ -166,6 +166,7 @@ export default function TrainingSplit() {
 
   function handleSelectExerciseAgain(rowId, workoutdayId) {
     
+    console.log(workoutDays)
     setWorkoutDays((prev) => 
       prev.map((workoutday) => {
         if (workoutday.id !== workoutdayId) return workoutday;
@@ -248,9 +249,10 @@ export default function TrainingSplit() {
 
                           <div className={styles["search-exercise-input-wrapper"]}>
                             {addedExercise.confirm ?
-                            <div className={styles["search-exercise-list-button"]} onClick={() => handleSelectExerciseAgain(addedExercise.rowId, workoutDay.id)}>
-                              <span className={styles["search-exercise-name"]}>{addedExercise.exerciseName}</span>
-                            </div> :
+                            <button className={styles["added-exercise-button"]} onClick={() => handleSelectExerciseAgain(addedExercise.rowId, workoutDay.id)}>
+                              <img className={styles["added-exercise-icon"]}  src={addedExercise.icon} alt="" />
+                              <span className={styles["added-exercise-name"]}>{addedExercise.exerciseName}</span>
+                            </button> :
                             <>
                               <label htmlFor={addedExercise.rowId} className={styles["sr-only"]}>Search exercise</label>
                               <input className={styles["search-exercise-input"]} type="text" id={addedExercise.rowId} placeholder='Search exercise' onChange={(e)=> handleSearchExerciseText(e, workoutDay.id, addedExercise.rowId)} value={addedExercise.searchText}/>
