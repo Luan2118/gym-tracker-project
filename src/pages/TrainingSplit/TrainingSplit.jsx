@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import TrainingSplitList from './components/TrainingSplitList'
 import checkmark from '../../assets/training-split/checkmark.png'
@@ -12,12 +12,20 @@ import styles from './TrainingSplit.module.css'
 
 export default function TrainingSplit() {
 
-  
-  const [trainingSplits, setTrainingSplits] = useState([]);
+  const [trainingSplits, setTrainingSplits] = useState(() => {
+    const stored = localStorage.getItem('trainingSplits');
+
+    return stored ? JSON.parse(stored) : []
+  });
+
   const [trainingSplitInputText, setTrainingSplitInputText] = useState('')
   const dialogRef = useRef(null); 
   const [workoutDays, setWorkoutDays] = useState([]);
   const { exercises, setExercises } = useOutletContext();
+
+  useEffect(() => {
+    localStorage.setItem('trainingSplits', JSON.stringify(trainingSplits));
+  }, [trainingSplits])
 
   function openDialog() {
     dialogRef.current.showModal();
@@ -232,10 +240,13 @@ export default function TrainingSplit() {
       {name, id: crypto.randomUUID(), workoutDays: snapshotWorkoutDays}
     ])
     
+    setWorkoutDays([]);
+    setTrainingSplitInputText('');
+
     dialogRef.current.close()
   }
   
-
+  console.log(localStorage.getItem('trainingSplits'))
   return (
     <>
       <header>
