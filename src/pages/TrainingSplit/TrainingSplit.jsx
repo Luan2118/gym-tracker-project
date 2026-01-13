@@ -12,15 +12,9 @@ import styles from './TrainingSplit.module.css'
 
 export default function TrainingSplit() {
 
-  const trainingSplitData = [
-    {
-      name: 'Upper Lower', id: crypto.randomUUID()
-    }, 
-    {
-      name: 'PPL', id: crypto.randomUUID()
-    }]
   
-  const [trainingSplits, setTrainingSplits] = useState(trainingSplitData);
+  const [trainingSplits, setTrainingSplits] = useState([]);
+  const [trainingSplitInputText, setTrainingSplitInputText] = useState('')
   const dialogRef = useRef(null); 
   const [workoutDays, setWorkoutDays] = useState([]);
   const { exercises, setExercises } = useOutletContext();
@@ -59,23 +53,6 @@ export default function TrainingSplit() {
         }
         return workoutDay
       }))
-    )
-  }
-
-  function confirmWorkoutDay(id) {
-
-    setWorkoutDays(prev => 
-      prev.map((workoutDay) => {
-        
-        if (workoutDay.id !== id) return workoutDay;
-
-        if(workoutDay.name.trim().length === 0) return workoutDay
-
-        return {
-          ...workoutDay,
-          confirm: !workoutDay.confirm
-        }
-      })
     )
   }
 
@@ -241,6 +218,18 @@ export default function TrainingSplit() {
     )
   }
 
+  function submitTrainingSplit(e) {
+    e.preventDefault()
+    
+     setTrainingSplits((prev) => [
+      ...prev,
+      {name: trainingSplitInputText, id: crypto.randomUUID()}
+    ])
+    
+    dialogRef.current.close()
+  }
+
+
   return (
     <>
       <header>
@@ -254,121 +243,114 @@ export default function TrainingSplit() {
         </div>
 
         <dialog ref={dialogRef} className={styles["add-training-split-dialog"]}>
-          <div>
+          <form className={styles["form-wrapper"]} onSubmit={submitTrainingSplit}>
+              <div className={styles["training-split-name-wrapper"]}>
+                <label htmlFor="training-split-name"></label>
+                <input type="text"  id="training-split-name" placeholder='Training Split Name' className={styles["training-split-name-input"]} onChange={(e) => setTrainingSplitInputText(e.target.value)} value={trainingSplitInputText}/>
 
-            <div className={styles["training-split-name-wrapper"]}>
-              <label htmlFor="training-split-name"></label>
-              <input type="text"  id="training-split-name" placeholder='Training Split Name' className={styles["training-split-name-input"]}/>
+                <button type='button' className={styles["add-workout-button"]} onClick={addWorkoutDay}>Add a Workout</button>
 
-              <button className={styles["add-workout-button"]} onClick={addWorkoutDay}>Add a Workout</button>
+                <button type='button' className={styles["close-dialog-button"]} aria-label='Close dialog' onClick={closeDialog}>
+                  <img className={styles["close-dialog-img"]} src={close} alt=''/>
+                </button>
+              </div>
 
-              <button className={styles["close-dialog-button"]} aria-label='Close dialog' onClick={closeDialog}>
-                <img className={styles["close-dialog-img"]} src={close} alt=''/>
-              </button>
-            </div>
+              <hr aria-hidden="true"/>
 
-            <hr aria-hidden="true"/>
+              {workoutDays.map((workoutDay) => {
+                return (
+                    <div key={workoutDay.id}>
+                      <div className={styles["workout-day-wrapper"]} >
+                        {
+                          workoutDay.confirm ?
+                          <div className={styles["workout-day-name-text"]}>{workoutDay.name}</div> :
+                          <>
+                            <label htmlFor={workoutDay.id} className={styles["sr-only"]}>Workout day</label>
+                            <input type="text" id={workoutDay.id} placeholder='Upper, Push, Legs' className={styles["workout-day-input"]} onChange={(e) => handleWorkoutDayInputText(workoutDay.id, e)} value={workoutDay.name}/> 
+                          </>
+                        }
 
-            {workoutDays.map((workoutDay) => {
-              return (
-                  <div key={workoutDay.id}>
-                    <div className={styles["workout-day-wrapper"]} >
-                      {
-                        workoutDay.confirm ?
-                        <div className={styles["workout-day-name-text"]}>{workoutDay.name}</div> :
-                        <>
-                          <label htmlFor={workoutDay.id} className={styles["sr-only"]}>Workout day</label>
-                          <input type="text" id={workoutDay.id} placeholder='Upper, Push, Legs' className={styles["workout-day-input"]} onChange={(e) => handleWorkoutDayInputText(workoutDay.id, e)} value={workoutDay.name}/> 
-                        </>
-                      }
-          
-                    
-                      
-                      <button className={styles["workout-day-button"]} aria-label='Confirm Workout Day' onClick={() => confirmWorkoutDay(workoutDay.id)}  disabled={workoutDay.name.trim().length === 0 ? true : false}>
-                        {workoutDay.confirm ? <img className={styles["edit-icon"]}  src={editIcon} alt=''/> : <img className={styles["checkmark-icon"]}  src={checkmark} alt=''/>}
-                      </button> 
+                        <button type='button' className={styles["delete-workout-day-button"]} aria-label='Delete Workout Day' onClick={() => deleteWorkoutDay(workoutDay.id)}>
+                          <img className={styles["delete-workout-day-icon"]}  src={deleteWorkoutDayIcon} alt=''/>
+                        </button>
+                      </div>
 
-                      <button className={styles["delete-workout-day-button"]} aria-label='Delete Workout Day' onClick={() => deleteWorkoutDay(workoutDay.id)}>
-                        <img className={styles["delete-workout-day-icon"]}  src={deleteWorkoutDayIcon} alt=''/>
-                      </button>
-                    </div>
+                      {workoutDay.exercises.map((addedExercise) => {
+                        return (
+                          <div key={addedExercise.rowId} className={styles["search-exercise-wrapper"]}>
 
-                    {workoutDay.exercises.map((addedExercise) => {
-                      return (
-                        <div key={addedExercise.rowId} className={styles["search-exercise-wrapper"]}>
+                            <div className={styles["search-exercise-input-wrapper"]}>
+                              {addedExercise.confirm ?
+                                <button type='button' className={styles["added-exercise-button"]} onClick={() => selectExerciseAgain(addedExercise.rowId, workoutDay.id)}>
+                                  <img className={styles["added-exercise-icon"]}  src={addedExercise.icon} alt="" />
+                                  <span className={styles["added-exercise-name"]}>{addedExercise.exerciseName}</span>
+                                </button> :
+                              <>
+                                <label htmlFor={addedExercise.rowId} className={styles["sr-only"]}>Search exercise</label>
+                                <input className={styles["search-exercise-input"]} type="text" id={addedExercise.rowId} placeholder='Search exercise' onChange={(e)=> handleSearchExerciseText(e, workoutDay.id, addedExercise.rowId)} value={addedExercise.searchText}/>
+                              </>
+                              }
+                              
+                              <button type='button' className={styles["search-exercise-delete-button"]} aria-label='Delete Exercise' onClick={() => deleteExercise(workoutDay.id, addedExercise.rowId)} >
+                                <img className={styles["search-exercise-delete-icon"]}  src={deleteExerciseIcon} alt=''/>
+                              </button>
+                            </div>
+                            
+                            {addedExercise.sets.map((set, index) => {
+                              return (
+                                <div key={set.id}  className={styles["set-wrapper"]}>
+                                  <div>Set {index + 1}:</div>
 
-                          <div className={styles["search-exercise-input-wrapper"]}>
-                            {addedExercise.confirm ?
-                              <button className={styles["added-exercise-button"]} onClick={() => selectExerciseAgain(addedExercise.rowId, workoutDay.id)}>
-                                <img className={styles["added-exercise-icon"]}  src={addedExercise.icon} alt="" />
-                                <span className={styles["added-exercise-name"]}>{addedExercise.exerciseName}</span>
-                              </button> :
-                            <>
-                              <label htmlFor={addedExercise.rowId} className={styles["sr-only"]}>Search exercise</label>
-                              <input className={styles["search-exercise-input"]} type="text" id={addedExercise.rowId} placeholder='Search exercise' onChange={(e)=> handleSearchExerciseText(e, workoutDay.id, addedExercise.rowId)} value={addedExercise.searchText}/>
-                            </>
+                                  <div className={styles["reps-input-wrapper"]}>
+                                    <input type="text"  className={styles["reps-input"]}/>
+                                    x
+                                    <input type="text"  className={styles["reps-input-2"]}/>
+                                  </div>
+
+                                  <button type='button' className={styles["delete-set-button"]} aria-label='Delete set' onClick={() => deleteSet(set.id)}>
+                                    <img className={styles["delete-set-icon"]}  src={deleteSetIcon} alt=''/>
+                                  </button>
+                                </div>
+                              )
+                            })}
+                            {addedExercise.confirm && <button type='button' className={styles["add-set-button"]} aria-label='Add set' onClick={() => addSet(workoutDay.id, addedExercise.rowId)}>
+                              <img className={styles["add-set-icon"]}  src={plusIcon} alt=''/>
+                              <span>Add set</span>
+                            </button>}
+                            
+                            {addedExercise.confirm ?  '' :
+                              <ul className={styles["search-exercise-list-wrapper"]}>
+                                {
+                                  exercises.filter((exercise) => exercise.name.toLowerCase().includes(addedExercise.searchText.toLowerCase()))
+                                  .map((exer) => {
+                                    if(addedExercise.searchText.length === 0) return;
+                                    return (
+                                      <li key={exer.id} className={styles["search-exercise-list"]}>
+                                        <button type='button' className={styles["search-exercise-list-button"]} onClick={() => selectExercise(workoutDay.id, exer.id, addedExercise.rowId)}>
+                                          <img className={styles["search-exercise-icon"]} src={exer.icon} />
+                                          <span className={styles["search-exercise-name"]}>{exer.name}</span>
+                                        </button>
+                                      </li>
+                                    )
+                                  })
+                                }
+                              </ul>
                             }
                             
-                            <button className={styles["search-exercise-delete-button"]} aria-label='Delete Exercise' onClick={() => deleteExercise(workoutDay.id, addedExercise.rowId)} >
-                              <img className={styles["search-exercise-delete-icon"]}  src={deleteExerciseIcon} alt=''/>
-                            </button>
-                          </div>
-                          
-                          {addedExercise.sets.map((set, index) => {
-                            return (
-                              <div key={set.id}  className={styles["set-wrapper"]}>
-                                <div>Set {index + 1}:</div>
-
-                                <div className={styles["reps-input-wrapper"]}>
-                                  <input type="text"  className={styles["reps-input"]}/>
-                                  x
-                                  <input type="text"  className={styles["reps-input-2"]}/>
-                                </div>
-
-                                <button className={styles["delete-set-button"]} aria-label='Delete set' onClick={() => deleteSet(set.id)}>
-                                  <img className={styles["delete-set-icon"]}  src={deleteSetIcon} alt=''/>
-                                </button>
-                              </div>
-                            )
-                          })}
-                          {addedExercise.confirm && <button className={styles["add-set-button"]} aria-label='Add set' onClick={() => addSet(workoutDay.id, addedExercise.rowId)}>
-                            <img className={styles["add-set-icon"]}  src={plusIcon} alt=''/>
-                            <span>Add set</span>
-                          </button>}
-                          
-                          {addedExercise.confirm ?  '' :
-                            <ul className={styles["search-exercise-list-wrapper"]}>
-                              {
-                                exercises.filter((exercise) => exercise.name.toLowerCase().includes(addedExercise.searchText.toLowerCase()))
-                                .map((exer) => {
-                                  if(addedExercise.searchText.length === 0) return;
-                                  return (
-                                    <li key={exer.id} className={styles["search-exercise-list"]}>
-                                      <button className={styles["search-exercise-list-button"]} onClick={() => selectExercise(workoutDay.id, exer.id, addedExercise.rowId)}>
-                                        <img className={styles["search-exercise-icon"]} src={exer.icon} />
-                                        <span className={styles["search-exercise-name"]}>{exer.name}</span>
-                                      </button>
-                                    </li>
-                                  )
-                                })
-                              }
-                            </ul>
-                          }
-                          
 
 
-                        </div>  
-                      )
-                    })}
+                          </div>  
+                        )
+                      })}
 
-                    <button className={styles["add-exercise-button"]}  onClick={() => addExercise(workoutDay.id)}> <span className={styles["add-exercise-plus-symbol"]}>&#43;</span> Add exercise </button>
+                      <button type='button' className={styles["add-exercise-button"]}  onClick={() => addExercise(workoutDay.id)}> <span className={styles["add-exercise-plus-symbol"]}>&#43;</span> Add exercise </button>
 
-                  </div>
-              )
-            })}
+                    </div>
+                )
+              })}
 
-
-          </div>
+                <button type='submit' className={styles["confirm-button"]} >Confirm</button>
+          </form>
         </dialog>
 
         <section className={styles["content-main"]}>
