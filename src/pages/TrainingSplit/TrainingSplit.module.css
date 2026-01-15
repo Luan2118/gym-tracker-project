@@ -50,6 +50,8 @@ hr {
 
 
 .add-training-button {
+  background-color: rgb(75, 75, 75);
+  color: white;
   font-weight: 600;
   font-size: 3rem;
   padding: 1rem 2rem;
@@ -59,11 +61,11 @@ hr {
 }
 
 .add-training-button:hover {
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 .add-training-button:active {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .training-split-name-wrapper {
@@ -87,7 +89,10 @@ hr {
   margin-right: 2rem;
 }
 
+
 .add-workout-button {
+  background-color: rgb(75, 75, 75);
+  color: white;
   font-size: 2rem;
   padding: 1rem 2rem;
   border-radius: 1rem;
@@ -116,6 +121,7 @@ hr {
 .workout-day-input::placeholder {
   font-size: 2rem;
 }
+
 
 .close-dialog-button {
   background-color: rgb(29, 29, 29);
@@ -363,6 +369,9 @@ hr {
 }
 
 .confirm-button {
+  background-color: rgb(75, 75, 75);
+  color: white;
+  font-size: 2rem;
   border: none;
   border-radius: 1rem;
   padding: 1rem 2rem;

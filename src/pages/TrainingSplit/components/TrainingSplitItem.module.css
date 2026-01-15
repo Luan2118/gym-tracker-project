@@ -14,17 +14,34 @@
 }
 
 .modify-button {
+  background-color: rgb(75, 75, 75);
+  color: white;
   font-size: 2rem;
-  padding: 0.7rem 2rem;
-  margin-right: 0.5rem;
+  padding: 1rem 2rem;
+  margin-right: 1rem;
   border-radius: 1rem;
+  border: none;
+  cursor: pointer
 }
 
 
 
 .delete-button {
-  padding: 0.7rem 2rem;
-  border-radius: 1rem;
+  background-color: rgb(201, 59, 59);
+  color: white;
   font-size: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
 }
 
+.modify-button:hover,
+.delete-button:hover {
+  opacity: 0.8;
+}
+
+.modify-button:active,
+.delete-button:active {
+  opacity: 0.7;
+}
