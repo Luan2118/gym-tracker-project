@@ -29,7 +29,7 @@ export default function Dashboard() {
 
        <section>
         <h2>
-         Body Weight
+          <Link to='/body-weight' >Body Weight</Link>
         </h2>
       </section>
     </div>    

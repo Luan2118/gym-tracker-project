@@ -1,0 +1,136 @@
+h2 {
+  padding: 0;
+  margin: 0;
+}
+
+
+.content-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border-radius: 1rem;
+  padding: 3rem;
+  background-color: rgb(41, 41, 41);
+}
+
+.weight-submit-wrapper {
+  display: flex;
+}
+
+.weight-input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+
+.weight-input-label {
+  font-size: 3.5rem;
+}
+
+.weight-input {
+  font-size: 1.8rem;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  margin-right: 4rem;
+  margin-left: 2rem;
+}
+
+.add-weight-button {
+  background-color: rgb(75, 75, 75);
+  color:white;
+  font-size: 2.2rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.add-weight-button:hover {
+  opacity: 0.8;
+}
+
+.add-weight-button:active {
+  opacity: 0.7;
+}
+
+.filter-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0
+}
+
+.fieldset-wrapper {
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-align: end;
+  margin-top: 5rem;
+}
+
+.legend-text {
+  text-align: start;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+
+
+.date-from-wrapper,
+.date-to-wrapper {
+  margin-left: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.date-from-label,
+.date-to-label {
+  margin-right: 1.5rem;
+  font-size: 2.2rem;
+}
+
+
+.date-from-input,
+.date-to-input {
+  background-color: rgb(75, 75, 75);
+  color: white;
+  font-size: 1.8rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.filter-buttons-wrapper {
+  display: flex;
+  margin-top: 5rem;
+}
+
+.last-week-button,
+.last-2-weeks-button,
+.last-month-button,
+.last-2-months-button {
+  background-color: rgb(75, 75, 75);
+  color: white;
+  font-size: 2rem;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  margin-right: 3rem;
+  cursor: pointer;
+}
+
+.last-week-button:hover,
+.last-2-weeks-button:hover,
+.last-month-button:hover,
+.last-2-months-button:hover {
+  opacity: 0.8
+}
+
+.last-week-button:active,
+.last-2-weeks-button:active,
+.last-month-button:active,
+.last-2-months-button:active {
+  opacity: 0.8
+}

@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar/Sidebar'
 import ActiveWorkout from './pages/ActiveWorkout/ActiveWorkout'
 import TrainingSplit from './pages/TrainingSplit/TrainingSplit'
 import Exercises from './pages/Exercises/Exercises'
+import BodyWeight from './pages/BodyWeight/BodyWeight'
 import './App.css'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path='active-workout' element={<ActiveWorkout />} />
         <Route path='training-split' element={<TrainingSplit />} />
         <Route path='exercises' element={<Exercises/>} />
+        <Route path='body-weight' element={<BodyWeight/>} />
       </Route>
     </Routes>
   )
