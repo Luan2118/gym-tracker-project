@@ -29,11 +29,17 @@ export default function TrainingSplit() {
   }, [trainingSplits])
 
   function openDialog() {
+    setEditingSplitId(null);
+    setTrainingSplitInputText('');
+    setWorkoutDays([]);
     dialogRef.current.showModal();
     
   }
   
   function closeDialog() {
+      setEditingSplitId(null);
+    setTrainingSplitInputText('');
+    setWorkoutDays([]);
     dialogRef.current.close();
   }
 
@@ -228,9 +234,9 @@ export default function TrainingSplit() {
   }
 
   function submitTrainingSplit(e) {
-    e.preventDefault()
+    e.preventDefault();
     
-    const name = trainingSplitInputText.trim()
+    const name = trainingSplitInputText.trim();
 
     if (!name) return;
 
@@ -256,25 +262,23 @@ export default function TrainingSplit() {
 
     })
     
-    setWorkoutDays([]);
-    setTrainingSplitInputText('');
-
-    setEditingSplitId(null)
-    dialogRef.current.close()
+    closeDialog();
   }
 
   function handleEditTrainingSplit(id) {
-    const selectedSplit = trainingSplits.find((split) => split.id === id)
-    const selectedSplitCopy = structuredClone(selectedSplit)
-    console.log(selectedSplitCopy)
-    console.log(id)
+    const selectedSplit = trainingSplits.find((split) => split.id === id);
+    if (!selectedSplit) return;
+    const selectedSplitCopy = structuredClone(selectedSplit);
+    console.log(selectedSplitCopy);
+    console.log(id);
 
-    setEditingSplitId(selectedSplitCopy.id)
+
+    setEditingSplitId(selectedSplitCopy.id);
     setWorkoutDays(selectedSplitCopy.workoutDays);
-    setTrainingSplitInputText(selectedSplit.name)
+    setTrainingSplitInputText(selectedSplitCopy.name);
 
 
-    dialogRef.current.showModal()
+    dialogRef.current.showModal();
   }
 
   console.log(trainingSplits)
@@ -408,7 +412,7 @@ export default function TrainingSplit() {
           <hr />
 
         
-          <TrainingSplitList  trainingSplits={trainingSplits} handleEditTrainingSplit={handleEditTrainingSplit}/>
+          <TrainingSplitList  trainingSplits={trainingSplits.map((trainingsplit) => ({name: trainingsplit.name, id: trainingsplit.id}))} handleEditTrainingSplit={handleEditTrainingSplit}/>
             
         </section>
 
