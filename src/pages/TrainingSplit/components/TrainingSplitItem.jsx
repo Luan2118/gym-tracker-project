@@ -1,6 +1,6 @@
 import styles from './TrainingSplitItem.module.css'
 
-export default function TrainingSplitItem({trainingSplits, handleEditTrainingSplit}) {
+export default function TrainingSplitItem({trainingSplits, editTrainingSplit, deleteTrainingSplit}) {
   console.log(trainingSplits)
   return (
     <>
@@ -10,8 +10,8 @@ export default function TrainingSplitItem({trainingSplits, handleEditTrainingSpl
           <h3>{trainingSplit.name}</h3>
 
           <div className={styles["button-wrapper"]}>
-            <button type='button' className={styles["modify-button"]} onClick={() => handleEditTrainingSplit(trainingSplit.id)}>Edit</button> 
-            <button type='button' className={styles["delete-button"]}>Delete</button>
+            <button type='button' className={styles["modify-button"]} onClick={() => editTrainingSplit(trainingSplit.id)}>Edit</button> 
+            <button type='button' className={styles["delete-button"]} onClick={() => deleteTrainingSplit(trainingSplit.id)}>Delete</button>
           </div>
         </section>
         )

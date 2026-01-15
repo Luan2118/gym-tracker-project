@@ -265,7 +265,7 @@ export default function TrainingSplit() {
     closeDialog();
   }
 
-  function handleEditTrainingSplit(id) {
+  function editTrainingSplit(id) {
     const selectedSplit = trainingSplits.find((split) => split.id === id);
     if (!selectedSplit) return;
     const selectedSplitCopy = structuredClone(selectedSplit);
@@ -281,7 +281,9 @@ export default function TrainingSplit() {
     dialogRef.current.showModal();
   }
 
-  console.log(trainingSplits)
+  function deleteTrainingSplit(id) {
+    setTrainingSplits((prev) => prev.filter((trainingsplit) => trainingsplit.id !== id))
+  }
   
   return (
     <>
@@ -412,7 +414,7 @@ export default function TrainingSplit() {
           <hr />
 
         
-          <TrainingSplitList  trainingSplits={trainingSplits.map((trainingsplit) => ({name: trainingsplit.name, id: trainingsplit.id}))} handleEditTrainingSplit={handleEditTrainingSplit}/>
+          <TrainingSplitList  trainingSplits={trainingSplits.map((trainingsplit) => ({name: trainingsplit.name, id: trainingsplit.id}))} editTrainingSplit={editTrainingSplit} deleteTrainingSplit={deleteTrainingSplit}/>
             
         </section>
 

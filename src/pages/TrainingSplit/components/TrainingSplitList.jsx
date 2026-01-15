@@ -1,7 +1,7 @@
 import TrainingSplitItem from "./TrainingSplitItem"
 
-export default function TrainingSplitList({trainingSplits, handleEditTrainingSplit}) {
+export default function TrainingSplitList({trainingSplits, editTrainingSplit, deleteTrainingSplit}) {
   return (
-    <TrainingSplitItem trainingSplits={trainingSplits} handleEditTrainingSplit={handleEditTrainingSplit}/>
+    <TrainingSplitItem trainingSplits={trainingSplits} handleEditTrainingSplit={editTrainingSplit} deleteTrainingSplit={deleteTrainingSplit}/>
   )
 }
