@@ -1,8 +1,8 @@
 import BodyWeightItem from "./BodyWeightItem"
 
 
-export default function BodyWeightList() {
+export default function BodyWeightList({bodyWeights}) {
   return (
-    <BodyWeightItem />
+    <BodyWeightItem bodyWeights={bodyWeights}/>
   )
 }

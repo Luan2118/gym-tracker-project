@@ -1,7 +1,38 @@
+import { useSearchParams } from 'react-router-dom';
 import styles from './BodyWeight.module.css'
 import BodyWeightList from './components/BodyWeightList'
+import formatDate from './utils/formatDate';
+import { useState } from 'react';
 
 export default function BodyWeight() {
+
+  console.log(new Date)
+
+  const  today = new Date() ;
+  const formattedToday =   formatDate(today)
+
+  const initialBodyWeightData = [
+    {
+      bw: '75.5', id: crypto.randomUUID(), date: '15-1-2026',
+    }, 
+    {
+      bw: '80', id: crypto.randomUUID(), date: '25-1-2026',
+    }, 
+    {
+      bw: '85', id: crypto.randomUUID(), date: '30-1-2026',
+    }]
+  const [bodyWeights, setBodyWeights] = useState(initialBodyWeightData);
+  const [bodyWeightInputText, setBodyWeightInputText] = useState('');
+
+  function addBodyWeight() {
+    setBodyWeights((prev) => {
+      return [
+        ...prev,
+        {bw: bodyWeightInputText, id: crypto.randomUUID(), date: formattedToday}
+      ]
+    })
+  }
+
   return (
     <>
       <header>
@@ -15,10 +46,10 @@ export default function BodyWeight() {
 
           <div className={styles["weight-input-wrapper"]}>
             <label htmlFor="body-weight" className={styles["weight-input-label"]}>Weight: </label>
-            <input type="text" id="body-weight" className={styles["weight-input"]}/>
+            <input type="text" id="body-weight" className={styles["weight-input"]} value={bodyWeightInputText} onChange={(e) => setBodyWeightInputText(e.target.value)}/>
           </div>
 
-          <button className={styles["add-weight-button"]}>Add Weight</button>
+          <button className={styles["add-weight-button"]} onClick={addBodyWeight}>Add Weight</button>
         </div>
 
         <hr />
@@ -51,7 +82,7 @@ export default function BodyWeight() {
 
         <hr />
         <ul >
-          <BodyWeightList />
+          <BodyWeightList bodyWeights={bodyWeights}/>
         </ul>
       </div>
     </>

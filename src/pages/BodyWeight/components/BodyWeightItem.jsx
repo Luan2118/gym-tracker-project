@@ -1,19 +1,31 @@
 import styles from './BodyWeightItem.module.css'
 
-export default function BodyWeightItem() {
+export default function BodyWeightItem({bodyWeights}) {
   return (
     <>
-      <li className={styles['body-weight-item-wrapper']}>
-        15.1.2026: 75.6 Kg
-      </li>
+      {bodyWeights.map((bodyweight) => {
+        return (
+          <li key={bodyweight.id} className={styles['body-weight-item-wrapper']}>
 
-      <li className={styles['body-weight-item-wrapper']}>
-        16.1.2026: 85.7 Kg
-      </li>
+            <div className={styles['body-weight-data-wrapper']}>
+              <div className={styles['body-weight-date']}>
+                {bodyweight.date}
+              </div>
+              <span className={styles['seperator']}>
+                :
+              </span>
+              <div className={styles['body-weight']}>
+                {bodyweight.bw} kg
+              </div>
+            </div>
 
-      <li className={styles['body-weight-item-wrapper']}>
-        17.1.2026: 90 Kg
-      </li>
+            <div>
+              <button type='button' className={styles['body-weight-edit-button']}>Edit</button>
+              <button type='button' className={styles['body-weight-delete-button']}>Delete</button>
+            </div>
+          </li>
+        )
+      })}
     </>
   )
 }
