@@ -19,9 +19,10 @@ export default function TrainingSplit() {
   });
 
   const [trainingSplitInputText, setTrainingSplitInputText] = useState('')
-  const dialogRef = useRef(null); 
   const [workoutDays, setWorkoutDays] = useState([]);
   const { exercises, setExercises } = useOutletContext();
+  const [editingSplitId, setEditingSplitId] = useState(null);
+  const dialogRef = useRef(null); 
 
   useEffect(() => {
     localStorage.setItem('trainingSplits', JSON.stringify(trainingSplits));
@@ -235,18 +236,49 @@ export default function TrainingSplit() {
 
     const snapshotWorkoutDays = structuredClone(workoutDays);
     
-     setTrainingSplits((prev) => [
-      ...prev,
-      {name, id: crypto.randomUUID(), workoutDays: snapshotWorkoutDays}
-    ])
+     setTrainingSplits((prev) => {
+       if (editingSplitId === null) {
+         return [
+           ...prev,
+           {name, id: crypto.randomUUID(), workoutDays: snapshotWorkoutDays}
+         ]
+       }
+       
+       return prev.map((trainingSplit) => {
+        if (trainingSplit.id !== editingSplitId) return trainingSplit;
+
+        return {
+          ...trainingSplit,
+          name,
+          workoutDays: snapshotWorkoutDays
+        }
+       })
+
+    })
     
     setWorkoutDays([]);
     setTrainingSplitInputText('');
 
+    setEditingSplitId(null)
     dialogRef.current.close()
   }
+
+  function handleEditTrainingSplit(id) {
+    const selectedSplit = trainingSplits.find((split) => split.id === id)
+    const selectedSplitCopy = structuredClone(selectedSplit)
+    console.log(selectedSplitCopy)
+    console.log(id)
+
+    setEditingSplitId(selectedSplitCopy.id)
+    setWorkoutDays(selectedSplitCopy.workoutDays);
+    setTrainingSplitInputText(selectedSplit.name)
+
+
+    dialogRef.current.showModal()
+  }
+
+  console.log(trainingSplits)
   
-  console.log(localStorage.getItem('trainingSplits'))
   return (
     <>
       <header>
@@ -376,7 +408,7 @@ export default function TrainingSplit() {
           <hr />
 
         
-          <TrainingSplitList  trainingSplits={trainingSplits}/>
+          <TrainingSplitList  trainingSplits={trainingSplits} handleEditTrainingSplit={handleEditTrainingSplit}/>
             
         </section>
 
