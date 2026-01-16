@@ -15,7 +15,9 @@ h2 {
 
 .weight-submit-wrapper {
   display: flex;
+  margin-bottom: 1rem;
 }
+
 
 .weight-input-wrapper {
   display: flex;
@@ -53,6 +55,10 @@ h2 {
 
 .add-weight-button:active {
   opacity: 0.7;
+}
+
+.body-weight-added {
+  font-size: 1.8rem;
 }
 
 .filter-section-wrapper {

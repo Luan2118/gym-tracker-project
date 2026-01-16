@@ -1,7 +1,7 @@
 import styles from './BodyWeight.module.css'
 import BodyWeightList from './components/BodyWeightList'
 import formatDate from '../../utils/formatDate';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function BodyWeight() {
 
@@ -10,18 +10,53 @@ export default function BodyWeight() {
   const formattedToday =   formatDate(today)
 
   const initialBodyWeightData = [
-    {
-      bw: '75.5', id: crypto.randomUUID(), date: '2026-01-25',
-    }, 
-    {
-      bw: '80', id: crypto.randomUUID(), date: '2026-01-15',
-    }, 
-    {
-      bw: '85', id: crypto.randomUUID(), date: '2026-01-30',
-    }]
+  {
+    bw: '75.5', id: crypto.randomUUID(), date: '2026-01-25',
+  },
+  {
+    bw: '80', id: crypto.randomUUID(), date: '2026-01-15',
+  },
+  {
+    bw: '85', id: crypto.randomUUID(), date: '2026-01-30',
+  },
+  {
+    bw: '74.8', id: crypto.randomUUID(), date: '2026-01-05',
+  },
+  {
+    bw: '76.2', id: crypto.randomUUID(), date: '2026-01-10',
+  },
+  {
+    bw: '77.0', id: crypto.randomUUID(), date: '2026-01-18',
+  },
+  {
+    bw: '78.4', id: crypto.randomUUID(), date: '2026-01-22',
+  },
+  {
+    bw: '81.3', id: crypto.randomUUID(), date: '2026-02-02',
+  },
+  {
+    bw: '82.1', id: crypto.randomUUID(), date: '2026-02-08',
+  },
+  {
+    bw: '83.6', id: crypto.randomUUID(), date: '2026-02-14',
+  },
+];
+
   const [bodyWeights, setBodyWeights] = useState(initialBodyWeightData);
   const [bodyWeightInputText, setBodyWeightInputText] = useState('');
+  const [feedback, setFeedback] = useState(null)
 
+
+  useEffect(() => {
+    if (feedback !== 'added') return;
+
+    const addedID = setTimeout(() => {
+        setFeedback(null)
+      }, 4000)
+    
+    return () => clearTimeout(addedID)
+  }, [feedback])
+    
   function addBodyWeight() {
     setBodyWeights((prev) => {
       return [
@@ -29,6 +64,8 @@ export default function BodyWeight() {
         {bw: bodyWeightInputText, id: crypto.randomUUID(), date: formattedToday}
       ]
     })
+
+    setFeedback('added')
   }
 
   return (
@@ -49,7 +86,7 @@ export default function BodyWeight() {
 
           <button className={styles["add-weight-button"]} onClick={addBodyWeight}>Add Weight</button>
         </div>
-
+        {feedback === 'added' ? <div className={styles["body-weight-added"]}>&#9989; Body weight added</div> : ''}
         <hr />
 
 
