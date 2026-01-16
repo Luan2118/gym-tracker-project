@@ -1,4 +1,5 @@
 import styles from './BodyWeightItem.module.css'
+import parseISODate from '../../../utils/parseISODate'
 
 export default function BodyWeightItem({bodyWeights}) {
   return (
@@ -9,7 +10,7 @@ export default function BodyWeightItem({bodyWeights}) {
 
             <div className={styles['body-weight-data-wrapper']}>
               <div className={styles['body-weight-date']}>
-                {bodyweight.date}
+                {parseISODate(bodyweight.date)}
               </div>
               <span className={styles['seperator']}>
                 :

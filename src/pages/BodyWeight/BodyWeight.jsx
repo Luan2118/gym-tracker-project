@@ -1,25 +1,23 @@
-import { useSearchParams } from 'react-router-dom';
 import styles from './BodyWeight.module.css'
 import BodyWeightList from './components/BodyWeightList'
-import formatDate from './utils/formatDate';
+import formatDate from '../../utils/formatDate';
 import { useState } from 'react';
 
 export default function BodyWeight() {
 
-  console.log(new Date)
 
   const  today = new Date() ;
   const formattedToday =   formatDate(today)
 
   const initialBodyWeightData = [
     {
-      bw: '75.5', id: crypto.randomUUID(), date: '15-1-2026',
+      bw: '75.5', id: crypto.randomUUID(), date: '2026-01-25',
     }, 
     {
-      bw: '80', id: crypto.randomUUID(), date: '25-1-2026',
+      bw: '80', id: crypto.randomUUID(), date: '2026-01-15',
     }, 
     {
-      bw: '85', id: crypto.randomUUID(), date: '30-1-2026',
+      bw: '85', id: crypto.randomUUID(), date: '2026-01-30',
     }]
   const [bodyWeights, setBodyWeights] = useState(initialBodyWeightData);
   const [bodyWeightInputText, setBodyWeightInputText] = useState('');
@@ -82,7 +80,7 @@ export default function BodyWeight() {
 
         <hr />
         <ul >
-          <BodyWeightList bodyWeights={bodyWeights}/>
+          <BodyWeightList bodyWeights={bodyWeights} />
         </ul>
       </div>
     </>
