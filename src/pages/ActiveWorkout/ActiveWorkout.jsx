@@ -13,8 +13,14 @@ export default function ActiveWorkout() {
   const [splitSelected, setSplitSelected] = useState(false);
   const [selectedWorkoutDayId, setSelectedWorkoutDayId] = useState('');
 
-  function startWorkout() {
+  console.log(trainingSplits)
+
+  function openDialog() {
     dialogRef.current.showModal()
+  }
+
+  function closeDialog() {
+    dialogRef.current.close()
   }
 
   function handleSelectCategory(e) {
@@ -40,7 +46,7 @@ export default function ActiveWorkout() {
     <div className={styles["content-wrapper"]}>
 
       <div className={styles["start-workout-wrapper"]}>
-        <button type='button' className={styles["start-workout-button"]} onClick={startWorkout}>
+        <button type='button' className={styles["start-workout-button"]} onClick={openDialog}>
           Start a Workout
         </button>
 
@@ -57,21 +63,57 @@ export default function ActiveWorkout() {
                 })}
               </select>
 
-              <button type='button' aria-label='close dialog' className={styles["close-dialog-button"]}>
+              <button type='button' aria-label='close dialog' className={styles["close-dialog-button"]} onClick={closeDialog}>
                 <img src={closeX} alt="" className={styles["close-dialog-img"]}/>
               </button>
             </div>
             
             {selectedSplit && selectedSplit.workoutDays.map((workoutday) => {
               return (
-                <div key={workoutday.id} className={styles["workout-day-button-wrapper"]}>
-                  <div>Workout Day: </div>
-                  <button type='button' className={selectedWorkoutDayId === workoutday.id ? styles["workout-day-button-active"] : styles["workout-day-button"]} onClick={() => selectWorkoutDay(workoutday.id)}>{workoutday.name}</button>
+                <div key={workoutday.id}>
+                  <div className={styles["workout-day-button-wrapper"]}>
+                    <div>Workout Day: </div>
+                    <button type='button' className={selectedWorkoutDayId === workoutday.id ? styles["workout-day-button-active"] : styles["workout-day-button"]} onClick={() => selectWorkoutDay(workoutday.id)}>{workoutday.name}</button>
+                  </div>
+
+                  <div>
+                    {selectedWorkoutDayId === workoutday.id  ? 
+                      workoutday.exercises.map((exer) => {
+                        return (
+                          <div key={exer.id}>
+                            <div className={styles["exercise-name-img-wrapper"]}>
+                              <img src={exer.icon} alt="" className={styles["exercise-img"]}/>
+                              <div>{exer.exerciseName}</div>
+                            </div>
+                            {exer.sets.map((set, index) => {
+                              return (
+                                <div key={set.id} className={styles["set-wrapper"]}>
+                                  <fieldset className={styles["fieldset-wrapper"]}>
+                                    <legend className={styles["sr-only"]}>Set {index +1}</legend>
+
+                                      <div className={styles["set-text"]}>Set {index + 1}</div>
+
+                                    <div className={styles["reps-input-wrapper"]}>
+                                      <label htmlFor={`weight-${set.id}`} className={styles["sr-only"]}>Weight</label>
+                                      <input type="text" id={`weight-${set.id}`} className={styles["reps-input"]} />
+                                      x
+                                      <label htmlFor={`reps-${set.id}`} className={styles["sr-only"]}>Reps</label>
+                                      <input type="text" id={`reps-${set.id}`}  className={styles["reps-input-2"]}/>
+                                    </div>
+                                  </fieldset>
+                                </div>
+                              )
+                            })}
+                          </div>
+                        )
+                      }) : ''
+                    }
+                  </div>
                 </div>
               )
             })}
 
-            <button type='submit' className={styles["start-workout-confirm-button"]}>Confirm</button>
+            <button type='submit' className={styles["start-workout-confirm-button"]}>Start</button>
           </form>
         </dialog>
       </div>

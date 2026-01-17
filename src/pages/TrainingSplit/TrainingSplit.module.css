@@ -180,6 +180,19 @@ hr {
   margin-top: 1.5rem;
 }
 
+.fieldset-wrapper {
+  display: flex;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.reps-input-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .reps-input {
   background-color: rgb(54, 54, 54);
   border: none;

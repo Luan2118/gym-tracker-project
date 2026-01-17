@@ -346,13 +346,20 @@ export default function TrainingSplit() {
                             {addedExercise.sets.map((set, index) => {
                               return (
                                 <div key={set.id}  className={styles["set-wrapper"]}>
-                                  <div>Set {index + 1}:</div>
 
-                                  <div className={styles["reps-input-wrapper"]}>
-                                    <input type="text"  className={styles["reps-input"]}/>
-                                    x
-                                    <input type="text"  className={styles["reps-input-2"]}/>
-                                  </div>
+                                  <fieldset className={styles["fieldset-wrapper"]}>
+                                    <legend className={styles["sr-only"]}>Set {index +1}</legend>
+
+                                     <div className={styles.setLabel}>Set {index + 1}</div>
+
+                                    <div className={styles["reps-input-wrapper"]}>
+                                      <label htmlFor={`weight-${set.id}`} className={styles["sr-only"]}>Weight</label>
+                                      <input type="text" id={`weight-${set.id}`} className={styles["reps-input"]} />
+                                      x
+                                      <label htmlFor={`reps-${set.id}`} className={styles["sr-only"]}>Reps</label>
+                                      <input type="text" id={`reps-${set.id}`}  className={styles["reps-input-2"]}/>
+                                    </div>
+                                  </fieldset>
 
                                   <button type='button' className={styles["delete-set-button"]} aria-label='Delete set' onClick={() => deleteSet(set.id)}>
                                     <img className={styles["delete-set-icon"]}  src={deleteSetIcon} alt=''/>

@@ -1,3 +1,17 @@
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
 .content-wrapper{
   display: flex;
   flex-direction: column;
@@ -145,4 +159,69 @@
 
 .start-workout-confirm-button:active {
   opacity: 0.7;
+}
+
+.exercise-name-img-wrapper {
+  background-color: rgb(37, 37, 37);
+  display: flex;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  align-items: center;
+  margin-top: 2rem;
+  max-width: 22rem;
+  font-size: 1.8rem;
+}
+
+.exercise-img {
+  max-width: 5rem;
+  margin-right: 1rem;
+}
+
+
+.set-wrapper {
+  background-color: rgb(37, 37, 37);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  margin-left: 4.3rem;
+  margin-top: 1.5rem;
+  max-width: 23rem;
+}
+
+
+.fieldset-wrapper {
+  display: flex;
+  align-items:  center;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.set-text {
+  font-size: 1.8rem;
+}
+
+.reps-input-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reps-input {
+  background-color: rgb(54, 54, 54);
+  border: none;
+  max-width: 3rem;
+  margin-right: 1rem;
+  font-size: 1.8rem;
+  color: white;
+  text-align: center;
+}
+
+.reps-input-2 {
+  background-color: rgb(54, 54, 54);
+  border: none;
+  max-width: 3rem;
+  margin-left: 1rem;
+  font-size: 1.8rem;
+  color:white; 
+  text-align: center;
 }
