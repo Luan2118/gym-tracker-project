@@ -1,10 +1,8 @@
 import ExerciseList from './components/ExerciseList'
-import { useOutletContext } from 'react-router-dom'
 import styles from './Exercises.module.css'
 
 export default function Exercises() {
 
-  const { exercises, setExercises } = useOutletContext();
 
   return (
     <>
@@ -48,7 +46,7 @@ export default function Exercises() {
 
         <section aria-label='Exercise List' className={styles["content-main"]}>
 
-          <ExerciseList exercises={exercises}/>
+          <ExerciseList/>
         </section>
       </div>
     </>

@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Dashboard from './pages/Dashboard/Dashboard'
-import Sidebar from './components/Sidebar/Sidebar'
+import Layout from './layout//Layout'
 import ActiveWorkout from './pages/ActiveWorkout/ActiveWorkout'
 import TrainingSplit from './pages/TrainingSplit/TrainingSplit'
 import Exercises from './pages/Exercises/Exercises'
@@ -11,7 +11,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path='/' element={<Sidebar />}>
+      <Route path='/' element={<Layout />}>
         <Route index  element={<Dashboard />}/>
         <Route path='active-workout' element={<ActiveWorkout />} />
         <Route path='training-split' element={<TrainingSplit />} />

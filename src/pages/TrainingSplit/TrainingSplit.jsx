@@ -1,9 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
-import { useOutletContext } from 'react-router-dom'
+import { exercisesList } from '../../data/exercises'
 import TrainingSplitList from './components/TrainingSplitList'
-import checkmark from '../../assets/training-split/checkmark.png'
 import deleteWorkoutDayIcon from '../../assets/training-split/delete-workout-day.png'
-import editIcon from '../../assets/training-split/edit.png'
 import plusIcon from '../../assets/training-split/plus-icon.png'
 import deleteSetIcon from '../../assets/training-split/deleteSet.png'
 import close from '../../assets/training-split/x-close.png'
@@ -20,7 +18,6 @@ export default function TrainingSplit() {
 
   const [trainingSplitInputText, setTrainingSplitInputText] = useState('')
   const [workoutDays, setWorkoutDays] = useState([]);
-  const { exercises, setExercises } = useOutletContext();
   const [editingSplitId, setEditingSplitId] = useState(null);
   const dialogRef = useRef(null); 
 
@@ -130,7 +127,7 @@ export default function TrainingSplit() {
   }
 
   function selectExercise(workoutDayID, selectedExerciseId, addedExerciseRowId) {
-    const selectedExercise = exercises.find((exercise) => exercise.id === selectedExerciseId);
+    const selectedExercise = exercisesList.find((exercise) => exercise.id === selectedExerciseId);
     
     setWorkoutDays((prev) => 
       prev.map((workoutday) => {
@@ -377,7 +374,7 @@ export default function TrainingSplit() {
                             {addedExercise.confirm ?  '' :
                               <ul className={styles["search-exercise-list-wrapper"]}>
                                 {
-                                  exercises.filter((exercise) => exercise.name.toLowerCase().includes(addedExercise.searchText.toLowerCase()))
+                                  exercisesList.filter((exercise) => exercise.name.toLowerCase().includes(addedExercise.searchText.toLowerCase()))
                                   .map((exer) => {
                                     if(addedExercise.searchText.length === 0) return;
                                     return (

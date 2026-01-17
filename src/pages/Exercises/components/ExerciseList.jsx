@@ -1,7 +1,7 @@
 import ExerciseItem from "./ExerciseItem"
 
-export default function  ExerciseList({exercises}) {
+export default function  ExerciseList() {
   return (
-    <ExerciseItem exercises={exercises}/>
+    <ExerciseItem/>
   )
 }
