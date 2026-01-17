@@ -34,11 +34,25 @@
   opacity: 0.8;
 }
 
-.form-wrapper {
-  align-self: self-start;
-  background-color: rgb(37, 37, 37);
+.dialog-popup {
+  background-color: rgb(29, 29, 29); 
+  color: white;
+  border: none;
   padding: 1rem 2rem;
   border-radius: 1rem;
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-self: self-start;
+  padding: 1.5rem 2.5rem;
+  border-radius: 1rem;
+}
+
+.form-header-wrapper {
+  display: flex;
+  align-items: center;
 }
 
 .training-split-text {
@@ -47,9 +61,88 @@
 }
 
 .select-input {
-  background-color: rgb(29, 29, 29);
+  background-color: rgb(75, 75, 75);
   color: white;
   font-size: 1.8rem;
   padding: 1rem;
   border-radius: 1rem;
+  cursor: pointer;
+}
+
+.select-input:hover {
+  opacity: 0.8;
+}
+
+.close-dialog-button {
+  background-color: rgb(29, 29, 29);
+  border: none;
+  cursor: pointer;
+  margin-left: 10rem;
+}
+
+.close-dialog-button:hover {
+  opacity: 0.8;
+}
+
+.close-dialog-button:active {
+  opacity: 0.7;
+}
+
+.close-dialog-img {
+  max-width: 2.2rem;
+}
+
+
+.workout-day-button-wrapper {
+  display: flex;
+  margin-top: 3rem;
+  align-items: center;
+}
+
+.workout-day-button {
+  background-color: rgb(75, 75, 75);
+  color: white;
+  border-radius: 1rem;
+  padding: 0.8rem 1.5rem;
+  margin-left: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.workout-day-button-active {
+  background-color: rgb(141, 141, 141);
+  color: white;
+  border-radius: 1rem;
+  padding: 0.8rem 1.5rem;
+  margin-left: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.workout-day-button:hover {
+  opacity: 0.8;
+}
+
+.workout-day-button:active {
+  opacity: 0.7;
+}
+
+.start-workout-confirm-button {
+  background-color: rgb(75, 75, 75);
+  color: white;
+  font-size: 2rem;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  margin-top: 4rem;
+  align-self: self-end;
+}
+
+.start-workout-confirm-button:hover {
+  opacity: 0.8;
+}
+
+.start-workout-confirm-button:active {
+  opacity: 0.7;
 }

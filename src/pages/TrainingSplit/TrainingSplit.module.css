@@ -130,12 +130,10 @@ hr {
   margin-left: 10rem;
 }
 
+
+
 .close-dialog-img {
   max-width: 2.5rem;
-}
-
-.close-dialog-img:hover {
-  opacity: 0.8;
 }
 
 .add-exercise-plus-symbol {
@@ -237,14 +235,16 @@ hr {
 .delete-workout-day-button:hover,
 .add-exercise-button:hover,
 .search-exercise-delete-button:hover,
-.add-set-button:hover {
+.add-set-button:hover,
+.close-dialog-button:hover {
   opacity: 0.8;
 }
 
 .delete-workout-day-button:active,
 .add-exercise-button:active,
 .search-exercise-delete-button:active,
-.add-set-button:active {
+.add-set-button:active,
+.close-dialog-button:active {
   opacity: 0.7;
 }
 
