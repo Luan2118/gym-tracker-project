@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { exercisesList } from '../../data/exercises'
 import TrainingSplitList from './components/TrainingSplitList'
 import deleteWorkoutDayIcon from '../../assets/training-split/delete-workout-day.png'
@@ -6,24 +6,18 @@ import plusIcon from '../../assets/training-split/plus-icon.png'
 import deleteSetIcon from '../../assets/training-split/deleteSet.png'
 import close from '../../assets/training-split/x-close.png'
 import deleteExerciseIcon from '../../assets/training-split/x-delete.png'
+import { useOutletContext } from 'react-router-dom'
 import styles from './TrainingSplit.module.css'
 
 export default function TrainingSplit() {
 
-  const [trainingSplits, setTrainingSplits] = useState(() => {
-    const stored = localStorage.getItem('trainingSplits');
-
-    return stored ? JSON.parse(stored) : []
-  });
+  const {trainingSplits, setTrainingSplits} = useOutletContext();
 
   const [trainingSplitInputText, setTrainingSplitInputText] = useState('')
   const [workoutDays, setWorkoutDays] = useState([]);
   const [editingSplitId, setEditingSplitId] = useState(null);
   const dialogRef = useRef(null); 
 
-  useEffect(() => {
-    localStorage.setItem('trainingSplits', JSON.stringify(trainingSplits));
-  }, [trainingSplits])
 
   function openDialog() {
     setEditingSplitId(null);
@@ -312,8 +306,8 @@ export default function TrainingSplit() {
 
               {workoutDays.map((workoutDay) => {
                 return (
-                    <div key={workoutDay.id}>
-                      <div className={styles["workout-day-wrapper"]} >
+                    <div key={workoutDay.id} className={styles["workout-day-wrapper"]} >
+                      <div className={styles["workout-day-inner-wrapper"]} >
                         {
                           workoutDay.confirm ?
                           <div className={styles["workout-day-name-text"]}>{workoutDay.name}</div> :

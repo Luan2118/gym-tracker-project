@@ -248,7 +248,11 @@ hr {
   opacity: 0.7;
 }
 
-.workout-day-wrapper{
+.workout-day-wrapper {
+  margin-bottom: 5rem;
+}
+
+.workout-day-innerwrapper{
   display: flex;
   margin-top: 2rem;
 }

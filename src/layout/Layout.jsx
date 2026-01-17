@@ -1,7 +1,19 @@
 import { Outlet } from "react-router-dom"
+import { useState, useEffect } from "react";
 import Sidebar from '../components/Sidebar/Sidebar'
 
 export default function Layout() {
+
+  const [trainingSplits, setTrainingSplits] = useState(() => {
+      const stored = localStorage.getItem('trainingSplits');
+  
+      return stored ? JSON.parse(stored) : []
+  });
+
+    useEffect(() => {
+    localStorage.setItem('trainingSplits', JSON.stringify(trainingSplits));
+  }, [trainingSplits])
+
 
   return (
     <div className='layout'>
@@ -11,7 +23,7 @@ export default function Layout() {
       <Sidebar />
 
       <main id='main' className='main-content' tabIndex={-1}>
-        <Outlet/>
+        <Outlet context={{trainingSplits, setTrainingSplits}}/>
       </main>
     </div>
   )
