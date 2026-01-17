@@ -48,6 +48,8 @@ export default function BodyWeight() {
   const [bodyWeightInputText, setBodyWeightInputText] = useState('');
   const [feedback, setFeedback] = useState(null)
   const [filter, setFilter] = useState(null);
+  const [dateFrom, setDateFrom] = useState('');
+  const [dateTo, setDateTo] = useState('');
 
   const sortedByDateBodyWeights = [...bodyWeights].sort((a, b) =>  {
     return new Date(b.date) - new Date(a.date)
@@ -57,12 +59,15 @@ export default function BodyWeight() {
   const lastTwoWeeks = sortedByDateBodyWeights.filter((bw) => formattedToday > bw.date && lastTwoWeeksDate <= bw.date)
   const lastMonth = sortedByDateBodyWeights.filter((bw) => formattedToday > bw.date && lastMonthDate <= bw.date)
   const lastTwoMonths = sortedByDateBodyWeights.filter((bw) => formattedToday > bw.date && lastTwoMonthsDate <= bw.date)
+  const customDate = sortedByDateBodyWeights.filter((bw) => dateFrom >= bw.date && dateTo <= bw.date)
 
   const visibleBodyWeights = 
   filter === 'lastWeek' ? lastWeek : 
   filter === 'lastTwoWeeks' ? lastTwoWeeks :
   filter === 'lastMonth' ? lastMonth : 
-  filter === 'lastTwoMonths' ? lastTwoMonths : sortedByDateBodyWeights
+  filter === 'lastTwoMonths' ? lastTwoMonths : 
+  filter === 'customDate' ? customDate : 
+  sortedByDateBodyWeights
   
   useEffect(() => {
     if (feedback !== 'added') return;
@@ -85,6 +90,16 @@ export default function BodyWeight() {
     setFeedback('added')
   }
 
+  function handleCustomDate(e) {
+    setDateTo(e.target.value);
+    setFilter('customDate')
+  }
+
+  function applyPreset(preset) {
+    setFilter(preset);
+    setDateFrom('');
+    setDateTo('')
+  }
 
   return (
     <>
@@ -116,21 +131,21 @@ export default function BodyWeight() {
 
             <div className={styles["date-from-wrapper"]}>
               <label htmlFor="date-from"  className={styles["date-from-label"]}>From</label>
-              <input type="date"id="date-from"  className={styles["date-from-input"]}/>
+              <input type="date"id="date-from"  className={styles["date-from-input"]} onChange={(e) => setDateFrom(e.target.value)} value={dateFrom}/>
             </div>
 
             <div className={styles["date-to-wrapper"]}> 
               <label htmlFor="date-to"  className={styles["date-to-label"]}>To</label>
-              <input type="date"id="date-to"  className={styles["date-to-input"]}/>
+              <input type="date"id="date-to"  className={styles["date-to-input"]} onChange={handleCustomDate} value={dateTo}/>
             </div>
           </fieldset>
 
           <div className={styles["filter-buttons-wrapper"]}>
-            <button type='button' className={styles["last-week-button"]} onClick={() => setFilter('lastWeek')}>Last Week</button>
-            <button type='button' className={styles["last-2-weeks-button"]} onClick={() => setFilter('lastTwoWeeks')}>Last 2 Weeks</button>
-            <button type='button' className={styles["last-month-button"]} onClick={() => setFilter('lastMonth')}>Last Month</button>
-            <button type='button' className={styles["last-2-months-button"]} onClick={() => setFilter('lastTwoMonths')}>Last 2 Months</button>
-            <button type='button' className={styles["show-all-button"]} onClick={() => setFilter('all')}>Show All</button>
+            <button type='button' className={styles["last-week-button"]} onClick={() => applyPreset('lastWeek')}>Last Week</button>
+            <button type='button' className={styles["last-2-weeks-button"]} onClick={() => applyPreset('lastTwoWeeks')}>Last 2 Weeks</button>
+            <button type='button' className={styles["last-month-button"]} onClick={() => applyPreset('lastMonth')}>Last Month</button>
+            <button type='button' className={styles["last-2-months-button"]} onClick={() => applyPreset('lastTwoMonths')}>Last 2 Months</button>
+            <button type='button' className={styles["show-all-button"]} onClick={() => applyPreset('all')}>Show All</button>
           </div>
         </section>
 
