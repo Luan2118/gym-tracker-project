@@ -43,6 +43,9 @@ export default function BodyWeight() {
     { bw: '73.3', id: crypto.randomUUID(), date: '2025-11-18' },
   ];
 
+  const string = "hello"
+  const num = 5;
+
 
   const [bodyWeights, setBodyWeights] = useState(initialBodyWeightData);
   const [bodyWeightInputText, setBodyWeightInputText] = useState('');
@@ -59,7 +62,8 @@ export default function BodyWeight() {
   const lastTwoWeeks = sortedByDateBodyWeights.filter((bw) => formattedToday > bw.date && lastTwoWeeksDate <= bw.date)
   const lastMonth = sortedByDateBodyWeights.filter((bw) => formattedToday > bw.date && lastMonthDate <= bw.date)
   const lastTwoMonths = sortedByDateBodyWeights.filter((bw) => formattedToday > bw.date && lastTwoMonthsDate <= bw.date)
-  const customDate = sortedByDateBodyWeights.filter((bw) => dateFrom >= bw.date && dateTo <= bw.date)
+  const customDate = sortedByDateBodyWeights.filter((bw) => dateFrom <= bw.date && dateTo >= bw.date)
+
 
   const visibleBodyWeights = 
   filter === 'lastWeek' ? lastWeek : 

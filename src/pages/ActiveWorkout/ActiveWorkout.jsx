@@ -9,11 +9,12 @@ export default function ActiveWorkout() {
 
   const { trainingSplits } = useOutletContext();
 
+  const [activeWorkout, setActiveWorkout] = useState('');
   const [splitSelectId, setSplitSelectId] = useState('');
   const [splitSelected, setSplitSelected] = useState(false);
   const [selectedWorkoutDayId, setSelectedWorkoutDayId] = useState('');
 
-  console.log(trainingSplits)
+
 
   function openDialog() {
     dialogRef.current.showModal()
@@ -33,7 +34,11 @@ export default function ActiveWorkout() {
 
   function selectWorkoutDay(workoutDayId) {
     setSelectedWorkoutDayId(workoutDayId)
-    console.log(workoutDayId)
+  }
+
+  function handleSubmitStartWorkout(e) {
+    e.preventDefault();
+    closeDialog();
   }
 
   return (
@@ -51,7 +56,7 @@ export default function ActiveWorkout() {
         </button>
 
         <dialog ref={dialogRef} className={styles["dialog-popup"]}>
-          <form className={styles["form-wrapper"]}>
+          <form className={styles["form-wrapper"]} onSubmit={handleSubmitStartWorkout}>
             <div className={styles["form-header-wrapper"]}> 
               <label htmlFor="training-split" className={styles["training-split-text"]}>Training Split: </label>
               <select id="training-split" className={styles["select-input"]} onChange={handleSelectCategory} value={splitSelectId}>
@@ -80,7 +85,7 @@ export default function ActiveWorkout() {
                     {selectedWorkoutDayId === workoutday.id  ? 
                       workoutday.exercises.map((exer) => {
                         return (
-                          <div key={exer.id}>
+                          <div key={exer.exerciseId}>
                             <div className={styles["exercise-name-img-wrapper"]}>
                               <img src={exer.icon} alt="" className={styles["exercise-img"]}/>
                               <div>{exer.exerciseName}</div>
