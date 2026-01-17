@@ -117,7 +117,8 @@ h2 {
 .last-week-button,
 .last-2-weeks-button,
 .last-month-button,
-.last-2-months-button {
+.last-2-months-button,
+.show-all-button {
   background-color: rgb(75, 75, 75);
   color: white;
   font-size: 2rem;
@@ -131,13 +132,15 @@ h2 {
 .last-week-button:hover,
 .last-2-weeks-button:hover,
 .last-month-button:hover,
-.last-2-months-button:hover {
+.last-2-months-button:hover,
+.show-all-button:hover {
   opacity: 0.8
 }
 
 .last-week-button:active,
 .last-2-weeks-button:active,
 .last-month-button:active,
-.last-2-months-button:active {
+.last-2-months-button:active,
+.show-all-button:active {
   opacity: 0.8
 }

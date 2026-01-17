@@ -285,6 +285,7 @@ export default function TrainingSplit() {
     setTrainingSplits((prev) => prev.filter((trainingsplit) => trainingsplit.id !== id))
   }
   
+  
   return (
     <>
       <header>

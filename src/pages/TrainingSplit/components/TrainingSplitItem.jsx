@@ -1,7 +1,6 @@
 import styles from './TrainingSplitItem.module.css'
 
 export default function TrainingSplitItem({trainingSplits, editTrainingSplit, deleteTrainingSplit}) {
-  console.log(trainingSplits)
   return (
     <>
       {trainingSplits.map((trainingSplit) => {
