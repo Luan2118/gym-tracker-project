@@ -207,12 +207,12 @@
   font-size: 1.8rem;
 }
 
-.reps-input-wrapper {
+.set-input-wrapper {
   margin-left: auto;
   margin-right: auto;
 }
 
-.reps-input {
+.weight-input {
   background-color: rgb(54, 54, 54);
   border: none;
   max-width: 3rem;
@@ -222,7 +222,7 @@
   text-align: center;
 }
 
-.reps-input-2 {
+.reps-input {
   background-color: rgb(54, 54, 54);
   border: none;
   max-width: 3rem;
@@ -268,12 +268,12 @@
 
 
 
-.active-workout-reps-input-wrapper {
+.active-workout-set-input-wrapper {
   margin-left: 1rem;
   margin-top: 0.5rem;
 }
 
-.active-workout-reps-input {
+.active-workout-weight-input {
   background-color: rgb(54, 54, 54);
   border: none;
   max-width: 3rem;
@@ -283,7 +283,7 @@
   margin-right: 0.5rem;
 }
 
-.active-workout-reps-input-2 {
+.active-workout-reps-input {
   background-color: rgb(54, 54, 54);
   border: none;
   max-width: 3rem;
@@ -311,4 +311,8 @@
 
 .finish-workout-button:active {
   opacity: 0.7
+}
+
+.active-workout-previous-set {
+ text-align: left;
 }

@@ -52,7 +52,7 @@ export default function ActiveWorkout() {
       ?.workoutDays.find((workoutday) => workoutday.id === selectedWorkoutDayId)
       ?.exercises ?? [];
 
-  
+  console.log(activeWorkoutData)
   return (
     <>
     <header>
@@ -110,12 +110,12 @@ export default function ActiveWorkout() {
 
                                       <div className={styles["set-text"]}>Set {index + 1}</div>
 
-                                    <div className={styles["reps-input-wrapper"]}>
+                                    <div className={styles["set-input-wrapper"]}>
                                       <label htmlFor={`weight-${set.id}`} className={styles["sr-only"]}>Weight</label>
-                                      <input type="text" id={`weight-${set.id}`} className={styles["reps-input"]} />
+                                      <input type="text" id={`weight-${set.id}`} className={styles["weight-input"]} value={set.weight} readOnly/>
                                       x
                                       <label htmlFor={`reps-${set.id}`} className={styles["sr-only"]}>Reps</label>
-                                      <input type="text" id={`reps-${set.id}`}  className={styles["reps-input-2"]}/>
+                                      <input type="text" id={`reps-${set.id}`}  className={styles["reps-input"]} value={set.reps} readOnly/>
                                     </div>
                                   </fieldset>
                                 </div>
@@ -149,9 +149,13 @@ export default function ActiveWorkout() {
 
                   <div>
                     <div>Previous set :</div>
-                    <div>Set 1: 20x8</div>
-                    <div>Set 2: 22x6</div>
-                    <div>Set 3: 22x4</div>
+                    {ex.sets.map((set, index) => {
+                      return (
+                        <div key={set.id} className={styles["active-workout-previous-set"]}>
+                          <div>Set {index + 1}: {set.weight} x {set.reps}</div>
+                        </div>
+                      )
+                    })}
                   </div>
 
                   <div className={styles["active-workout-set-wrapper"]}>
@@ -164,12 +168,12 @@ export default function ActiveWorkout() {
 
                                 <div className={styles["set-text"]}>Set {index + 1}:</div>
 
-                              <div className={styles["active-workout-reps-input-wrapper"]}>
+                              <div className={styles["active-workout-set-input-wrapper"]}>
                                 <label htmlFor={`weight-${set.id}`} className={styles["sr-only"]}>Weight</label>
-                                <input type="text" id={`weight-${set.id}`} className={styles["active-workout-reps-input"]} />
+                                <input type="text" id={`weight-${set.id}`} className={styles["active-workout-weight-input"]} />
                                 x
                                 <label htmlFor={`reps-${set.id}`} className={styles["sr-only"]}>Reps</label>
-                                <input type="text" id={`reps-${set.id}`}  className={styles["active-workout-reps-input-2"]}/>
+                                <input type="text" id={`reps-${set.id}`}  className={styles["active-workout-reps-input"]}/>
                               </div>
                             </fieldset>
                           </div>

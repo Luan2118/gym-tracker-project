@@ -83,10 +83,10 @@ export default function TrainingSplit() {
     const value = e.target.value
 
     setWorkoutDays((prev) => 
-      prev.map((workouday) => {
-        if (workouday.id !== workoutDayID) return workouday;
+      prev.map((workoutday) => {
+        if (workoutday.id !== workoutDayID) return workoutday;
 
-        const newExercisesArray = workouday.exercises.map((exercise) => {
+        const newExercisesArray = workoutday.exercises.map((exercise) => {
           if (exercise.rowId !== addedExerciseRowId) return exercise;
 
           return {
@@ -96,7 +96,7 @@ export default function TrainingSplit() {
         })
 
         return {
-          ...workouday,
+          ...workoutday,
           exercises : newExercisesArray
         }
       })
@@ -256,13 +256,12 @@ export default function TrainingSplit() {
     closeDialog();
   }
 
+
+
   function editTrainingSplit(id) {
     const selectedSplit = trainingSplits.find((split) => split.id === id);
     if (!selectedSplit) return;
     const selectedSplitCopy = structuredClone(selectedSplit);
-    console.log(selectedSplitCopy);
-    console.log(id);
-
 
     setEditingSplitId(selectedSplitCopy.id);
     setWorkoutDays(selectedSplitCopy.workoutDays);
@@ -274,6 +273,75 @@ export default function TrainingSplit() {
 
   function deleteTrainingSplit(id) {
     setTrainingSplits((prev) => prev.filter((trainingsplit) => trainingsplit.id !== id))
+  }
+
+  console.log(trainingSplits)
+
+  function handleWeightSet(e, workoutDayId, addedExerciseRowId, setId) {
+    const value = (e.target.value);
+       
+    const newArray = workoutDays.map((workoutday) =>{
+      if (workoutday.id !== workoutDayId) return workoutday;
+
+      const newExerciseArray = workoutday.exercises.map((exercise) => {
+        if (exercise.rowId !== addedExerciseRowId) return exercise;
+        
+        const newSetArray = exercise.sets.map((set) => {
+          if(set.id !== setId) return set;
+
+          return {
+            ...set,
+            weight: value
+          }
+        })
+
+        return {
+          ...exercise,
+          sets: newSetArray
+        }
+      })
+
+      return {
+        ...workoutday,
+        exercises: newExerciseArray
+      }
+    })
+
+    setWorkoutDays(newArray);
+  }
+  
+  
+    function handleRepsSet(e, workoutDayId, addedExerciseRowId, setId) {
+    const value = (e.target.value);
+       
+    const newArray = workoutDays.map((workoutday) =>{
+      if (workoutday.id !== workoutDayId) return workoutday;
+
+      const newExerciseArray = workoutday.exercises.map((exercise) => {
+        if (exercise.rowId !== addedExerciseRowId) return exercise;
+        
+        const newSetArray = exercise.sets.map((set) => {
+          if(set.id !== setId) return set;
+
+          return {
+            ...set,
+            reps: value
+          }
+        })
+
+        return {
+          ...exercise,
+          sets: newSetArray
+        }
+      })
+
+      return {
+        ...workoutday,
+        exercises: newExerciseArray
+      }
+    })
+
+    setWorkoutDays(newArray);
   }
   
   
@@ -354,10 +422,10 @@ export default function TrainingSplit() {
 
                                     <div className={styles["reps-input-wrapper"]}>
                                       <label htmlFor={`weight-${set.id}`} className={styles["sr-only"]}>Weight</label>
-                                      <input type="text" id={`weight-${set.id}`} className={styles["reps-input"]} />
+                                      <input type="text" id={`weight-${set.id}`} className={styles["reps-input"]} onChange={e => handleWeightSet(e, workoutDay.id, addedExercise.rowId, set.id)} value={set.weight}/>
                                       x
                                       <label htmlFor={`reps-${set.id}`} className={styles["sr-only"]}>Reps</label>
-                                      <input type="text" id={`reps-${set.id}`}  className={styles["reps-input-2"]}/>
+                                      <input type="text" id={`reps-${set.id}`}  className={styles["reps-input-2"]} onChange={e => handleRepsSet(e, workoutDay.id, addedExercise.rowId, set.id)} value={set.reps}/>
                                     </div>
                                   </fieldset>
 
