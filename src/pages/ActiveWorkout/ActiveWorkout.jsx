@@ -9,11 +9,10 @@ export default function ActiveWorkout() {
 
   const { trainingSplits } = useOutletContext();
 
-  const [activeWorkout, setActiveWorkout] = useState('');
+  const [activeWorkout, setActiveWorkout] = useState(false);
   const [splitSelectId, setSplitSelectId] = useState('');
   const [splitSelected, setSplitSelected] = useState(false);
   const [selectedWorkoutDayId, setSelectedWorkoutDayId] = useState('');
-
 
 
   function openDialog() {
@@ -38,9 +37,22 @@ export default function ActiveWorkout() {
 
   function handleSubmitStartWorkout(e) {
     e.preventDefault();
+    setActiveWorkout(true)
     closeDialog();
   }
 
+  function handlefinishworkout() {
+    setActiveWorkout(false)
+  }
+
+
+  const activeWorkoutData = 
+    trainingSplits
+      .find((split) => split.id === splitSelectId)
+      ?.workoutDays.find((workoutday) => workoutday.id === selectedWorkoutDayId)
+      ?.exercises ?? [];
+
+  
   return (
     <>
     <header>
@@ -124,7 +136,52 @@ export default function ActiveWorkout() {
       </div>
 
       <section className={styles["content-main"]}>
-        <h2>No Active Workout</h2>
+        {activeWorkout ? (
+          <>
+          <div className={styles["active-workout-timer"]}>Timer: 00:00</div>
+          {activeWorkoutData.map((ex) => {
+            return (
+              <div key={ex.exerciseId} className={styles["active-workout-wrapper"]}>
+                <div className={styles["active-workout-name-wrapper"]}>
+                  <img src={ex.icon} alt="" className={styles["active-workout-ex-icon"]}/>
+                  <div  className={styles["active-workout-ex-name"]}>{ex.exerciseName}</div>
+                </div>
+
+                  <div>
+                    <div>Previous set :</div>
+                    <div>Set 1: 20x8</div>
+                    <div>Set 2: 22x6</div>
+                    <div>Set 3: 22x4</div>
+                  </div>
+
+                  <div className={styles["active-workout-set-wrapper"]}>
+                    <div>Current set :</div>
+                    {ex.sets.map((set, index) => {
+                      return (
+                         <div key={set.id} className={styles["active-workout-set-wrapper"]}>
+                            <fieldset className={styles["fieldset-wrapper"]}>
+                              <legend className={styles["sr-only"]}>Set {index +1}:</legend>
+
+                                <div className={styles["set-text"]}>Set {index + 1}:</div>
+
+                              <div className={styles["active-workout-reps-input-wrapper"]}>
+                                <label htmlFor={`weight-${set.id}`} className={styles["sr-only"]}>Weight</label>
+                                <input type="text" id={`weight-${set.id}`} className={styles["active-workout-reps-input"]} />
+                                x
+                                <label htmlFor={`reps-${set.id}`} className={styles["sr-only"]}>Reps</label>
+                                <input type="text" id={`reps-${set.id}`}  className={styles["active-workout-reps-input-2"]}/>
+                              </div>
+                            </fieldset>
+                          </div>
+                      )
+                    })}
+                  </div>
+              </div>
+            )
+          })}
+          </>)
+          : <h2>No Active Workout</h2>}
+          {activeWorkout ? <button type='button' onClick={handlefinishworkout} className={styles["finish-workout-button"]} >Finish Workout</button> : null}
       </section>
     </div>
     </>

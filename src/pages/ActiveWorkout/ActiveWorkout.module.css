@@ -18,7 +18,7 @@
   gap: 2rem;
 }
 
-.start-workout-wrapper, .content-main  {
+.start-workout-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,6 +26,12 @@
   border-radius: 1rem;
   padding: 2rem;
   background-color: rgb(41, 41, 41);
+}
+
+.content-main {
+  background-color: rgb(41, 41, 41);
+  padding: 2rem;
+  border-radius: 1rem;
 }
 
 
@@ -224,4 +230,85 @@
   font-size: 1.8rem;
   color:white; 
   text-align: center;
+}
+
+
+
+.active-workout-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(37, 37, 37);
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  margin-top: 2rem;
+}
+
+.active-workout-name-wrapper {
+  display: flex;
+  align-items: center;
+  max-width: 20rem;
+}
+
+.active-workout-ex-icon{
+  max-height: 10rem;
+  max-width: 10rem;
+  margin-right: 3rem;
+}
+
+.active-workout-timer {
+  background-color: rgb(37, 37, 37);
+  text-align: left;
+  max-width: 17rem;
+  padding: 1.5rem 2.5rem;
+  border-radius: 1rem;
+  font-size: 3rem;
+}
+
+
+
+
+.active-workout-reps-input-wrapper {
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+.active-workout-reps-input {
+  background-color: rgb(54, 54, 54);
+  border: none;
+  max-width: 3rem;
+  font-size: 1.8rem;
+  color: white;
+  text-align: center;
+  margin-right: 0.5rem;
+}
+
+.active-workout-reps-input-2 {
+  background-color: rgb(54, 54, 54);
+  border: none;
+  max-width: 3rem;
+  font-size: 1.8rem;
+  color:white; 
+  text-align: center;
+  margin-left: 0.5rem;
+}
+
+.finish-workout-button {
+  background-color: rgb(75, 75, 75);
+  color: white;
+  font-weight: 600;
+  font-size: 2rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.finish-workout-button:hover {
+  opacity: 0.8;
+}
+
+.finish-workout-button:active {
+  opacity: 0.7
 }
