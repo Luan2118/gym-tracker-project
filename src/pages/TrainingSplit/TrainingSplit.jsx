@@ -189,7 +189,7 @@ export default function TrainingSplit() {
           sets: [
             ...ex.sets,
             {id: crypto.randomUUID(), reps: '', weight: ''}
-          ]
+          ],
         }
       })
 
@@ -310,8 +310,7 @@ export default function TrainingSplit() {
     setWorkoutDays(newArray);
   }
   
-  
-    function handleRepsSet(e, workoutDayId, addedExerciseRowId, setId) {
+   function handleRepsSet(e, workoutDayId, addedExerciseRowId, setId) {
     const value = (e.target.value);
        
     const newArray = workoutDays.map((workoutday) =>{
@@ -343,7 +342,6 @@ export default function TrainingSplit() {
 
     setWorkoutDays(newArray);
   }
-  
   
   return (
     <>

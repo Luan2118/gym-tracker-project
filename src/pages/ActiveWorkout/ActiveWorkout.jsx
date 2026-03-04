@@ -1,7 +1,8 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import styles from  './ActiveWorkout.module.css'
 import closeX from '../../assets/activeWorkout/x-close.png'
+import { exercisesList } from '../../data/exercises';
 
 export default function ActiveWorkout() {
 
@@ -13,6 +14,20 @@ export default function ActiveWorkout() {
   const [splitSelectId, setSplitSelectId] = useState('');
   const [splitSelected, setSplitSelected] = useState(false);
   const [selectedWorkoutDayId, setSelectedWorkoutDayId] = useState('');
+  const [workoutHistory, setWorkoutHistory] = useState([]); 
+  const [activeExercises, setActiveExercises] = useState([]);
+
+  
+  useEffect(() => {
+    localStorage.setItem('workoutHistory', JSON.stringify(workoutHistory));
+  }, [workoutHistory]);
+
+
+  const activeWorkoutData = 
+  trainingSplits
+    .find((split) => split.id === splitSelectId)
+    ?.workoutDays.find((workoutday) => workoutday.id === selectedWorkoutDayId)
+    ?.exercises ?? [];
 
 
   function openDialog() {
@@ -38,21 +53,89 @@ export default function ActiveWorkout() {
   function handleSubmitStartWorkout(e) {
     e.preventDefault();
     setActiveWorkout(true)
+    setActiveExercises(activeWorkoutData.map((ex) => {
+      return {
+        id: ex.exerciseId,
+        sets: ex.sets.map((set) => {
+          return {
+            id: set.id
+          }
+        })
+      }
+    }));
     closeDialog();
+  }
+
+  // console.log(trainingSplits);
+
+  function handleWeightSet(e, setId, exerciseId) {
+    const weightInputValue = e.target.value;
+
+    const newExerciseList = activeExercises.map((ex) => {
+      if (ex.id !== exerciseId) return ex;
+
+      const newSetList = ex.sets.map((set) => {
+        if (set.id !== setId) return set;
+
+        return {
+          ...set,
+          weight: weightInputValue
+        }
+      })
+
+      return {
+        ...ex,
+         sets: newSetList
+      }
+    })
+
+    setActiveExercises(newExerciseList)
+  }
+
+  function handleRepsSet(e, setId, exerciseId) {
+    const repstInputValue = e.target.value;
+
+    const newExerciseList = activeExercises.map((ex) => {
+      if (ex.id !== exerciseId) return ex;
+
+      const newSetList = ex.sets.map((set) => {
+        if (set.id !== setId) return set;
+
+        return {
+          ...set,
+          reps: repstInputValue
+        }
+      })
+
+      return {
+        ...ex,
+         sets: newSetList
+      }
+    })
+
+    setActiveExercises(newExerciseList)
   }
 
   function handlefinishworkout() {
     setActiveWorkout(false)
+
+    const trainingSplitResult = trainingSplits.find((split) => split.id === splitSelectId)
+    
+    const newWorkoutHistory = {
+      name: trainingSplitResult.name,
+      date: new Date(),
+      exercises: activeExercises
   }
 
+  setWorkoutHistory((prev) => {
+    return [
+      ...prev,
+      newWorkoutHistory
+    ]
+  });
+}
 
-  const activeWorkoutData = 
-    trainingSplits
-      .find((split) => split.id === splitSelectId)
-      ?.workoutDays.find((workoutday) => workoutday.id === selectedWorkoutDayId)
-      ?.exercises ?? [];
 
-  console.log(activeWorkoutData)
   return (
     <>
     <header>
@@ -148,7 +231,7 @@ export default function ActiveWorkout() {
                 </div>
 
                   <div>
-                    <div>Previous set :</div>
+                    <div>Best set:</div>
                     {ex.sets.map((set, index) => {
                       return (
                         <div key={set.id} className={styles["active-workout-previous-set"]}>
@@ -157,6 +240,18 @@ export default function ActiveWorkout() {
                       )
                     })}
                   </div>
+
+                  <div>
+                    <div>Previous set:</div>
+                    {ex.sets.map((set, index) => {
+                      return (
+                        <div key={set.id} className={styles["active-workout-previous-set"]}>
+                          <div>Set {index + 1}: {set.weight} x {set.reps}</div>
+                        </div>
+                      )
+                    })}
+                  </div>
+
 
                   <div className={styles["active-workout-set-wrapper"]}>
                     <div>Current set :</div>
@@ -170,10 +265,10 @@ export default function ActiveWorkout() {
 
                               <div className={styles["active-workout-set-input-wrapper"]}>
                                 <label htmlFor={`weight-${set.id}`} className={styles["sr-only"]}>Weight</label>
-                                <input type="text" id={`weight-${set.id}`} className={styles["active-workout-weight-input"]} />
+                                <input type="text" id={`weight-${set.id}`} className={styles["active-workout-weight-input"]}  onChange={(e) => handleWeightSet(e, set.id, ex.exerciseId)}/>
                                 x
                                 <label htmlFor={`reps-${set.id}`} className={styles["sr-only"]}>Reps</label>
-                                <input type="text" id={`reps-${set.id}`}  className={styles["active-workout-reps-input"]}/>
+                                <input type="text" id={`reps-${set.id}`}  className={styles["active-workout-reps-input"]} onChange={(e) => handleRepsSet(e, set.id, ex.exerciseId)}/>
                               </div>
                             </fieldset>
                           </div>
@@ -183,9 +278,9 @@ export default function ActiveWorkout() {
               </div>
             )
           })}
+          <button type='button' onClick={() => handlefinishworkout()} className={styles["finish-workout-button"]} >Finish Workout</button>
           </>)
           : <h2>No Active Workout</h2>}
-          {activeWorkout ? <button type='button' onClick={handlefinishworkout} className={styles["finish-workout-button"]} >Finish Workout</button> : null}
       </section>
     </div>
     </>
