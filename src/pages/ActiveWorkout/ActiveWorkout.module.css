@@ -327,6 +327,11 @@
   opacity: 0.7
 }
 
-.active-workout-previous-set {
+.active-workout-previous-set-wrapper {
  text-align: left;
+ display: flex;
+}
+
+.active-workout-previous-set {
+  margin-right: 1rem;
 }

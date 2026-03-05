@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import styles from  './ActiveWorkout.module.css'
 import closeX from '../../assets/activeWorkout/x-close.png'
+import formatDate from '../../utils/formatDate'
 import { exercisesList } from '../../data/exercises';
 
 export default function ActiveWorkout() {
@@ -14,13 +15,31 @@ export default function ActiveWorkout() {
   const [splitSelectId, setSplitSelectId] = useState('');
   const [splitSelected, setSplitSelected] = useState(false);
   const [selectedWorkoutDayId, setSelectedWorkoutDayId] = useState('');
-  const [workoutHistory, setWorkoutHistory] = useState([]); 
   const [activeExercises, setActiveExercises] = useState([]);
+
+  const [workoutHistory, setWorkoutHistory] = useState(() => {
+    const stored = localStorage.getItem('workoutHistory');
+
+    return stored ? JSON.parse(stored) : [];
+  }); 
 
   
   useEffect(() => {
     localStorage.setItem('workoutHistory', JSON.stringify(workoutHistory));
   }, [workoutHistory]);
+
+  const activeIds = new Set(activeExercises.map(e => e.id));
+
+  const previousSetData =  workoutHistory.map((workout) => {
+    const matchedExercises = workout.exercises.filter((ex) => activeIds.has(ex.id))
+    return {
+      date: workout.date,
+      exercises : matchedExercises
+    }
+  })
+  .filter((w) => w.exercises.length > 0)
+  .sort((a, b) =>  new Date(b.date) - new Date(a.date));
+  
 
   const selectedTrainingSplit =  trainingSplits
     .find((split) => split.id === splitSelectId)
@@ -30,6 +49,7 @@ export default function ActiveWorkout() {
   const activeWorkoutData = 
   selectedWorkoutDay
   ?.exercises ?? [];
+
 
   function openDialog() {
     dialogRef.current.showModal()
@@ -59,7 +79,8 @@ export default function ActiveWorkout() {
         id: ex.exerciseId,
         sets: ex.sets.map((set) => {
           return {
-            id: set.id
+            id: set.id,
+            sessionId: crypto.randomUUID()
           }
         })
       }
@@ -120,11 +141,10 @@ export default function ActiveWorkout() {
   function handlefinishworkout() {
     setActiveWorkout(false)
 
-    const trainingSplitResult = trainingSplits.find((split) => split.id === splitSelectId)
-    
     const newWorkoutHistory = {
-      name: trainingSplitResult.name,
-      date: new Date(),
+      trainingSplitName: selectedTrainingSplit.name,
+      workoutDay: selectedWorkoutDay.name,
+      date: new Date().toISOString(),
       exercises: activeExercises
   }
 
@@ -251,8 +271,16 @@ export default function ActiveWorkout() {
                     <div>Previous set:</div>
                     {ex.sets.map((set, index) => {
                       return (
-                        <div key={set.id} className={styles["active-workout-previous-set"]}>
-                          <div>Set {index + 1}: {set.weight} x {set.reps}</div>
+                        <div key={set.id} className={styles["active-workout-previous-set-wrapper"]}>
+                          <div className={styles["active-workout-previous-set"]}>Set {index + 1}:  
+                          </div>
+                            {previousSetData[0]?.exercises.find((exer) => exer.id === ex.exerciseId)?.sets?.map((exSet) => {
+                              if (exSet.id === set.id) {
+                                return (
+                                  <div key={exSet.sessionId}> {exSet.weight} x {exSet.reps}</div>
+                                )
+                              } 
+                            })}
                         </div>
                       )
                     })}
