@@ -30,16 +30,15 @@ export default function ActiveWorkout() {
 
   const activeIds = new Set(activeExercises.map(e => e.id));
 
-  const previousSetData =  workoutHistory.map((workout) => {
-    const matchedExercises = workout.exercises.filter((ex) => activeIds.has(ex.id))
-    return {
-      date: workout.date,
-      exercises : matchedExercises
-    }
-  })
-  .filter((w) => w.exercises.length > 0)
-  .sort((a, b) =>  new Date(b.date) - new Date(a.date));
-  
+  const lastWorkout = [...workoutHistory] // copy so we don't mutate
+  .sort((a, b) => new Date(b.date) - new Date(a.date))
+  .find(w => w.exercises?.some(ex => activeIds.has(ex.id)));
+
+  console.log(lastWorkout)
+
+
+
+
 
   const selectedTrainingSplit =  trainingSplits
     .find((split) => split.id === splitSelectId)
@@ -272,20 +271,23 @@ export default function ActiveWorkout() {
                     {ex.sets.map((set, index) => {
                       return (
                         <div key={set.id} className={styles["active-workout-previous-set-wrapper"]}>
-                          <div className={styles["active-workout-previous-set"]}>Set {index + 1}:  
-                          </div>
-                            {previousSetData[0]?.exercises.find((exer) => exer.id === ex.exerciseId)?.sets?.map((exSet) => {
-                              if (exSet.id === set.id) {
-                                return (
-                                  <div key={exSet.sessionId}> {exSet.weight} x {exSet.reps}</div>
-                                )
-                              } 
+                          <div className={styles["active-workout-previous-set"]}>Set {index + 1}:  </div>
+                            {ex.sets.map((set, index) => {
+                              const prevExercise = lastWorkout?.exercises?.find(hEx => hEx.id === ex.exerciseId);
+                              const prevSet = prevExercise?.sets?.find(s => s.id === set.id);
+
+                              return (
+                              <div key={set.id} className={styles["active-workout-previous-set-wrapper"]}>
+                                <div className={styles["active-workout-previous-set"]}>
+                                  Set {index + 1}: {prevSet ? `${prevSet.weight} x ${prevSet.reps}` : "-"}
+                                </div>
+                              </div>
+                              );
                             })}
                         </div>
                       )
                     })}
                   </div>
-
 
                   <div className={styles["active-workout-set-wrapper"]}>
                     <div>Current set :</div>
