@@ -37,6 +37,7 @@ export default function ActiveWorkout() {
   console.log(lastWorkout)
 
 
+  console.log(activeIds)
 
 
 
@@ -269,21 +270,12 @@ export default function ActiveWorkout() {
                   <div>
                     <div>Previous set:</div>
                     {ex.sets.map((set, index) => {
+                      const prevExercise = lastWorkout?.exercises?.find(hEx => hEx.id === ex.exerciseId);
+                      const prevSet = prevExercise?.sets?.find(s => s.id === set.id);
                       return (
                         <div key={set.id} className={styles["active-workout-previous-set-wrapper"]}>
-                          <div className={styles["active-workout-previous-set"]}>Set {index + 1}:  </div>
-                            {ex.sets.map((set, index) => {
-                              const prevExercise = lastWorkout?.exercises?.find(hEx => hEx.id === ex.exerciseId);
-                              const prevSet = prevExercise?.sets?.find(s => s.id === set.id);
-
-                              return (
-                              <div key={set.id} className={styles["active-workout-previous-set-wrapper"]}>
-                                <div className={styles["active-workout-previous-set"]}>
-                                  Set {index + 1}: {prevSet ? `${prevSet.weight} x ${prevSet.reps}` : "-"}
-                                </div>
-                              </div>
-                              );
-                            })}
+                        <div className={styles["active-workout-previous-set"]}>Set {index + 1}:  </div>
+                            {prevSet ? `${prevSet.weight} x ${prevSet.reps}` : "-"}
                         </div>
                       )
                     })}
