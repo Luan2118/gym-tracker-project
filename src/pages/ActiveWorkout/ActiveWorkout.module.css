@@ -256,13 +256,27 @@
   margin-right: 3rem;
 }
 
+.active-workout-header {
+  display: flex;
+}
+
+.active-workout-split,
+.active-workout-workout-day {
+  background-color: rgb(37, 37, 37);
+  text-align: left;
+  padding: 1.5rem 2.5rem;
+  border-radius: 1rem;
+  font-size: 2.5rem;
+  margin-right: 2rem;
+} 
+
 .active-workout-timer {
   background-color: rgb(37, 37, 37);
   text-align: left;
   max-width: 17rem;
   padding: 1.5rem 2.5rem;
   border-radius: 1rem;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 

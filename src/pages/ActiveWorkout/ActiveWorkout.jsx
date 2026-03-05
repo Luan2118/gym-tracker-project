@@ -22,13 +22,14 @@ export default function ActiveWorkout() {
     localStorage.setItem('workoutHistory', JSON.stringify(workoutHistory));
   }, [workoutHistory]);
 
-
-  const activeWorkoutData = 
-  trainingSplits
+  const selectedTrainingSplit =  trainingSplits
     .find((split) => split.id === splitSelectId)
-    ?.workoutDays.find((workoutday) => workoutday.id === selectedWorkoutDayId)
-    ?.exercises ?? [];
 
+  const selectedWorkoutDay = selectedTrainingSplit?.workoutDays.find((workoutday) => workoutday.id === selectedWorkoutDayId)
+  
+  const activeWorkoutData = 
+  selectedWorkoutDay
+  ?.exercises ?? [];
 
   function openDialog() {
     dialogRef.current.showModal()
@@ -144,7 +145,7 @@ export default function ActiveWorkout() {
 
 
     <div className={styles["content-wrapper"]}>
-
+      
       <div className={styles["start-workout-wrapper"]}>
         <button type='button' className={styles["start-workout-button"]} onClick={openDialog}>
           Start a Workout
@@ -221,7 +222,12 @@ export default function ActiveWorkout() {
       <section className={styles["content-main"]}>
         {activeWorkout ? (
           <>
-          <div className={styles["active-workout-timer"]}>Timer: 00:00</div>
+          <div className={styles["active-workout-header"]}>
+            <div className={styles["active-workout-split"]}>Split: {selectedTrainingSplit.name}</div>
+            <div className={styles["active-workout-workout-day"]}>Workout Day: {selectedWorkoutDay?.name ?? '-'}</div>
+            <div className={styles["active-workout-timer"]}>Timer: 00:00</div>
+          </div>
+
           {activeWorkoutData.map((ex) => {
             return (
               <div key={ex.exerciseId} className={styles["active-workout-wrapper"]}>
