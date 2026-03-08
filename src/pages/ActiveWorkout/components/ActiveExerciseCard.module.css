@@ -1,0 +1,82 @@
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+.active-workout-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(37, 37, 37);
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  margin-top: 2rem;
+}
+
+.active-workout-name-wrapper {
+  display: flex;
+  align-items: center;
+  max-width: 20rem;
+}
+
+.active-workout-ex-icon{
+  max-height: 10rem;
+  max-width: 10rem;
+  margin-right: 3rem;
+}
+
+.active-workout-b-p-set-wrapper {
+ text-align: left;
+ display: flex;
+}
+
+.active-workout-b-p-set {
+  margin-right: 1rem;
+}
+
+.fieldset-wrapper {
+  display: flex;
+  align-items:  center;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.set-text {
+  font-size: 1.8rem;
+}
+
+.active-workout-set-input-wrapper {
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+
+.active-workout-weight-input {
+  background-color: rgb(54, 54, 54);
+  border: none;
+  max-width: 3rem;
+  font-size: 1.8rem;
+  color: white;
+  text-align: center;
+  margin-right: 0.5rem;
+}
+
+
+.active-workout-reps-input {
+  background-color: rgb(54, 54, 54);
+  border: none;
+  max-width: 3rem;
+  font-size: 1.8rem;
+  color:white; 
+  text-align: center;
+  margin-left: 0.5rem;
+}
