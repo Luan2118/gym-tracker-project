@@ -156,88 +156,7 @@ hr {
   font-size: 1.7rem;
 }
 
-.add-set-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 3.5rem;
-  margin-top: 1.5rem;
-  color: white;
-}
-
-.add-set-icon {
-  margin-right: 1rem;
-}
-
-.set-wrapper {
-  display: flex;
-  justify-content: space-between;
-  background-color: rgb(37, 37, 37);
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 1rem;
-  margin-left: 4.3rem;
-  margin-top: 1.5rem;
-}
-
-.fieldset-wrapper {
-  display: flex;
-  border: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-}
-
-.reps-input-wrapper {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.reps-input {
-  background-color: rgb(54, 54, 54);
-  border: none;
-  max-width: 3rem;
-  margin-right: 1rem;
-  font-size: 2rem;
-  color: white;
-  text-align: center;
-}
-
-.reps-input-2 {
-  background-color: rgb(54, 54, 54);
-  border: none;
-  max-width: 3rem;
-  margin-left: 1rem;
-  font-size: 2rem;
-  color:white; 
- text-align: center;
-}
-
-.delete-set-button {
-  background-color: rgb(37, 37, 37);
-  border: none;
-}
-
-.delete-set-button:hover {
-  opacity: 0.8
-}
-
-.delete-set-button:active {
-  opacity: 0.7
-}
-
-
-.delete-set-icon {
-  background-color: rgb(37, 37, 37);
-  border: none;
-  cursor: pointer;
-  max-width: 2rem;
-}
-
-
-.delete-workout-day-button,
-.search-exercise-delete-button,
-.add-set-button {
+.delete-workout-day-button {
   background-color: rgb(29, 29, 29);
   border: none;
   cursor: pointer;
@@ -247,16 +166,12 @@ hr {
 
 .delete-workout-day-button:hover,
 .add-exercise-button:hover,
-.search-exercise-delete-button:hover,
-.add-set-button:hover,
 .close-dialog-button:hover {
   opacity: 0.8;
 }
 
 .delete-workout-day-button:active,
 .add-exercise-button:active,
-.search-exercise-delete-button:active,
-.add-set-button:active,
 .close-dialog-button:active {
   opacity: 0.7;
 }
@@ -272,112 +187,6 @@ hr {
 
 .delete-workout-day-icon {
   max-width: 3rem;
-}
-
-
-.search-exercise-delete-icon,
-.add-set-icon{
-  max-width: 2.5rem;
-}
-
-
-.search-exercise-wrapper{
-  margin-top: 2rem;
-  max-width: 38.6rem;
-}
-
-.search-exercise-input-wrapper {
-  display: flex;
-  width: 100%;
-}
-
-.search-exercise-input {
-  font-size: 2.3rem;
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 1rem;
-  width: 100%;
-  margin-right: 1.8rem;
-  margin-left: 1.8rem;
-}
-
-.search-exercise-list-wrapper {
-  background-color: rgb(37, 37, 37);
-  max-width: 31.5rem;
-  max-height: 18rem;
-  margin-top: 0.5rem;
-  margin-left: 1.8rem;
-  border-radius: 1.2rem;
-  overflow-y: auto;
-}
-
-.search-exercise-list-wrapper::-webkit-scrollbar {
-  width: 0.5rem;            /* makes it smaller */
-}
-
-.search-exercise-list-wrapper::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 6px;
-}
-
-.search-exercise-list-wrapper::-webkit-scrollbar-thumb:hover {
-  background-color: #aaa;
-}
-
-.search-exercise-list {
-  margin-bottom: 0.3rem;
-}
-
-.search-exercise-list-button {
-  display: flex;
-  align-items: center;
-  background-color: rgb(37, 37, 37);
-  color: white;
-  border: none;
-  font-size: 1.8rem;
-  padding: 1rem 2rem;
-  width: 100%;
-  cursor: pointer;
-}
-
-.search-exercise-icon {
-  max-width: 4.5rem;
-}
-
-.search-exercise-name {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.search-exercise-list-button:hover {
-  background-color: rgb(46, 46, 46);
-}
-
-.search-exercise-list-button:active {
-  opacity: 0.8;
-}
-
-.added-exercise-button {
-  display: flex;
-  align-items: center;
-  background-color: rgb(37, 37, 37);
-  color: white;
-  border: none;
-  font-size: 2rem;
-  padding: 1rem 2rem;
-  margin-right: 1.8rem;
-  margin-left: 1.8rem;
-  width: 100%;
-  cursor: pointer;
-}
-
-.added-exercise-icon {
-  max-width: 3.5rem;
-}
-
-.added-exercise-name {
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .form-wrapper {
