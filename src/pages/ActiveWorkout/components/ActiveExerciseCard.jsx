@@ -18,7 +18,7 @@ export default function ActiveExerciseCard({ ex, activeExercises, workoutHistory
           ?.sets?.find((filteredSet) => filteredSet.id === setId)
 
 
-      filteredExSets.push(filteredExercises)
+       if(filteredExercises) filteredExSets.push(filteredExercises)
     }
 
     filteredExSets.forEach((set) => {
