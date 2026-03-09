@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
 import dashboard from '../../assets/dashboard.png'
 import title from '../../assets/title.png'
-import progress from '../../assets/progress.png'
 import active from '../../assets/active-workout.png'
 import history from '../../assets/history.png'
 import exercisesPage from '../../assets/exercises.png'
+import bodyweight from '../../assets/bodyweight.png'
+import trainingSplit from '../../assets/trainingSplit.png'
 
 
 import './Sidebar.css'
@@ -46,13 +47,20 @@ export default function Sidebar() {
                 <div>Exercises</div>
               </Link>
             </li>
-
-             <li className='sidebar-nav-link'>
-                <img src={progress} alt='' aria-hidden="true"/>
-                <div>Progress</div>
+            
+            <li>
+              <Link className='sidebar-nav-link' to="/training-split">
+                <img src={trainingSplit} alt='' aria-hidden="true"/>
+                <div>Training Split</div>
+              </Link>
             </li>
 
-            
+             <li>
+              <Link className='sidebar-nav-link' to="/body-weight">
+                <img src={bodyweight} alt='' aria-hidden="true"/>
+                <div>Body Weight</div>
+              </Link>
+            </li>
           </ul>
         </nav>
       </aside>
