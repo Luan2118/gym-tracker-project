@@ -5,6 +5,7 @@ import ActiveWorkout from './pages/ActiveWorkout/ActiveWorkout'
 import TrainingSplit from './pages/TrainingSplit/TrainingSplit'
 import Exercises from './pages/Exercises/Exercises'
 import BodyWeight from './pages/BodyWeight/BodyWeight'
+import WorkoutHistory from './pages/WorkoutHistory/WorkoutHistory'
 import './App.css'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path='training-split' element={<TrainingSplit />} />
         <Route path='exercises' element={<Exercises/>} />
         <Route path='body-weight' element={<BodyWeight/>} />
+        <Route path='workout-history' element={<WorkoutHistory />} />
       </Route>
     </Routes>
   )
