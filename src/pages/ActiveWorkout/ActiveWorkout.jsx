@@ -33,7 +33,6 @@ export default function ActiveWorkout() {
     selectedWorkoutDay
       ?.exercises ?? [];
 
-
   function openDialog() {
     dialogRef.current.showModal()
   }
@@ -57,13 +56,14 @@ export default function ActiveWorkout() {
 
  
 
-
   function handleSubmitStartWorkout(e) {
     e.preventDefault();
     setActiveWorkout(true)
     setActiveExercises(activeWorkoutData.map((ex) => {
       return {
-        id: ex.exerciseId,
+        exerciseName: ex.exerciseName,
+        exerciseId: ex.exerciseId,
+        icon: ex.icon,
         sets: ex.sets.map((set) => {
           return {
             id: set.id,
@@ -80,7 +80,7 @@ export default function ActiveWorkout() {
     const weightInputValue = e.target.value === '' ? '' : Number(e.target.value);
 
     const newExerciseList = activeExercises.map((ex) => {
-      if (ex.id !== exerciseId) return ex;
+      if (ex.exerciseId !== exerciseId) return ex;
 
       const newSetList = ex.sets.map((set) => {
         if (set.id !== setId) return set;
@@ -102,9 +102,8 @@ export default function ActiveWorkout() {
 
   function handleRepsSet(e, setId, exerciseId) {
     const repstInputValue = e.target.value === '' ? '' : Number(e.target.value);
-
     const newExerciseList = activeExercises.map((ex) => {
-      if (ex.id !== exerciseId) return ex;
+      if (ex.exerciseId !== exerciseId) return ex;
 
       const newSetList = ex.sets.map((set) => {
         if (set.id !== setId) return set;
@@ -126,7 +125,7 @@ export default function ActiveWorkout() {
 
   function handlefinishworkout() {
     setActiveWorkout(false)
-
+    
     const newWorkoutHistory = {
       trainingSplitName: selectedTrainingSplit.name,
       workoutDay: selectedWorkoutDay.name,
@@ -134,6 +133,7 @@ export default function ActiveWorkout() {
       exercises: activeExercises
     }
 
+    
     setWorkoutHistory((prev) => {
       return [
         ...prev,
@@ -141,7 +141,7 @@ export default function ActiveWorkout() {
       ]
     });
   }
-
+  
 
 
   return (

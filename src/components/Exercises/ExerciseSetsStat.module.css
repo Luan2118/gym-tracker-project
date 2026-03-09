@@ -1,0 +1,20 @@
+.active-workout-name-wrapper {
+  display: flex;
+  align-items: center;
+  max-width: 20rem;
+}
+
+.active-workout-ex-icon{
+  max-height: 10rem;
+  max-width: 10rem;
+  margin-right: 3rem;
+}
+
+.active-workout-b-p-set-wrapper {
+ text-align: left;
+ display: flex;
+}
+
+.active-workout-b-p-set {
+  margin-right: 1rem;
+}

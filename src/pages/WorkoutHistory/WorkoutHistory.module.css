@@ -61,3 +61,51 @@ h2 {
   border: none;
   font-size: 1.8rem;
 }
+
+.last-workout-title {
+  display: flex;
+
+}
+
+.last-workout-training-split,
+.last-workout-workout-day {
+  margin-right: 1rem;
+}
+
+.active-workout-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(37, 37, 37);
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  margin-top: 2rem;
+}
+
+
+.fieldset-wrapper {
+  display: flex;
+  align-items:  center;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.set-text {
+  font-size: 1.8rem;
+}
+
+.last-workout-header {
+  display: flex;
+}
+
+.last-workout-split,
+.last-workout-workout-day,
+.last-workout-date {
+  background-color: rgb(37, 37, 37);
+  text-align: left;
+  padding: 1.5rem 2.5rem;
+  border-radius: 1rem;
+  font-size: 2.5rem;
+  margin-right: 2rem;
+} 

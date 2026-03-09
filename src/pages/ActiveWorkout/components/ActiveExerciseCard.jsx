@@ -1,90 +1,24 @@
 import styles from './ActiveExerciseCard.module.css'
+import ExerciseSetsStat from '../../../components/Exercises/ExerciseSetsStat';
 
 export default function ActiveExerciseCard({ ex, activeExercises, workoutHistory, handleWeightSet, handleRepsSet }) {
 
-  const activeExIds = new Set(activeExercises.map(e => e.id));
-
-  function getBestSet(exerciseId, setId) {
-    const filteredHisWorkoutDays = workoutHistory?.filter((w) => w.exercises.some(ex => activeExIds.has(ex.id)))
-
-
-    let filteredExSets = []
-    let bestWeightNum = 0;
-    let bestRepsNum = 0;
-
-    for (let i = 0; i < filteredHisWorkoutDays.length; i++) {
-      const filteredExercises =
-        filteredHisWorkoutDays[i]?.exercises?.find((hisEx) => hisEx.id === exerciseId)
-          ?.sets?.find((filteredSet) => filteredSet.id === setId)
-
-
-       if(filteredExercises) filteredExSets.push(filteredExercises)
-    }
-
-    filteredExSets.forEach((set) => {
-      if (set.weight > bestWeightNum) {
-        bestWeightNum = set.weight
-      }
-    })
-
-    const filteredBestSet =
-      filteredExSets.filter((set) => set.weight === bestWeightNum)
-
-
-    filteredBestSet.forEach((set) => {
-      if (set.reps > bestRepsNum) {
-        bestRepsNum = set.reps
-      }
-    })
-
-    return filteredBestSet.find((set) => set.reps === bestRepsNum)
-  }
-
-
+  const activeExIds = new Set(activeExercises.map(e => e.exerciseId));
 
   const lastWorkout = [...workoutHistory]
     .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .find(w => w.exercises?.some(ex => activeExIds.has(ex.id)));
+    .find(w => w.exercises?.some(ex => activeExIds.has(ex.exerciseId)));
 
-  function getPrevSet(exerciseId, setId) {
-    const prevExercise = lastWorkout?.exercises?.find(hEx => hEx.id === exerciseId);
-    return prevExercise?.sets?.find(s => s.id === setId);
-  }
 
   return (
     <div className={styles["active-workout-wrapper"]}>
-      <div className={styles["active-workout-name-wrapper"]}>
-        <img src={ex.icon} alt="" className={styles["active-workout-ex-icon"]} />
-        <div className={styles["active-workout-ex-name"]}>{ex.exerciseName}</div>
-      </div>
-
-      <div>
-        <div>Best set:</div>
-        {ex.sets.map((set, index) => {
-
-          const bestSet = getBestSet(ex.exerciseId, set.id)
-
-          return (
-            <div key={set.id} className={styles["active-workout-b-p-set-wrapper"]}>
-              <div className={styles["active-workout-b-p-set"]}>Set {index + 1}:</div>
-              {bestSet ? `${bestSet.weight} x ${bestSet.reps}` : "-"}
-            </div>
-          )
-        })}
-      </div>
-
-      <div>
-        <div>Previous set:</div>
-        {ex.sets.map((set, index) => {
-          const prevSet = getPrevSet(ex.exerciseId, set.id)
-          return (
-            <div key={set.id} className={styles["active-workout-b-p-set-wrapper"]}>
-              <div className={styles["active-workout-b-p-set"]}>Set {index + 1}:</div>
-              {prevSet ? `${prevSet.weight} x ${prevSet.reps}` : "-"}
-            </div>
-          )
-        })}
-      </div>
+      <ExerciseSetsStat
+        ex={ex}
+        exerciseId={ex.exerciseId}
+        workoutHistory={workoutHistory}
+        activeExIds={activeExIds}
+        lastWorkout={lastWorkout}
+      />
 
       <div className={styles["active-workout-set-wrapper"]}>
         <div>Current set :</div>
