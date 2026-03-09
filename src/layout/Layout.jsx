@@ -14,6 +14,16 @@ export default function Layout() {
     localStorage.setItem('trainingSplits', JSON.stringify(trainingSplits));
   }, [trainingSplits])
 
+  const [workoutHistory, setWorkoutHistory] = useState(() => {
+    const stored = localStorage.getItem('workoutHistory');
+
+    return stored ? JSON.parse(stored) : [];
+  });
+
+   useEffect(() => {
+    localStorage.setItem('workoutHistory', JSON.stringify(workoutHistory));
+  }, [workoutHistory]);
+
 
   return (
     <div className='layout'>
@@ -23,7 +33,7 @@ export default function Layout() {
       <Sidebar />
 
       <main id='main' className='main-content' tabIndex={-1}>
-        <Outlet context={{trainingSplits, setTrainingSplits}}/>
+        <Outlet context={{trainingSplits, setTrainingSplits, workoutHistory, setWorkoutHistory}}/>
       </main>
     </div>
   )

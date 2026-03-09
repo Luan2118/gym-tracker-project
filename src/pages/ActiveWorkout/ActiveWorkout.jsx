@@ -8,18 +8,14 @@ export default function ActiveWorkout() {
 
   const dialogRef = useRef(null);
 
-  const { trainingSplits } = useOutletContext();
+  const { trainingSplits, workoutHistory, setWorkoutHistory } = useOutletContext();
 
   const [activeWorkout, setActiveWorkout] = useState(false);
   const [splitSelectId, setSplitSelectId] = useState('');
   const [selectedWorkoutDayId, setSelectedWorkoutDayId] = useState('');
   const [activeExercises, setActiveExercises] = useState([]);
 
-  const [workoutHistory, setWorkoutHistory] = useState(() => {
-    const stored = localStorage.getItem('workoutHistory');
-
-    return stored ? JSON.parse(stored) : [];
-  });
+  
 
   function handleStartWorkout() {
     openDialog();
@@ -59,10 +55,7 @@ export default function ActiveWorkout() {
   }
 
 
-  useEffect(() => {
-    localStorage.setItem('workoutHistory', JSON.stringify(workoutHistory));
-  }, [workoutHistory]);
-
+ 
 
 
   function handleSubmitStartWorkout(e) {
