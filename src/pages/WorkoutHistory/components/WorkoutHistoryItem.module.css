@@ -1,0 +1,43 @@
+.workout-history-button {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(35, 35, 35);
+  text-align: left;
+  padding: 1.5rem 2.5rem;
+  border-radius: 1rem;
+  font-size: 2.5rem;
+  margin-top: 1rem;
+  color: white;
+  border: none;
+  cursor:pointer;
+}
+
+.workout-history-button:hover {
+  opacity: 0.8;
+}
+
+.workout-history-button:active {
+  opacity: 0.7;
+}
+
+.workout-history-names {
+  display: flex;
+  align-items: center;
+}
+
+.verticalLine {
+  width: 1px;
+  height: 40px;
+  border: none;
+  margin: 0 12px;
+}
+
+.workout-history-training-split-text,
+.workout-history-workout-day-text,
+.workout-history-day-text {
+  margin: 0 2rem;
+}
+
+.arrow-down-icon {
+  max-width: 4rem;
+}

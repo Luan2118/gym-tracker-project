@@ -1,14 +1,14 @@
 import ExerciseSetsStat from '../../components/Exercises/ExerciseSetsStat';
 import styles from './WorkoutHistory.module.css'
 import { useOutletContext } from 'react-router-dom'
+import WorkoutHistoryItem from './components/WorkoutHistoryItem';
 
 export default function WorkoutHistory() {
 
   const { workoutHistory, setWorkoutHistory } = useOutletContext();
-
   const sortedWorkouts = [...workoutHistory].sort((a, b) => new Date(b.date) - new Date(a.date))
-   const lastWorkout = sortedWorkouts[0];
-   const activeExIds = new Set(lastWorkout?.exercises.map(e => e.exerciseId));
+  const lastWorkout = sortedWorkouts[0];
+  const activeExIds = new Set(lastWorkout?.exercises.map(e => e.exerciseId));
 
   return (
     <>
@@ -30,7 +30,7 @@ export default function WorkoutHistory() {
             return (
               <div key={ex.exerciseId}>
                 <div className={styles["active-workout-wrapper"]}>
-                  <ExerciseSetsStat 
+                  <ExerciseSetsStat
                     ex={ex}
                     exerciseId={ex.exerciseId}
                     workoutHistory={workoutHistory}
@@ -73,6 +73,10 @@ export default function WorkoutHistory() {
 
             </div>
           </section>
+
+          <div className={styles["content-main"]}>
+            <WorkoutHistoryItem workoutHistory={workoutHistory}/>
+          </div>
         </section>
       </div>
     </>

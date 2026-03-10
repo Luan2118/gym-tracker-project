@@ -127,6 +127,7 @@ export default function ActiveWorkout() {
     setActiveWorkout(false)
     
     const newWorkoutHistory = {
+      id: crypto.randomUUID(),
       trainingSplitName: selectedTrainingSplit.name,
       workoutDay: selectedWorkoutDay.name,
       date: new Date().toISOString(),
