@@ -75,7 +75,11 @@ export default function WorkoutHistory() {
           </section>
 
           <div className={styles["content-main"]}>
-            <WorkoutHistoryItem workoutHistory={workoutHistory}/>
+            <WorkoutHistoryItem
+              workoutHistory={workoutHistory}
+
+            />
+
           </div>
         </section>
       </div>

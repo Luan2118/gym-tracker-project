@@ -5,7 +5,7 @@ import deleteWorkoutDayIcon from '../../assets/training-split/delete-workout-day
 import close from '../../assets/training-split/x-close.png'
 import { useOutletContext } from 'react-router-dom'
 import styles from './TrainingSplit.module.css'
-import WorkoutDaySection from './components/WorkoutDayExercise'
+import WorkoutDayExercise from './components/WorkoutDayExercise'
 
 export default function TrainingSplit() {
 
