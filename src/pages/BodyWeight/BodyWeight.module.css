@@ -4,18 +4,21 @@ h2 {
 }
 
 
-.content-wrapper{
+.content-wrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 2rem;
   border-radius: 1rem;
   padding: 3rem;
-  background-color: rgb(41, 41, 41);
 }
 
 .weight-submit-wrapper {
   display: flex;
+  flex-direction: column;
   margin-bottom: 1rem;
+  background-color: rgb(41, 41, 41);
+  height: fit-content;
+  padding: 2rem;
 }
 
 
@@ -26,11 +29,11 @@ h2 {
 
 
 .weight-input-label {
-  font-size: 3.5rem;
+  font-size: 3rem;
 }
 
 .weight-input {
-  font-size: 2.2rem;
+  font-size: 2rem;
   border: none;
   padding: 1rem 2rem;
   border-radius: 1rem;
@@ -41,12 +44,13 @@ h2 {
 
 .add-weight-button {
   background-color: rgb(75, 75, 75);
-  color:white;
+  color: white;
   font-size: 2.2rem;
   padding: 1rem 2rem;
   border: none;
   border-radius: 1rem;
   cursor: pointer;
+  margin-top: 1.5rem;
 }
 
 .add-weight-button:hover {
@@ -59,36 +63,45 @@ h2 {
 
 .body-weight-added {
   font-size: 1.8rem;
+  margin-top: 1.5rem;
 }
+
+/* .content-main-wrapper{
+
+} */
 
 .filter-section-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 0
+  background-color: rgb(41, 41, 41);
+  padding: 2rem;
+  flex: 1 1 auto;
+  max-height: 20rem;
+  border-radius: 1rem;
+  margin-bottom: 3rem;
 }
 
 .fieldset-wrapper {
+  display: flex;
+  flex-direction: row;
   border: none;
   padding: 0;
-  margin: 0;
-  text-align: end;
-  margin-top: 5rem;
+  margin-bottom: 2rem;
 }
 
 .legend-text {
   text-align: start;
   font-size: 2.5rem;
   font-weight: 600;
+  margin-top: 1.5rem;
+  padding: 0;
 }
-
-
 
 .date-from-wrapper,
 .date-to-wrapper {
-  margin-left: 3rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  text-align: start;
+  margin-top: 1.5rem;
+  margin-right: 1.5rem;
 }
 
 .date-from-label,
@@ -102,17 +115,13 @@ h2 {
 .date-to-input {
   background-color: rgb(75, 75, 75);
   color: white;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   padding: 1rem 2rem;
   border: none;
   border-radius: 1rem;
   cursor: pointer;
 }
 
-.filter-buttons-wrapper {
-  display: flex;
-  margin-top: 5rem;
-}
 
 .last-week-button,
 .last-2-weeks-button,
