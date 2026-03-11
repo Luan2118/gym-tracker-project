@@ -4,12 +4,12 @@ import { useState } from 'react';
 import ExerciseSetsStat from '../../../components/Exercises/ExerciseSetsStat';
 
 
-export default function WorkoutHistoryItem({ workoutHistory }) {
+export default function WorkoutHistoryItem({ workoutHistory, filteredWorkoutHistory }) {
 
   const [selectedWorkoutHisId, setSelectedWorkoutHisId] = useState('');
   const [selectedWorkoutHistory, setSelectedWorkoutHistory] = useState(false);
 
-  const selectedWorkoutHistItem = workoutHistory.find((w) => w.id === selectedWorkoutHisId)
+  const selectedWorkoutHistItem = filteredWorkoutHistory.find((w) => w.id === selectedWorkoutHisId)
 
   // ex, exerciseId, workoutHistory, activeExIds, lastWorkout
 
@@ -22,15 +22,15 @@ export default function WorkoutHistoryItem({ workoutHistory }) {
     .find(w => w.exercises?.some(ex => activeExIds.has(ex.exerciseId)));
 
 
-  console.log(selectedWorkoutHistItem)
 
   function displaySelectedWorkoutHist(workoutId) {
     setSelectedWorkoutHisId(workoutId)
     setSelectedWorkoutHistory((prev) => !prev)
   }
 
+
   return (
-    workoutHistory.map((workout) => {
+    filteredWorkoutHistory.map((workout) => {
       return (
         <div key={workout.id} className={styles["workout-history-item-wrapper"]}>
           <button className={styles["workout-history-item-button"]} onClick={() => displaySelectedWorkoutHist(workout.id)}>
