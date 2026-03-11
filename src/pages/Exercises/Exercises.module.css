@@ -1,10 +1,12 @@
 .content-wrapper{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 2rem;
 }
 
-
+.main-content-wrapper {
+  flex: 1 1 auto;
+}
 .filter-wrapper {
   display: flex;
   flex-direction: column;
@@ -12,6 +14,7 @@
   border-radius: 1rem;
   padding: 2rem;
   background-color: rgb(41, 41, 41);
+  margin-bottom: 1.5rem;
 }
 
 .filter-input-link {
@@ -50,9 +53,8 @@
   padding: 1rem 2rem;
 }
 
-.content-main {
+.exercise-list-wrapper {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   align-items: flex-start;
   width: auto;
