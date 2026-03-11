@@ -24,6 +24,12 @@ export default function ActiveWorkout() {
     setActiveWorkout(false);
   }
 
+  function handleCancelWorkout () {
+    setActiveWorkout(false);
+    setActiveExercises([]);
+
+  }
+
   const selectedTrainingSplit = trainingSplits
     .find((split) => split.id === splitSelectId)
 
@@ -181,9 +187,12 @@ export default function ActiveWorkout() {
         </section>
 
         <div className={styles["start-workout-wrapper"]}>
+          {!activeWorkout ?
           <button type='button' className={styles["start-workout-button"]} onClick={handleStartWorkout}>
             Start a Workout
-          </button>
+          </button>:
+          <button className={styles["start-workout-button"]}  onClick={handleCancelWorkout}>Cancel Workout</button>
+          }
 
           <dialog ref={dialogRef} className={styles["dialog-popup"]}>
             <form className={styles["form-wrapper"]} onSubmit={handleSubmitStartWorkout}>
