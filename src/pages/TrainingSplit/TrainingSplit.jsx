@@ -342,14 +342,10 @@ export default function TrainingSplit() {
   return (
     <>
       <header>
-        <h1>Training Split</h1>
+        <h1>All Training Splits</h1>
       </header>
 
       <div className={styles["content-wrapper"]}>
-
-        <div className={styles["add-training-wrapper"]}>
-          <button className={styles["add-training-button"]} onClick={openDialog}>Add Training Split</button>
-        </div>
 
         <dialog ref={dialogRef} className={styles["add-training-split-dialog"]}>
           <form className={styles["form-wrapper"]} onSubmit={submitTrainingSplit}>
@@ -411,16 +407,14 @@ export default function TrainingSplit() {
         </dialog>
 
         <section className={styles["content-main"]}>
-          <h2 className={styles["all-training-splits"]}>All Training Splits</h2>
-
-          <hr />
-
         
           <TrainingSplitList  trainingSplits={trainingSplits.map((trainingsplit) => ({name: trainingsplit.name, id: trainingsplit.id}))} editTrainingSplit={editTrainingSplit} deleteTrainingSplit={deleteTrainingSplit}/>
             
         </section>
 
-
+        <div className={styles["add-training-wrapper"]}>
+          <button className={styles["add-training-button"]} onClick={openDialog}>Add Training Split</button>
+        </div>
       </div>
     </>
   )

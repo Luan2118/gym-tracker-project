@@ -15,7 +15,7 @@ export default function ActiveWorkout() {
   const [selectedWorkoutDayId, setSelectedWorkoutDayId] = useState('');
   const [activeExercises, setActiveExercises] = useState([]);
 
-  
+
 
   function handleStartWorkout() {
     openDialog();
@@ -54,7 +54,7 @@ export default function ActiveWorkout() {
   }
 
 
- 
+
 
   function handleSubmitStartWorkout(e) {
     e.preventDefault();
@@ -125,7 +125,7 @@ export default function ActiveWorkout() {
 
   function handlefinishworkout() {
     setActiveWorkout(false)
-    
+
     const newWorkoutHistory = {
       id: crypto.randomUUID(),
       trainingSplitName: selectedTrainingSplit.name,
@@ -134,7 +134,7 @@ export default function ActiveWorkout() {
       exercises: activeExercises
     }
 
-    
+
     setWorkoutHistory((prev) => {
       return [
         ...prev,
@@ -142,7 +142,7 @@ export default function ActiveWorkout() {
       ]
     });
   }
-  
+
 
 
   return (
@@ -153,6 +153,32 @@ export default function ActiveWorkout() {
 
 
       <div className={styles["content-wrapper"]}>
+
+        <section className={styles["content-main"]}>
+          {activeWorkout ?
+            <>
+              <div className={styles["active-workout-header"]}>
+                <div className={styles["active-workout-split"]}>Split: {selectedTrainingSplit?.name}</div>
+                <div className={styles["active-workout-workout-day"]}>Workout Day: {selectedWorkoutDay?.name ?? '-'}</div>
+                <div className={styles["active-workout-timer"]}>Timer: 00:00</div>
+              </div>
+
+              {activeWorkoutData.map((ex) =>
+                <ActiveExerciseCard
+                  key={ex.exerciseId}
+                  ex={ex}
+                  activeExercises={activeExercises}
+                  workoutHistory={workoutHistory}
+                  handleWeightSet={handleWeightSet}
+                  handleRepsSet={handleRepsSet}
+                />
+              )}
+
+
+              <button type='button' onClick={() => handlefinishworkout()} className={styles["finish-workout-button"]} >Finish Workout</button>
+            </>
+            : <h2>No Active Workout</h2>}
+        </section>
 
         <div className={styles["start-workout-wrapper"]}>
           <button type='button' className={styles["start-workout-button"]} onClick={handleStartWorkout}>
@@ -226,32 +252,6 @@ export default function ActiveWorkout() {
             </form>
           </dialog>
         </div>
-
-        <section className={styles["content-main"]}>
-          {activeWorkout ?
-            <>
-              <div className={styles["active-workout-header"]}>
-                <div className={styles["active-workout-split"]}>Split: {selectedTrainingSplit?.name}</div>
-                <div className={styles["active-workout-workout-day"]}>Workout Day: {selectedWorkoutDay?.name ?? '-'}</div>
-                <div className={styles["active-workout-timer"]}>Timer: 00:00</div>
-              </div>
-
-              {activeWorkoutData.map((ex) => 
-                <ActiveExerciseCard 
-                key={ex.exerciseId}
-                ex={ex}
-                activeExercises={activeExercises} 
-                workoutHistory={workoutHistory} 
-                handleWeightSet={handleWeightSet} 
-                handleRepsSet={handleRepsSet} 
-                />
-              )}
-
-
-              <button type='button' onClick={() => handlefinishworkout()} className={styles["finish-workout-button"]} >Finish Workout</button>
-            </>
-            : <h2>No Active Workout</h2>}
-        </section>
       </div>
     </>
 
