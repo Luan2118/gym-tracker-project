@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import styles from './ActiveWorkout.module.css'
 import closeX from '../../assets/activeWorkout/x-close.png'
@@ -183,15 +183,15 @@ export default function ActiveWorkout() {
 
               <button type='button' onClick={() => handlefinishworkout()} className={styles["finish-workout-button"]} >Finish Workout</button>
             </>
-            : <h2>No Active Workout</h2>}
+            : <h2 className={styles["no-active-workout-text"]}>No Active Workout</h2>}
         </section>
 
         <div className={styles["start-workout-wrapper"]}>
           {!activeWorkout ?
           <button type='button' className={styles["start-workout-button"]} onClick={handleStartWorkout}>
-            Start a Workout
+            Start Workout
           </button>:
-          <button className={styles["start-workout-button"]}  onClick={handleCancelWorkout}>Cancel Workout</button>
+          <button className={styles["cancel-workout-button"]}  onClick={handleCancelWorkout}>Cancel Workout</button>
           }
 
           <dialog ref={dialogRef} className={styles["dialog-popup"]}>
