@@ -131,11 +131,11 @@ export default function BodyWeight() {
             </fieldset>
 
             <div className={styles["filter-buttons-wrapper"]}>
-              <button type='button' className={styles["last-week-button"]} onClick={() => applyPreset('lastWeek')}>Last Week</button>
-              <button type='button' className={styles["last-2-weeks-button"]} onClick={() => applyPreset('lastTwoWeeks')}>Last 2 Weeks</button>
-              <button type='button' className={styles["last-month-button"]} onClick={() => applyPreset('lastMonth')}>Last Month</button>
-              <button type='button' className={styles["last-2-months-button"]} onClick={() => applyPreset('lastTwoMonths')}>Last 2 Months</button>
-              <button type='button' className={styles["show-all-button"]} onClick={() => applyPreset('all')}>Show All</button>
+              <button type='button' className={filter === 'lastWeek' ? styles["clicked-filter-button"] : styles["last-week-button"]} onClick={() => applyPreset('lastWeek')}>Last Week</button>
+              <button type='button' className={filter === 'lastTwoWeeks' ? styles["clicked-filter-button"] : styles["last-2-weeks-button"]} onClick={() => applyPreset('lastTwoWeeks')}>Last 2 Weeks</button>
+              <button type='button' className={ filter === 'lastMonth' ? styles["clicked-filter-button"] : styles["last-month-button"]} onClick={() => applyPreset('lastMonth')}>Last Month</button>
+              <button type='button' className={filter === 'lastTwoMonths' ? styles["clicked-filter-button"] : styles["last-2-months-button"]} onClick={() => applyPreset('lastTwoMonths')}>Last 2 Months</button>
+              <button type='button' className={ filter === 'all' ? styles["clicked-filter-button"] : styles["show-all-button"]} onClick={() => applyPreset('all')}>Show All</button>
             </div>
 
           </section>

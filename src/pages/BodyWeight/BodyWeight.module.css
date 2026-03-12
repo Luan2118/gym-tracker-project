@@ -43,7 +43,7 @@ h2 {
 }
 
 .add-weight-button {
-  background-color: rgb(75, 75, 75);
+  background-color: rgb(46, 160, 67);
   color: white;
   font-size: 2.2rem;
   padding: 1rem 2rem;
@@ -143,7 +143,7 @@ h2 {
 .last-month-button:hover,
 .last-2-months-button:hover,
 .show-all-button:hover {
-  opacity: 0.8
+  opacity: 0.9
 }
 
 .last-week-button:active,
@@ -152,4 +152,16 @@ h2 {
 .last-2-months-button:active,
 .show-all-button:active {
   opacity: 0.8
+}
+
+
+.clicked-filter-button {
+  background-color: rgb(59,130,246);
+  color: white;
+  font-size: 2rem;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  margin-right: 3rem;
+  cursor: pointer;
 }
