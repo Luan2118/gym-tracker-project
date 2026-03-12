@@ -1,4 +1,17 @@
-.content-wrapper{
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+.content-wrapper {
   display: flex;
   flex-direction: row;
   gap: 2rem;
@@ -7,6 +20,7 @@
 .main-content-wrapper {
   flex: 1 1 auto;
 }
+
 .filter-wrapper {
   display: flex;
   flex-direction: column;
@@ -34,22 +48,28 @@
 
 .search-exercise-input,
 .by-muscle-category-input,
-.by-muscle-category-label,
 .all-exercises,
 .upper-body-exercises {
+  background-color: rgb(75, 75, 75);
+  color: white;
+  font-size: 2rem;
+  border: none;
   border-radius: 1rem;
   padding: 1rem 2rem;
-  margin-right: 2rem;
+  margin-right: 3rem;
+  cursor: pointer;
 }
 
-.search-exercise-button,
-.by-muscle-category-label,
 .all-exercises,
 .by-muscle-group-filter,
 .upper-body-exercises,
 .lower-body-exercises {
+  background-color: rgb(75, 75, 75);
+  color: white;
+  font-size: 2rem;
+  border: none;
   border-radius: 1rem;
-  font-size: 1.9rem;
+  cursor: pointer;
   padding: 1rem 2rem;
 }
 
@@ -62,4 +82,3 @@
   padding: 2rem;
   background-color: rgb(41, 41, 41);
 }
-

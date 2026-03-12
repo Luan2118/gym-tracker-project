@@ -9,7 +9,7 @@ import skullcrushers from '../assets/exercises/skullcrushers.png'
 import squat from '../assets/exercises/squat.png'
 import triceppushdowns from '../assets/exercises/triceppushdowns.png'
 
-export const exercisesList = [
+export const exercises = [
     {
       id: 'bicep-curls',
       name: "Bicep Curls",

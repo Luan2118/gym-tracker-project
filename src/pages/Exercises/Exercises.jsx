@@ -1,5 +1,6 @@
 import ExerciseList from './components/ExerciseList'
 import styles from './Exercises.module.css'
+import { exercises } from '../../data/exercises'
 
 export default function Exercises() {
 
@@ -24,12 +25,11 @@ export default function Exercises() {
                 <label htmlFor='search-exercise' />
                 <input type="text" id="search-exercise" className={styles["search-exercise-input"]} />
 
-                <button className={styles["search-exercise-button"]}>Search</button>
               </div>
 
               <div className={styles["filter-input-link"]}>
 
-                <label htmlFor="exercise-category" className={styles["by-muscle-category-label"]}>Category</label>
+                <label htmlFor="exercise-category" className={styles["sr-only"]}>Category</label>
                 <select id="exercise-category" className={styles["by-muscle-category-input"]}></select>
 
 

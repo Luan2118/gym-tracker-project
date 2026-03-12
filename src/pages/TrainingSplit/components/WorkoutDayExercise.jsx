@@ -2,7 +2,7 @@ import styles from './WorkoutDayExercise.module.css'
 import plusIcon from '../../../assets/training-split/plus-icon.png'
 import deleteSetIcon from '../../../assets/training-split/deleteSet.png'
 import deleteWorkoutDayIcon from '../../../assets/training-split/delete-workout-day.png'
-import { exercisesList } from '../../../data/exercises'
+import { exercises } from '../../../data/exercises'
 
 export default function WorkoutDayExercise({ addedExercise, workoutDayId, selectExerciseAgain, handleSearchExerciseText, deleteExercise, handleWeightSet, handleRepsSet, deleteSet, addSet,selectExercise }) {
   return (
@@ -57,7 +57,7 @@ export default function WorkoutDayExercise({ addedExercise, workoutDayId, select
       {addedExercise.confirm ? '' :
         <ul className={styles["search-exercise-list-wrapper"]}>
           {
-            exercisesList.filter((exercise) => exercise.name.toLowerCase().includes(addedExercise.searchText.toLowerCase()))
+            exercises.filter((exercise) => exercise.name.toLowerCase().includes(addedExercise.searchText.toLowerCase()))
               .map((exer) => {
                 if (addedExercise.searchText.length === 0) return;
                 return (

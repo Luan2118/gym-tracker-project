@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { exercisesList } from '../../data/exercises'
+import { exercises } from '../../data/exercises'
 import TrainingSplitList from './components/TrainingSplitList'
 import deleteWorkoutDayIcon from '../../assets/training-split/delete-workout-day.png'
 import close from '../../assets/training-split/x-close.png'
@@ -119,7 +119,7 @@ export default function TrainingSplit() {
   }
 
   function selectExercise(workoutDayID, selectedExerciseId, addedExerciseRowId) {
-    const selectedExercise = exercisesList.find((exercise) => exercise.id === selectedExerciseId);
+    const selectedExercise = exercises.find((exercise) => exercise.id === selectedExerciseId);
     
     setWorkoutDays((prev) => 
       prev.map((workoutday) => {
