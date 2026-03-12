@@ -1,7 +1,7 @@
 import styles from './WorkoutDayExercise.module.css'
 import plusIcon from '../../../assets/training-split/plus-icon.png'
 import deleteSetIcon from '../../../assets/training-split/deleteSet.png'
-import deleteExerciseIcon from '../../../assets/training-split/x-delete.png'
+import deleteWorkoutDayIcon from '../../../assets/training-split/delete-workout-day.png'
 import { exercisesList } from '../../../data/exercises'
 
 export default function WorkoutDayExercise({ addedExercise, workoutDayId, selectExerciseAgain, handleSearchExerciseText, deleteExercise, handleWeightSet, handleRepsSet, deleteSet, addSet,selectExercise }) {
@@ -21,7 +21,7 @@ export default function WorkoutDayExercise({ addedExercise, workoutDayId, select
         }
 
         <button type='button' className={styles["search-exercise-delete-button"]} aria-label='Delete Exercise' onClick={() => deleteExercise(workoutDayId, addedExercise.rowId)} >
-          <img className={styles["search-exercise-delete-icon"]} src={deleteExerciseIcon} alt='' />
+          <img className={styles["search-exercise-delete-icon"]} src={deleteWorkoutDayIcon} alt='' />
         </button>
       </div>
 
@@ -44,7 +44,7 @@ export default function WorkoutDayExercise({ addedExercise, workoutDayId, select
             </fieldset>
 
             <button type='button' className={styles["delete-set-button"]} aria-label='Delete set' onClick={() => deleteSet(set.id)}>
-              <img className={styles["delete-set-icon"]} src={deleteSetIcon} alt='' />
+              <img className={styles["delete-set-icon"]} src={deleteWorkoutDayIcon} alt='' />
             </button>
           </div>
         )

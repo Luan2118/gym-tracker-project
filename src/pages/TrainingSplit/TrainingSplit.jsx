@@ -353,7 +353,7 @@ export default function TrainingSplit() {
                 <label htmlFor="training-split-name"></label>
                 <input type="text"  id="training-split-name" placeholder='Training Split Name' className={styles["training-split-name-input"]} onChange={(e) => setTrainingSplitInputText(e.target.value)} value={trainingSplitInputText}/>
 
-                <button type='button' className={styles["add-workout-button"]} onClick={addWorkoutDay}>Add a Workout</button>
+                <button type='button' className={styles["add-workout-button"]} onClick={addWorkoutDay}>Add Workout</button>
 
                 <button type='button' className={styles["close-dialog-button"]} aria-label='Close dialog' onClick={closeDialog}>
                   <img className={styles["close-dialog-img"]} src={close} alt=''/>
