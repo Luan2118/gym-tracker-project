@@ -7,7 +7,6 @@ import ExerciseSetsStat from '../../../components/Exercises/ExerciseSetsStat';
 export default function WorkoutHistoryItem({ workoutHistory, filteredWorkoutHistory }) {
 
   const [selectedWorkoutHisId, setSelectedWorkoutHisId] = useState('');
-  const [selectedWorkoutHistory, setSelectedWorkoutHistory] = useState(false);
 
   const selectedWorkoutHistItem = filteredWorkoutHistory.find((w) => w.id === selectedWorkoutHisId)
 
@@ -24,10 +23,9 @@ export default function WorkoutHistoryItem({ workoutHistory, filteredWorkoutHist
 
 
   function displaySelectedWorkoutHist(workoutId) {
-    setSelectedWorkoutHisId(workoutId)
-    setSelectedWorkoutHistory((prev) => !prev)
+    if (selectedWorkoutHisId === workoutId) setSelectedWorkoutHisId('')
+      else setSelectedWorkoutHisId(workoutId)
   }
-
 
   return (
     filteredWorkoutHistory.map((workout) => {
@@ -47,7 +45,7 @@ export default function WorkoutHistoryItem({ workoutHistory, filteredWorkoutHist
             <img src={arrowDown} alt="" className={styles["arrow-down-icon"]} />
           </button>
 
-          {workout.id === selectedWorkoutHisId && selectedWorkoutHistory ?
+          {workout.id === selectedWorkoutHisId ?
             <div className={styles["selected-workout-history-wrapper"]}>
               {selectedWorkoutHistItem.exercises.map((ex) => {
                 return (
