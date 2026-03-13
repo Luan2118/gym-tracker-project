@@ -8,6 +8,9 @@ export default function Exercises() {
 
   const [searchText, setSearchText] = useState('');
   const [selectedMuscleOption, setSelectedMuscleOption] = useState('');
+  const [selectedUpperBodyEx, setSelectedUpperBodyEx] = useState(false);
+  const [selectedLowerBodyEx, setSelectedLowerBodyEx] = useState(false);
+  
 
   const filteredExercises = 
   searchText ? exercises.filter((ex) => ex.name.toLowerCase().includes(searchText)) :
@@ -17,7 +20,9 @@ export default function Exercises() {
     }else {
       return ex.muscleGroup === selectedMuscleOption
     }
-  })
+  }):
+  selectedUpperBodyEx ? exercises.filter((ex) => ex.bodyRegion === 'upper') :
+  selectedLowerBodyEx ? exercises.filter((ex) => ex.bodyRegion === 'lower')
   :
   exercises
   
@@ -71,8 +76,8 @@ export default function Exercises() {
                 </select>
 
               <div className={styles["filter-upper-lower-wrapper"]}>
-                <button className={styles["upper-body-exercises"]}>Upper Body Exercises</button>
-                <button className={styles["lower-body-exercises"]}>Lower Body Exercises</button>
+                <button className={ selectedUpperBodyEx ? styles["clicked-filter-button"] : styles["upper-body-exercises"]} onClick={() => setSelectedUpperBodyEx((prev) => !prev)}>Upper Body Exercises</button>
+                <button className={ selectedLowerBodyEx ? styles["clicked-filter-button"] : styles["lower-body-exercises"]}  onClick={() => setSelectedLowerBodyEx((prev) => !prev)}>Lower Body Exercises</button>
               </div>
 
             </section>
