@@ -1,10 +1,9 @@
 import styles from './ExerciseItem.module.css'
-import { exercises } from '../../../data/exercises'
 
-export default function ExerciseItem() {
+export default function ExerciseItem({filteredExercises}) {
   return (
     <>
-      {exercises.map((exercise) => {
+      {filteredExercises.map((exercise) => {
         return (
           <button key={exercise.id} className={styles["exercise-item-wrapper"]} >
             <img src={exercise.icon} alt='' aria-hidden="true" className={styles["exercise-item-img"]}/>
