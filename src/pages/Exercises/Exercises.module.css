@@ -21,6 +21,36 @@
   flex: 1 1 auto;
 }
 
+.selected-exercise-wrapper {
+  display: flex;
+  background-color: rgb(41, 41, 41);
+  padding: 3rem;
+  border-radius: 1rem;
+
+}
+
+.selected-exercise-name {
+  font-size: 2.3rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.selected-exercise-primary-muscle,
+.selected-exercise-secondary-muscle {
+  font-size: 1.9rem;
+}
+
+.selected-exercise-image {
+  max-width: 50rem;
+  border-radius: 1rem;
+
+}
+
+.selected-exercise-info {
+  margin-right: 6rem;
+  line-height: 3rem;
+}
+
 .filter-search-wrapper {
   display: flex;
   align-items: center;

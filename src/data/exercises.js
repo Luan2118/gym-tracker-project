@@ -2,7 +2,7 @@ export const EXERCISE_BASE_PREFIX = 'https://raw.githubusercontent.com/yuhonas/f
 
 export const exercises = [
   {
-    "id": "barbell-bench-press-medium-grip",
+    "id": "barbell-bench-press---medium-grip",
     "name": "Barbell Bench Press - Medium Grip",
     "video": "",
     "images": [
@@ -12,6 +12,13 @@ export const exercises = [
     "muscleGroup": "chest",
     "bodyRegion": "upper",
     "equipment": "barbell",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "shoulders",
+      "triceps"
+    ],
     "instructions": [
       "Lie back on a flat bench. Using a medium width grip (a grip that creates a 90-degree angle in the middle of the movement between the forearms and the upper arms), lift the bar from the rack and hold it straight over you with your arms locked. This will be your starting position.",
       "From the starting position, breathe in and begin coming down slowly until the bar touches your middle chest.",
@@ -21,7 +28,7 @@ export const exercises = [
     ]
   },
   {
-    "id": "barbell-incline-bench-press-medium-grip",
+    "id": "barbell-incline-bench-press---medium-grip",
     "name": "Barbell Incline Bench Press - Medium Grip",
     "video": "",
     "images": [
@@ -31,6 +38,13 @@ export const exercises = [
     "muscleGroup": "chest",
     "bodyRegion": "upper",
     "equipment": "barbell",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "shoulders",
+      "triceps"
+    ],
     "instructions": [
       "Lie back on an incline bench. Using a medium-width grip (a grip that creates a 90-degree angle in the middle of the movement between the forearms and the upper arms), lift the bar from the rack and hold it straight over you with your arms locked. This will be your starting position.",
       "As you breathe in, come down slowly until you feel the bar on you upper chest.",
@@ -50,6 +64,13 @@ export const exercises = [
     "muscleGroup": "chest",
     "bodyRegion": "upper",
     "equipment": "dumbbell",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "shoulders",
+      "triceps"
+    ],
     "instructions": [
       "Lie down on a flat bench with a dumbbell in each hand resting on top of your thighs. The palms of your hands will be facing each other.",
       "Then, using your thighs to help raise the dumbbells up, lift the dumbbells one at a time so that you can hold them in front of you at shoulder width.",
@@ -69,6 +90,10 @@ export const exercises = [
     "muscleGroup": "chest",
     "bodyRegion": "upper",
     "equipment": "dumbbell",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "Lie down on a flat bench with a dumbbell on each hand resting on top of your thighs. The palms of your hand will be facing each other.",
       "Then using your thighs to help raise the dumbbells, lift the dumbbells one at a time so you can hold them in front of you at shoulder width with the palms of your hands facing each other. Raise the dumbbells up like you're pressing them, but stop and hold just before you lock out. This will be your starting position.",
@@ -88,6 +113,13 @@ export const exercises = [
     "muscleGroup": "chest",
     "bodyRegion": "upper",
     "equipment": "dumbbell",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "shoulders",
+      "triceps"
+    ],
     "instructions": [
       "Secure your legs at the end of the decline bench and lie down with a dumbbell on each hand on top of your thighs. The palms of your hand will be facing each other.",
       "Once you are laying down, move the dumbbells in front of you at shoulder width.",
@@ -108,6 +140,12 @@ export const exercises = [
     "muscleGroup": "chest",
     "bodyRegion": "upper",
     "equipment": "cable",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "instructions": [
       "To get yourself into the starting position, place the pulleys on a high position (above your head), select the resistance to be used and hold the pulleys in each hand.",
       "Step forward in front of an imaginary straight line between both pulleys while pulling your arms together in front of you. Your torso should have a small forward bend from the waist. This will be your starting position.",
@@ -127,6 +165,13 @@ export const exercises = [
     "muscleGroup": "back",
     "bodyRegion": "upper",
     "equipment": "body only",
+    "primaryMuscles": [
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "middle back"
+    ],
     "instructions": [
       "Grab the pull-up bar with the palms facing forward using the prescribed grip. Note on grips: For a wide grip, your hands need to be spaced out at a distance wider than your shoulder width. For a medium grip, your hands need to be spaced out at a distance equal to your shoulder width and for a close grip at a distance smaller than your shoulder width.",
       "As you have both arms extended in front of you holding the bar at the chosen grip width, bring your torso back around 30 degrees or so while creating a curvature on your lower back and sticking your chest out. This is your starting position.",
@@ -146,6 +191,14 @@ export const exercises = [
     "muscleGroup": "back",
     "bodyRegion": "upper",
     "equipment": "cable",
+    "primaryMuscles": [
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "middle back",
+      "shoulders"
+    ],
     "instructions": [
       "Sit down on a pull-down machine with a wide bar attached to the top pulley. Make sure that you adjust the knee pad of the machine to fit your height. These pads will prevent your body from being raised by the resistance attached to the bar.",
       "Grab the bar with the palms facing forward using the prescribed grip. Note on grips: For a wide grip, your hands need to be spaced out at a distance wider than shoulder width. For a medium grip, your hands need to be spaced out at a distance equal to your shoulder width and for a close grip at a distance smaller than your shoulder width.",
@@ -166,6 +219,14 @@ export const exercises = [
     "muscleGroup": "back",
     "bodyRegion": "upper",
     "equipment": "cable",
+    "primaryMuscles": [
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "middle back",
+      "shoulders"
+    ],
     "instructions": [
       "Sit down on a pull-down machine with a wide bar attached to the top pulley. Make sure that you adjust the knee pad of the machine to fit your height. These pads will prevent your body from being raised by the resistance attached to the bar.",
       "Grab the bar with the palms facing forward using the prescribed grip. Note on grips: For a wide grip, your hands need to be spaced out at a distance wider than your shoulder width. For a medium grip, your hands need to be spaced out at a distance equal to your shoulder width and for a close grip at a distance smaller than your shoulder width.",
@@ -186,6 +247,14 @@ export const exercises = [
     "muscleGroup": "back",
     "bodyRegion": "upper",
     "equipment": "barbell",
+    "primaryMuscles": [
+      "middle back"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "lats",
+      "shoulders"
+    ],
     "instructions": [
       "Holding a barbell with a pronated grip (palms facing down), bend your knees slightly and bring your torso forward, by bending at the waist, while keeping the back straight until it is almost parallel to the floor. Tip: Make sure that you keep the head up. The barbell should hang directly in front of you as your arms hang perpendicular to the floor and your torso. This is your starting position.",
       "Now, while keeping the torso stationary, breathe out and lift the barbell to you. Keep the elbows close to the body and only use the forearms to hold the weight. At the top contracted position, squeeze the back muscles and hold for a brief pause.",
@@ -204,6 +273,14 @@ export const exercises = [
     "muscleGroup": "back",
     "bodyRegion": "upper",
     "equipment": "dumbbell",
+    "primaryMuscles": [
+      "middle back"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "lats",
+      "shoulders"
+    ],
     "instructions": [
       "Choose a flat bench and place a dumbbell on each side of it.",
       "Place the right leg on top of the end of the bench, bend your torso forward from the waist until your upper body is parallel to the floor, and place your right hand on the other end of the bench for support.",
@@ -225,6 +302,14 @@ export const exercises = [
     "muscleGroup": "back",
     "bodyRegion": "upper",
     "equipment": "cable",
+    "primaryMuscles": [
+      "middle back"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "lats",
+      "shoulders"
+    ],
     "instructions": [
       "For this exercise you will need access to a low pulley row machine with a V-bar. Note: The V-bar will enable you to have a neutral grip where the palms of your hands face each other. To get into the starting position, first sit down on the machine and place your feet on the front platform or crossbar provided making sure that your knees are slightly bent and not locked.",
       "Lean over as you keep the natural alignment of your back and grab the V-bar handles.",
@@ -244,6 +329,12 @@ export const exercises = [
     "muscleGroup": "shoulders",
     "bodyRegion": "upper",
     "equipment": "dumbbell",
+    "primaryMuscles": [
+      "shoulders"
+    ],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "instructions": [
       "Sit on an exercise bench with back support and hold two dumbbells in front of you at about upper chest level with your palms facing your body and your elbows bent. Tip: Your arms should be next to your torso. The starting position should look like the contracted portion of a dumbbell curl.",
       "Now to perform the movement, raise the dumbbells as you rotate the palms of your hands until they are facing forward.",
@@ -263,6 +354,13 @@ export const exercises = [
     "muscleGroup": "shoulders",
     "bodyRegion": "upper",
     "equipment": "barbell",
+    "primaryMuscles": [
+      "shoulders"
+    ],
+    "secondaryMuscles": [
+      "chest",
+      "triceps"
+    ],
     "instructions": [
       "Sit on a bench with back support in a squat rack. Position a barbell at a height that is just above your head. Grab the barbell with a pronated grip (palms facing forward).",
       "Once you pick up the barbell with the correct grip width, lift the bar up over your head by locking your arms. Hold at about shoulder level and slightly in front of your head. This is your starting position.",
@@ -282,6 +380,12 @@ export const exercises = [
     "muscleGroup": "shoulders",
     "bodyRegion": "upper",
     "equipment": "dumbbell",
+    "primaryMuscles": [
+      "shoulders"
+    ],
+    "secondaryMuscles": [
+      "triceps"
+    ],
     "instructions": [
       "While holding a dumbbell in each hand, sit on a military press bench or utility bench that has back support. Place the dumbbells upright on top of your thighs.",
       "Now raise the dumbbells to shoulder height one at a time using your thighs to help propel them up into position.",
@@ -302,6 +406,10 @@ export const exercises = [
     "muscleGroup": "shoulders",
     "bodyRegion": "upper",
     "equipment": "dumbbell",
+    "primaryMuscles": [
+      "shoulders"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "Pick a couple of dumbbells and stand with a straight torso and the dumbbells by your side at arms length with the palms of the hand facing you. This will be your starting position.",
       "While maintaining the torso in a stationary position (no swinging), lift the dumbbells to your side with a slight bend on the elbow and the hands slightly tilted forward as if pouring water in a glass. Continue to go up until you arms are parallel to the floor. Exhale as you execute this movement and pause for a second at the top.",
@@ -320,6 +428,10 @@ export const exercises = [
     "muscleGroup": "shoulders",
     "bodyRegion": "upper",
     "equipment": "dumbbell",
+    "primaryMuscles": [
+      "shoulders"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "Pick a couple of dumbbells and stand with a straight torso and the dumbbells on front of your thighs at arms length with the palms of the hand facing your thighs. This will be your starting position.",
       "While maintaining the torso stationary (no swinging), lift the left dumbbell to the front with a slight bend on the elbow and the palms of the hands always facing down. Continue to go up until you arm is slightly above parallel to the floor. Exhale as you execute this portion of the movement and pause for a second at the top. Inhale after the second pause.",
@@ -338,6 +450,10 @@ export const exercises = [
     "muscleGroup": "shoulders",
     "bodyRegion": "upper",
     "equipment": "dumbbell",
+    "primaryMuscles": [
+      "shoulders"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "Place a couple of dumbbells looking forward in front of a flat bench.",
       "Sit on the end of the bench with your legs together and the dumbbells behind your calves.",
@@ -358,6 +474,12 @@ export const exercises = [
     "muscleGroup": "biceps",
     "bodyRegion": "upper",
     "equipment": "barbell",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "instructions": [
       "Stand up with your torso upright while holding a barbell at a shoulder-width grip. The palm of your hands should be facing forward and the elbows should be close to the torso. This will be your starting position.",
       "While holding the upper arms stationary, curl the weights forward while contracting the biceps as you breathe out. Tip: Only the forearms should move.",
@@ -377,6 +499,10 @@ export const exercises = [
     "muscleGroup": "biceps",
     "bodyRegion": "upper",
     "equipment": "e-z curl bar",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "Stand up straight while holding an EZ curl bar at the wide outer handle. The palms of your hands should be facing forward and slightly tilted inward due to the shape of the bar. Keep your elbows close to your torso. This will be your starting position.",
       "Now, while keeping your upper arms stationary, exhale and curl the weights forward while contracting the biceps. Focus on only moving your forearms.",
@@ -396,6 +522,10 @@ export const exercises = [
     "muscleGroup": "biceps",
     "bodyRegion": "upper",
     "equipment": "dumbbell",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "Stand up with your torso upright and a dumbbell on each hand being held at arms length. The elbows should be close to the torso.",
       "The palms of the hands should be facing your torso. This will be your starting position.",
@@ -415,6 +545,10 @@ export const exercises = [
     "muscleGroup": "biceps",
     "bodyRegion": "upper",
     "equipment": "dumbbell",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "Sit back on an incline bench with a dumbbell in each hand held at arms length. Keep your elbows close to your torso and rotate the palms of your hands until they are facing forward. This will be your starting position.",
       "While holding the upper arm stationary, curl the weights forward while contracting the biceps as you breathe out. Only the forearms should move. Continue the movement until your biceps are fully contracted and the dumbbells are at shoulder level. Hold the contracted position for a second.",
@@ -433,6 +567,12 @@ export const exercises = [
     "muscleGroup": "biceps",
     "bodyRegion": "upper",
     "equipment": "dumbbell",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "instructions": [
       "Sit down on a flat bench with one dumbbell in front of you between your legs. Your legs should be spread with your knees bent and feet on the floor.",
       "Use your right arm to pick the dumbbell up. Place the back of your right upper arm on the top of your inner right thigh. Rotate the palm of your hand until it is facing forward away from your thigh. Tip: Your arm should be extended and the dumbbell should be above the floor. This will be your starting position.",
@@ -452,6 +592,10 @@ export const exercises = [
     "muscleGroup": "biceps",
     "bodyRegion": "upper",
     "equipment": "barbell",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "To perform this movement you will need a preacher bench and an E-Z bar. Grab the E-Z curl bar at the close inner handle (either have someone hand you the bar which is preferable or grab the bar from the front bar rest provided by most preacher benches). The palm of your hands should be facing forward and they should be slightly tilted inwards due to the shape of the bar.",
       "With the upper arms positioned against the preacher bench pad and the chest against it, hold the E-Z Curl Bar at shoulder length. This will be your starting position.",
@@ -471,6 +615,13 @@ export const exercises = [
     "muscleGroup": "triceps",
     "bodyRegion": "upper",
     "equipment": "barbell",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "chest",
+      "shoulders"
+    ],
     "instructions": [
       "Lie back on a flat bench. Using a close grip (around shoulder width), lift the bar from the rack and hold it straight over you with your arms locked. This will be your starting position.",
       "As you breathe in, come down slowly until you feel the bar on your middle chest. Tip: Make sure that - as opposed to a regular bench press - you keep the elbows close to the torso at all times in order to maximize triceps involvement.",
@@ -490,6 +641,12 @@ export const exercises = [
     "muscleGroup": "triceps",
     "bodyRegion": "upper",
     "equipment": "e-z curl bar",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
     "instructions": [
       "Using a close grip, lift the EZ bar and hold it with your elbows in as you lie on the bench. Your arms should be perpendicular to the floor. This will be your starting position.",
       "Keeping the upper arms stationary, lower the bar by allowing the elbows to flex. Inhale as you perform this portion of the movement. Pause once the bar is directly above the forehead.",
@@ -498,7 +655,7 @@ export const exercises = [
     ]
   },
   {
-    "id": "dips-triceps-version",
+    "id": "dips---triceps-version",
     "name": "Dips - Triceps Version",
     "video": "",
     "images": [
@@ -508,6 +665,13 @@ export const exercises = [
     "muscleGroup": "triceps",
     "bodyRegion": "upper",
     "equipment": "body only",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "chest",
+      "shoulders"
+    ],
     "instructions": [
       "To get into the starting position, hold your body at arm's length with your arms nearly locked above the bars.",
       "Now, inhale and slowly lower yourself downward. Your torso should remain upright and your elbows should stay close to your body. This helps to better focus on tricep involvement. Lower yourself until there is a 90 degree angle formed between the upper arm and forearm.",
@@ -526,6 +690,10 @@ export const exercises = [
     "muscleGroup": "triceps",
     "bodyRegion": "upper",
     "equipment": "cable",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "Attach a rope to the bottom pulley of the pulley machine.",
       "Grasping the rope with both hands, extend your arms with your hands directly above your head using a neutral grip (palms facing each other). Your elbows should be in close to your head and the arms should be perpendicular to the floor with the knuckles aimed at the ceiling. This will be your starting position.",
@@ -545,6 +713,13 @@ export const exercises = [
     "muscleGroup": "triceps",
     "bodyRegion": "upper",
     "equipment": "body only",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "chest",
+      "shoulders"
+    ],
     "instructions": [
       "For this exercise you will need to place a bench behind your back. With the bench perpendicular to your body, and while looking away from it, hold on to the bench on its edge with the hands fully extended, separated at shoulder width. The legs will be extended forward, bent at the waist and perpendicular to your torso. This will be your starting position.",
       "Slowly lower your body as you inhale by bending at the elbows until you lower yourself far enough to where there is an angle slightly smaller than 90 degrees between the upper arm and the forearm. Tip: Keep the elbows as close as possible throughout the movement. Forearms should always be pointing down.",
@@ -563,6 +738,13 @@ export const exercises = [
     "muscleGroup": "triceps",
     "bodyRegion": "upper",
     "equipment": "dumbbell",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "chest",
+      "shoulders"
+    ],
     "instructions": [
       "Lie on a flat bench while holding two dumbbells directly in front of you. Your arms should be fully extended at a 90-degree angle from your torso and the floor. The palms should be facing in and the elbows should be tucked in. This is the starting position.",
       "As you breathe in and you keep the upper arms stationary with the elbows in, slowly lower the weight until the dumbbells are near your ears.",
@@ -581,6 +763,15 @@ export const exercises = [
     "muscleGroup": "quads",
     "bodyRegion": "lower",
     "equipment": "barbell",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "calves",
+      "glutes",
+      "hamstrings",
+      "lower back"
+    ],
     "instructions": [
       "This exercise is best performed inside a squat rack for safety purposes. To begin, first set the bar on a rack to just below shoulder level. Once the correct height is chosen and the bar is loaded, step under the bar and place the back of your shoulders (slightly below the neck) across it.",
       "Hold on to the bar using both arms at each side and lift it off the rack by first pushing with your legs and at the same time straightening your torso.",
@@ -601,6 +792,15 @@ export const exercises = [
     "muscleGroup": "quads",
     "bodyRegion": "lower",
     "equipment": "barbell",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "calves",
+      "glutes",
+      "hamstrings",
+      "lower back"
+    ],
     "instructions": [
       "This exercise is best performed inside a squat rack for safety purposes. To begin, first set the bar on a rack just above shoulder level. Once the correct height is chosen and the bar is loaded, step under the bar and place the back of your shoulders (slightly below the neck) across it.",
       "Hold on to the bar using both arms at each side and lift it off the rack by first pushing with your legs and at the same time straightening your torso.",
@@ -621,6 +821,14 @@ export const exercises = [
     "muscleGroup": "quads",
     "bodyRegion": "lower",
     "equipment": "machine",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "calves",
+      "glutes",
+      "hamstrings"
+    ],
     "instructions": [
       "Using a leg press machine, sit down on the machine and place your legs on the platform directly in front of you at a medium (shoulder width) foot stance. (Note: For the purposes of this discussion we will use the medium stance described above which targets overall development; however you can choose any of the three stances described in the foot positioning section).",
       "Lower the safety bars holding the weighted platform in place and press the platform all the way up until your legs are fully extended in front of you. Tip: Make sure that you do not lock your knees. Your torso and the legs should make a perfect 90-degree angle. This will be your starting position.",
@@ -640,6 +848,10 @@ export const exercises = [
     "muscleGroup": "quads",
     "bodyRegion": "lower",
     "equipment": "machine",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "For this exercise you will need to use a leg extension machine. First choose your weight and sit on the machine with your legs under the pad (feet pointed forward) and the hands holding the side bars. This will be your starting position. Tip: You will need to adjust the pad so that it falls on top of your lower leg (just above your feet). Also, make sure that your legs form a 90-degree angle between the lower and upper leg. If the angle is less than 90-degrees then that means the knee is over the toes which in turn creates undue stress at the knee joint. If the machine is designed that way, either look for another machine or just make sure that when you start executing the exercise you stop going down once you hit the 90-degree angle.",
       "Using your quadriceps, extend your legs to the maximum as you exhale. Ensure that the rest of the body remains stationary on the seat. Pause a second on the contracted position.",
@@ -658,6 +870,14 @@ export const exercises = [
     "muscleGroup": "quads",
     "bodyRegion": "lower",
     "equipment": "barbell",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "calves",
+      "glutes",
+      "hamstrings"
+    ],
     "instructions": [
       "This exercise is best performed inside a squat rack for safety purposes. To begin, first set the bar on a rack just below shoulder level. Once the correct height is chosen and the bar is loaded, step under the bar and place the back of your shoulders (slightly below the neck) across it.",
       "Hold on to the bar using both arms at each side and lift it off the rack by first pushing with your legs and at the same time straightening your torso.",
@@ -677,6 +897,14 @@ export const exercises = [
     "muscleGroup": "quads",
     "bodyRegion": "lower",
     "equipment": "dumbbell",
+    "primaryMuscles": [
+      "quadriceps"
+    ],
+    "secondaryMuscles": [
+      "calves",
+      "glutes",
+      "hamstrings"
+    ],
     "instructions": [
       "Stand up straight while holding a dumbbell on each hand (palms facing the side of your legs).",
       "Place the right foot on the elevated platform. Step on the platform by extending the hip and the knee of your right leg. Use the heel mainly to lift the rest of your body up and place the foot of the left leg on the platform as well. Breathe out as you execute the force required to come up.",
@@ -695,6 +923,10 @@ export const exercises = [
     "muscleGroup": "hamstrings",
     "bodyRegion": "lower",
     "equipment": "machine",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "Adjust the machine lever to fit your height and lie face down on the leg curl machine with the pad of the lever on the back of your legs (just a few inches under the calves). Tip: Preferably use a leg curl machine that is angled as opposed to flat since an angled position is more favorable for hamstrings recruitment.",
       "Keeping the torso flat on the bench, ensure your legs are fully stretched and grab the side handles of the machine. Position your toes straight (or you can also use any of the other two stances described on the foot positioning section). This will be your starting position.",
@@ -713,6 +945,14 @@ export const exercises = [
     "muscleGroup": "hamstrings",
     "bodyRegion": "lower",
     "equipment": "barbell",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "calves",
+      "glutes",
+      "lower back"
+    ],
     "instructions": [
       "Put a barbell in front of you on the ground and grab it using a pronated (palms facing down) grip that a little wider than shoulder width. Tip: Depending on the weight used, you may need wrist wraps to perform the exercise and also a raised platform in order to allow for better range of motion.",
       "Bend the knees slightly and keep the shins vertical, hips back and back straight. This will be your starting position.",
@@ -732,6 +972,14 @@ export const exercises = [
     "muscleGroup": "hamstrings",
     "bodyRegion": "lower",
     "equipment": "barbell",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "abdominals",
+      "glutes",
+      "lower back"
+    ],
     "instructions": [
       "Begin with a bar on a rack at shoulder height. Rack the bar across the rear of your shoulders as you would a power squat, not on top of your shoulders. Keep your back tight, shoulder blades pinched together, and your knees slightly bent. Step back from the rack.",
       "Begin by bending at the hips, moving them back as you bend over to near parallel. Keep your back arched and your cervical spine in proper alignment.",
@@ -749,6 +997,13 @@ export const exercises = [
     "muscleGroup": "hamstrings",
     "bodyRegion": "lower",
     "equipment": "machine",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "calves",
+      "glutes"
+    ],
     "instructions": [
       "Begin by adjusting the equipment to fit your body. Place your feet against the footplate in between the rollers as you lie facedown. Your knees should be just behind the pad.",
       "Start from the bottom of the movement. Keep your back arched as you begin the movement by flexing the knees. Drive your toes into the foot plate as you do so. Keep your upper body straight, and continue until your body is upright.",
@@ -766,6 +1021,13 @@ export const exercises = [
     "muscleGroup": "hamstrings",
     "bodyRegion": "lower",
     "equipment": "barbell",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
     "instructions": [
       "Grasp a bar using an overhand grip (palms facing down). You may need some wrist wraps if using a significant amount of weight.",
       "Stand with your torso straight and your legs spaced using a shoulder width or narrower stance. The knees should be slightly bent. This is your starting position.",
@@ -785,6 +1047,13 @@ export const exercises = [
     "muscleGroup": "hamstrings",
     "bodyRegion": "lower",
     "equipment": "exercise ball",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "calves",
+      "glutes"
+    ],
     "instructions": [
       "Begin on the floor laying on your back with your feet on top of the ball.",
       "Position the ball so that when your legs are extended your ankles are on top of the ball. This will be your starting position.",
@@ -804,6 +1073,13 @@ export const exercises = [
     "muscleGroup": "glutes",
     "bodyRegion": "lower",
     "equipment": "barbell",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "calves",
+      "hamstrings"
+    ],
     "instructions": [
       "Begin seated on the ground with a bench directly behind you. Have a loaded barbell over your legs. Using a fat bar or having a pad on the bar can greatly reduce the discomfort caused by this exercise.",
       "Roll the bar so that it is directly above your hips, and lean back against the bench so that your shoulder blades are near the top of it.",
@@ -821,6 +1097,13 @@ export const exercises = [
     "muscleGroup": "glutes",
     "bodyRegion": "lower",
     "equipment": "barbell",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "calves",
+      "hamstrings"
+    ],
     "instructions": [
       "Begin seated on the ground with a loaded barbell over your legs. Using a fat bar or having a pad on the bar can greatly reduce the discomfort caused by this exercise. Roll the bar so that it is directly above your hips, and lay down flat on the floor.",
       "Begin the movement by driving through with your heels, extending your hips vertically through the bar. Your weight should be supported by your upper back and the heels of your feet.",
@@ -838,6 +1121,12 @@ export const exercises = [
     "muscleGroup": "glutes",
     "bodyRegion": "lower",
     "equipment": "body only",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings"
+    ],
     "instructions": [
       "Lie flat on the floor on your back with the hands by your side and your knees bent. Your feet should be placed around shoulder width. This will be your starting position.",
       "Pushing mainly with your heels, lift your hips off the floor while keeping your back straight. Breathe out as you perform this part of the motion and hold at the top for a second.",
@@ -855,6 +1144,12 @@ export const exercises = [
     "muscleGroup": "glutes",
     "bodyRegion": "lower",
     "equipment": "body only",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings"
+    ],
     "instructions": [
       "Kneel on the floor or an exercise mat and bend at the waist with your arms extended in front of you (perpendicular to the torso) in order to get into a kneeling push-up position but with the arms spaced at shoulder width. Your head should be looking forward and the bend of the knees should create a 90-degree angle between the hamstrings and the calves. This will be your starting position.",
       "As you exhale, lift up your right leg until the hamstrings are in line with the back while maintaining the 90-degree angle bend. Contract the glutes throughout this movement and hold the contraction at the top for a second. Tip: At the end of the movement the upper leg should be parallel to the floor while the calf should be perpendicular to it.",
@@ -873,6 +1168,12 @@ export const exercises = [
     "muscleGroup": "glutes",
     "bodyRegion": "lower",
     "equipment": "cable",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings"
+    ],
     "instructions": [
       "Hook a leather ankle cuff to a low cable pulley and then attach the cuff to your ankle.",
       "Face the weight stack from a distance of about two feet, grasping the steel frame for support.",
@@ -893,6 +1194,13 @@ export const exercises = [
     "muscleGroup": "glutes",
     "bodyRegion": "lower",
     "equipment": "cable",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "lower back"
+    ],
     "instructions": [
       "Begin standing a few feet in front of a low pulley with a rope or handle attached. Face away from the machine, straddling the cable, with your feet set wide apart.",
       "Begin the movement by reaching through your legs as far as possible, bending at the hips. Keep your knees slightly bent. Keeping your arms straight, extend through the hip to stand straight up. Avoid pulling upward through the shoulders; all of the motion should originate through the hips."
@@ -909,6 +1217,10 @@ export const exercises = [
     "muscleGroup": "calves",
     "bodyRegion": "lower",
     "equipment": "machine",
+    "primaryMuscles": [
+      "calves"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "Adjust the padded lever of the calf raise machine to fit your height.",
       "Place your shoulders under the pads provided and position your toes facing forward (or using any of the two other positions described at the beginning of the chapter). The balls of your feet should be secured on top of the calf block with the heels extending off it. Push the lever up by extending your hips and knees until your torso is standing erect. The knees should be kept with a slight bend; never locked. Toes should be facing forward, outwards or inwards as described at the beginning of the chapter. This will be your starting position.",
@@ -928,6 +1240,10 @@ export const exercises = [
     "muscleGroup": "calves",
     "bodyRegion": "lower",
     "equipment": "machine",
+    "primaryMuscles": [
+      "calves"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "Sit on the machine and place your toes on the lower portion of the platform provided with the heels extending off. Choose the toe positioning of your choice (forward, in, or out) as per the beginning of this chapter.",
       "Place your lower thighs under the lever pad, which will need to be adjusted according to the height of your thighs. Now place your hands on top of the lever pad in order to prevent it from slipping forward.",
@@ -948,6 +1264,10 @@ export const exercises = [
     "muscleGroup": "calves",
     "bodyRegion": "lower",
     "equipment": "other",
+    "primaryMuscles": [
+      "calves"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "For this exercise you will need access to a donkey calf raise machine. Start by positioning your lower back and hips under the padded lever provided. The tailbone area should be the one making contact with the pad.",
       "Place both of your arms on the side handles and place the balls of your feet on the calf block with the heels extending off. Align the toes forward, inward or outward, depending on the area you wish to target, and straighten the knees without locking them. This will be your starting position.",
@@ -967,6 +1287,10 @@ export const exercises = [
     "muscleGroup": "calves",
     "bodyRegion": "lower",
     "equipment": "machine",
+    "primaryMuscles": [
+      "calves"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "Using a leg press machine, sit down on the machine and place your legs on the platform directly in front of you at a medium (shoulder width) foot stance.",
       "Lower the safety bars holding the weighted platform in place and press the platform all the way up until your legs are fully extended in front of you without locking your knees. (Note: In some leg press units you can leave the safety bars on for increased safety. If your leg press unit allows for this, then this is the preferred method of performing the exercise.) Your torso and the legs should make perfect 90-degree angle. Now carefully place your toes and balls of your feet on the lower portion of the platform with the heels extending off. Toes should be facing forward, outwards or inwards as described at the beginning of the chapter. This will be your starting position.",
@@ -986,6 +1310,10 @@ export const exercises = [
     "muscleGroup": "calves",
     "bodyRegion": "lower",
     "equipment": "machine",
+    "primaryMuscles": [
+      "calves"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "Place a block or weight plate below the bar on the Smith machine. Set the bar to a position that best matches your height. Once the correct height is chosen and the bar is loaded, step onto the plates with the balls of your feet and place the bar on the back of your shoulders.",
       "Take the bar with both hands facing forward. Rotate the bar to unrack it. This will be your starting position.",
@@ -1005,6 +1333,10 @@ export const exercises = [
     "muscleGroup": "calves",
     "bodyRegion": "lower",
     "equipment": "dumbbell",
+    "primaryMuscles": [
+      "calves"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "Stand with your torso upright holding two dumbbells in your hands by your sides. Place the ball of the foot on a sturdy and stable wooden board (that is around 2-3 inches tall) while your heels extend off and touch the floor. This will be your starting position.",
       "With the toes pointing either straight (to hit all parts equally), inwards (for emphasis on the outer head) or outwards (for emphasis on the inner head), raise the heels off the floor as you exhale by contracting the calves. Hold the top contraction for a second.",
@@ -1023,6 +1355,10 @@ export const exercises = [
     "muscleGroup": "abs",
     "bodyRegion": "upper",
     "equipment": "cable",
+    "primaryMuscles": [
+      "abdominals"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "Kneel below a high pulley that contains a rope attachment.",
       "Grasp cable rope attachment and lower the rope until your hands are placed next to your face.",
@@ -1043,6 +1379,10 @@ export const exercises = [
     "muscleGroup": "abs",
     "bodyRegion": "upper",
     "equipment": "body only",
+    "primaryMuscles": [
+      "abdominals"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "Lie flat on your back with your feet flat on the ground, or resting on a bench with your knees bent at a 90 degree angle. If you are resting your feet on a bench, place them three to four inches apart and point your toes inward so they touch.",
       "Now place your hands lightly on either side of your head keeping your elbows in. Tip: Don't lock your fingers behind your head.",
@@ -1063,6 +1403,10 @@ export const exercises = [
     "muscleGroup": "abs",
     "bodyRegion": "upper",
     "equipment": "body only",
+    "primaryMuscles": [
+      "abdominals"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "Hang from a chin-up bar with both arms extended at arms length in top of you using either a wide grip or a medium grip. The legs should be straight down with the pelvis rolled slightly backwards. This will be your starting position.",
       "Raise your legs until the torso makes a 90-degree angle with the legs. Exhale as you perform this movement and hold the contraction for a second or so.",
@@ -1081,6 +1425,12 @@ export const exercises = [
     "muscleGroup": "abs",
     "bodyRegion": "upper",
     "equipment": "other",
+    "primaryMuscles": [
+      "abdominals"
+    ],
+    "secondaryMuscles": [
+      "shoulders"
+    ],
     "instructions": [
       "Hold the Ab Roller with both hands and kneel on the floor.",
       "Now place the ab roller on the floor in front of you so that you are on all your hands and knees (as in a kneeling push up position). This will be your starting position.",
@@ -1099,6 +1449,10 @@ export const exercises = [
     "muscleGroup": "abs",
     "bodyRegion": "upper",
     "equipment": "body only",
+    "primaryMuscles": [
+      "abdominals"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "Lie flat on the floor with your lower back pressed to the ground. For this exercise, you will need to put your hands beside your head. Be careful however to not strain with the neck as you perform it. Now lift your shoulders into the crunch position.",
       "Bring knees up to where they are perpendicular to the floor, with your lower legs parallel to the floor. This will be your starting position.",
@@ -1119,6 +1473,10 @@ export const exercises = [
     "muscleGroup": "abs",
     "bodyRegion": "upper",
     "equipment": "body only",
+    "primaryMuscles": [
+      "abdominals"
+    ],
+    "secondaryMuscles": [],
     "instructions": [
       "Secure your legs at the end of the decline bench and lie down.",
       "Now place your hands lightly on either side of your head keeping your elbows in. Tip: Don't lock your fingers behind your head.",
