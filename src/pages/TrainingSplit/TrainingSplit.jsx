@@ -70,7 +70,7 @@ export default function TrainingSplit() {
           exercises: [
             ...workoutDay.exercises,
             {
-            exerciseName: '', rowId: crypto.randomUUID(), exerciseId:'', sets: [], confirm: false, searchText: '', icon: ''
+            exerciseName: '', rowId: crypto.randomUUID(), exerciseId:'', sets: [], confirm: false, searchText: '', images:[]
           }]
         }
     }))
@@ -132,7 +132,7 @@ export default function TrainingSplit() {
             ...ex,
             exerciseName: selectedExercise.name,
             exerciseId : selectedExercise.id,
-            icon: selectedExercise.icon,
+           images: selectedExercise.images,
             confirm: true
           }
         })

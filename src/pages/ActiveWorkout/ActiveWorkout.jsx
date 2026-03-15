@@ -3,6 +3,7 @@ import { useOutletContext } from 'react-router-dom'
 import styles from './ActiveWorkout.module.css'
 import closeX from '../../assets/activeWorkout/x-close.png'
 import ActiveExerciseCard from './components/ActiveExerciseCard'
+import { EXERCISE_BASE_PREFIX } from '../../data/exercises'
 
 export default function ActiveWorkout() {
 
@@ -69,7 +70,7 @@ export default function ActiveWorkout() {
       return {
         exerciseName: ex.exerciseName,
         exerciseId: ex.exerciseId,
-        icon: ex.icon,
+        images: ex.images,
         sets: ex.sets.map((set) => {
           return {
             id: set.id,
@@ -226,7 +227,7 @@ export default function ActiveWorkout() {
                           return (
                             <div key={exer.exerciseId}>
                               <div className={styles["exercise-name-img-wrapper"]}>
-                                <img src={exer.icon} alt="" className={styles["exercise-img"]} />
+                                <img src={`${EXERCISE_BASE_PREFIX}${exer.images[0]}`} alt="" className={styles["exercise-img"]} />
                                 <div>{exer.exerciseName}</div>
                               </div>
                               {exer.sets.map((set, index) => {

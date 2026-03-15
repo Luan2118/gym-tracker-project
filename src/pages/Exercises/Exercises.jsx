@@ -32,7 +32,6 @@ export default function Exercises() {
     if (!muscleGroupList.includes(e.muscleGroup)) muscleGroupList.push(e.muscleGroup);
   })
 
-  console.log(muscleGroupList)
   return (
     <>
       <header>

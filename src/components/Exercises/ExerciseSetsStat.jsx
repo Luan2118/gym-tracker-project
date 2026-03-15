@@ -1,5 +1,6 @@
 import styles from './ExerciseSetsStat.module.css'
 import { getBestSet, getPrevSet } from '../../utils/WorkoutSetHelpers'
+import {EXERCISE_BASE_PREFIX} from '../../data/exercises'
 
 
 export default function ExerciseSetsStat({ ex, exerciseId, workoutHistory, activeExIds, lastWorkout }) {
@@ -8,7 +9,7 @@ export default function ExerciseSetsStat({ ex, exerciseId, workoutHistory, activ
   return (
     <>
       <div className={styles["active-workout-name-wrapper"]}>
-        <img src={ex.icon} alt="" className={styles["active-workout-ex-icon"]} />
+        <img src={`${EXERCISE_BASE_PREFIX}${ex.images[0]}`} alt="" className={styles["active-workout-ex-icon"]} />
         <div className={styles["active-workout-ex-name"]}>{ex.exerciseName}</div>
       </div>
 

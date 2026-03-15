@@ -1,8 +1,7 @@
 import styles from './WorkoutDayExercise.module.css'
 import plusIcon from '../../../assets/training-split/plus-icon.png'
-import deleteSetIcon from '../../../assets/training-split/deleteSet.png'
 import deleteWorkoutDayIcon from '../../../assets/training-split/delete-workout-day.png'
-import { exercises } from '../../../data/exercises'
+import { exercises, EXERCISE_BASE_PREFIX } from '../../../data/exercises'
 
 export default function WorkoutDayExercise({ addedExercise, workoutDayId, selectExerciseAgain, handleSearchExerciseText, deleteExercise, handleWeightSet, handleRepsSet, deleteSet, addSet,selectExercise }) {
   return (
@@ -11,7 +10,7 @@ export default function WorkoutDayExercise({ addedExercise, workoutDayId, select
       <div className={styles["search-exercise-input-wrapper"]}>
         {addedExercise.confirm ?
           <button type='button' className={styles["added-exercise-button"]} onClick={() => selectExerciseAgain(addedExercise.rowId, workoutDayId)}>
-            <img className={styles["added-exercise-icon"]} src={addedExercise.icon} alt="" />
+            <img className={styles["added-exercise-icon"]} src={`${EXERCISE_BASE_PREFIX}${addedExercise.images[0]}`} alt="" />
             <span className={styles["added-exercise-name"]}>{addedExercise.exerciseName}</span>
           </button> :
           <>
@@ -63,7 +62,7 @@ export default function WorkoutDayExercise({ addedExercise, workoutDayId, select
                 return (
                   <li key={exer.id} className={styles["search-exercise-list"]}>
                     <button type='button' className={styles["search-exercise-list-button"]} onClick={() => selectExercise(workoutDayId, exer.id, addedExercise.rowId)}>
-                      <img className={styles["search-exercise-icon"]} src={exer.icon} />
+                      <img className={styles["search-exercise-icon"]} src={`${EXERCISE_BASE_PREFIX}${exer.images[0]}`} />
                       <span className={styles["search-exercise-name"]}>{exer.name}</span>
                     </button>
                   </li>
