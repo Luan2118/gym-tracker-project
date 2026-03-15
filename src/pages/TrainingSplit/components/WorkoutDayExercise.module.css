@@ -12,9 +12,8 @@
 
 .search-exercise-wrapper{
   margin-top: 2rem;
-  max-width: 38.6rem;
+  max-width: 45.5rem;
 }
-
 
 .search-exercise-input-wrapper {
   display: flex;
@@ -36,7 +35,7 @@
 }
 
 .added-exercise-icon {
-  max-width: 3.5rem;
+  max-width: 12rem;
 }
 
 .added-exercise-name {
@@ -172,7 +171,7 @@
 
 .search-exercise-list-wrapper {
   background-color: rgb(37, 37, 37);
-  max-width: 31.5rem;
+  max-width: 38.5rem;
   max-height: 18rem;
   margin-top: 0.5rem;
   margin-left: 1.8rem;
@@ -219,7 +218,7 @@
 }
 
 .search-exercise-icon {
-  max-width: 4.5rem;
+  max-width: 12rem;
 }
 
 .search-exercise-name {
