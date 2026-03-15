@@ -197,13 +197,13 @@
   border-radius: 1rem;
   align-items: center;
   margin-top: 2rem;
-  max-width: 22rem;
+  max-width: 28rem;
   font-size: 1.8rem;
 }
 
 .exercise-img {
-  max-width: 5rem;
-  margin-right: 1rem;
+  max-width: 13rem;
+  margin-right: 2rem;
 }
 
 .set-wrapper {
