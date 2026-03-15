@@ -51,7 +51,7 @@ export default function Exercises() {
   }
 
   return (
-    <>
+    <div className={styles["exercise-page"]}>
       <header>
         <h1>Exercise</h1>
       </header>
@@ -80,7 +80,7 @@ export default function Exercises() {
             ''}
         </div>
 
-        <div>
+        <div className={styles["filter-exercises-wrapper"]}>
           <section className={styles["filter-input-wrapper"]}>
             <h2 className={styles["sr-only"]}>Filter</h2>
 
@@ -121,6 +121,6 @@ export default function Exercises() {
           </section>
         </div>
       </div>
-    </>
+    </div>
   )
 }

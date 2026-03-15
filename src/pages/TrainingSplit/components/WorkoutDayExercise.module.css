@@ -10,7 +10,7 @@
   border: 0;
 }
 
-.search-exercise-wrapper{
+.search-exercise-wrapper {
   margin-top: 2rem;
   max-width: 45.5rem;
 }
@@ -71,7 +71,7 @@
 }
 
 .search-exercise-delete-icon,
-.add-set-icon{
+.add-set-icon {
   max-width: 2.5rem;
 }
 
@@ -117,8 +117,8 @@
   max-width: 3rem;
   margin-left: 1rem;
   font-size: 2rem;
-  color:white; 
- text-align: center;
+  color: white;
+  text-align: center;
 }
 
 .delete-set-icon {
@@ -177,20 +177,10 @@
   margin-left: 1.8rem;
   border-radius: 1.2rem;
   overflow-y: auto;
+  scrollbar-width: 1rem;
+  scrollbar-color: #6f6f6f #222;
 }
 
-.search-exercise-list-wrapper::-webkit-scrollbar {
-  width: 0.5rem;            /* makes it smaller */
-}
-
-.search-exercise-list-wrapper::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 6px;
-}
-
-.search-exercise-list-wrapper::-webkit-scrollbar-thumb:hover {
-  background-color: #aaa;
-}
 
 
 .search-exercise-list {

@@ -10,15 +10,24 @@
   border: 0;
 }
 
+.exercise-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 
 .content-wrapper {
   display: flex;
   flex-direction: row;
   gap: 2rem;
+  flex: 1;
+  min-height: 0;
 }
 
 .main-content-wrapper {
-  flex: 1 1 auto;
+  flex: 1;
+  min-width: 0;
 }
 
 .selected-exercise-wrapper {
@@ -26,7 +35,6 @@
   background-color: rgb(41, 41, 41);
   padding: 3rem;
   border-radius: 1rem;
-
 }
 
 .selected-exercise-name {
@@ -43,7 +51,6 @@
 .selected-exercise-image {
   max-width: 50rem;
   border-radius: 1rem;
-
 }
 
 .selected-exercise-info {
@@ -99,11 +106,12 @@
 }
 
 
-
-.filter-text {
-  font-size: 3.5rem;
-  margin: 0;
+.filter-exercises-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
+
 
 .filter-input-wrapper {
   display: flex;
@@ -152,6 +160,12 @@
   border-radius: 1rem;
   padding: 2rem;
   background-color: rgb(41, 41, 41);
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  margin-bottom: 2rem;
+  scrollbar-width: 1.5rem;                
+  scrollbar-color: #6f6f6f #222;  
 }
 
 
