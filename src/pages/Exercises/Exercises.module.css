@@ -153,9 +153,9 @@
 }
 
 .exercise-list-wrapper {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
-  align-items: flex-start;
   width: auto;
   border-radius: 1rem;
   padding: 2rem;
