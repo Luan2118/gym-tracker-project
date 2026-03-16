@@ -46,9 +46,15 @@
   margin-bottom: 2rem;
 }
 
-.selected-exercise-primary-muscle,
-.selected-exercise-secondary-muscle {
+.selected-exercise-primary-muscle-label,
+.selected-exercise-secondary-muscle-label {
+  color: rgb(190, 190, 190);
   font-size: 1.9rem;
+}
+
+.selected-exercise-primary-muscle-value,
+.selected-exercise-secondary-muscle-value {
+  color: rgb(245, 245, 245);
 }
 
 .selected-exercise-image-button {
@@ -225,4 +231,39 @@
 .selected-exercise-statistics-progress-button:active,
 .selected-exercise-statistics-history-button:active {
   opacity: 0.7;
+}
+
+.clicked-statistics-button {
+  background-color: rgb(120, 120, 120);
+  color: white;
+  font-size: 1.8rem;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  margin-right: 1rem;
+}
+
+.selected-exercise-history-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+}
+
+.history-stat-card {
+  background-color: rgb(55, 55, 55);
+  border-radius: 0.75rem;
+  padding: 0rem 1rem;
+}
+
+.history-stat-label {
+  font-size: 1.5rem;
+  color: rgb(180, 180, 180);
+  margin-bottom: 0.35rem;
+}
+
+.history-stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
 }

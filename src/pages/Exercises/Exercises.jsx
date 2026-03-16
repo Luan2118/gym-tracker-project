@@ -20,6 +20,8 @@ export default function Exercises() {
   const [selectedLowerBodyEx, setSelectedLowerBodyEx] = useState(false);
   const [selectedExerciseId, setSelectedExerciseId] = useState('');
   const [clickedExImg, setClickedExImg] = useState(false);
+  const [progressClicked, setProgressClicked] = useState(true);
+  const [historyClicked, setHistoryClicked] = useState(false);
 
   const selectedExercise = selectedExerciseId ? exercises.find((ex) => ex.id === selectedExerciseId) : '';
 
@@ -54,7 +56,6 @@ export default function Exercises() {
     setSelectedExerciseId(exerciseId)
   }
 
-  console.log(workoutHistory)
 
   const filteredWorkouts = workoutHistory.filter(workout =>
     workout.exercises.some(ex => ex.exerciseId === selectedExerciseId)
@@ -76,9 +77,33 @@ export default function Exercises() {
     ],
   };
 
+  function handleProgressBtn() {
+    setProgressClicked(true);
+    setHistoryClicked(false);
+  }
 
+  function handleHistoryBtn() {
+    setProgressClicked(false);
+    setHistoryClicked(true);
+  }
 
+  const bestSets = filteredWorkouts.map((w) => {
+    const exercises = w.exercises.find((ex) => ex.exerciseId === selectedExerciseId)
 
+    const result = exercises.sets.reduce((best, current) => {
+      if (current.weight > best.weight) return current;
+      if (current.weight === best.weight && current.reps > best.reps) return current;
+      return best;
+    }, exercises.sets[0]);
+
+    return result
+  })
+
+  const latestBestSet = bestSets.at(-1);
+
+  const firstLoggedSet = [...filteredWorkouts].sort((a, b) => new Date(a.date) - new Date(b.date))[0]?.exercises.find((ex) => ex.exerciseId === selectedExerciseId).sets[0]
+
+  const latestSet = [...filteredWorkouts].sort((a, b) => new Date(b.date) - new Date(a.date))[0]?.exercises.find((ex) => ex.exerciseId === selectedExerciseId).sets[0]
 
   // {
   //   labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -102,11 +127,13 @@ export default function Exercises() {
               <div className={styles["selected-exercise-wrapper"]}>
                 <div className={styles["selected-exercise-info"]}>
                   <div className={styles["selected-exercise-name"]}>{selectedExercise.name}</div>
-                  <div className={styles["selected-exercise-primary-muscle"]}> Primary Muscle: {primaryMuscle}</div>
+                  <div>
+                     <span className={styles["selected-exercise-primary-muscle-label"]}>Primary Muscle: </span> 
+                     <span className={styles["selected-exercise-primary-muscle-value"]}>{primaryMuscle}</span></div>
                   {secondaryMuscles.length > 0 ?
-                    <div className={styles["selected-exercise-secondary-muscle"]}>
-                      Secondary Muscles:{' '}
-                      {secondaryMuscles.join(', ')}
+                    <div>
+                      <span className={styles["selected-exercise-secondary-muscle-label"]}>Secondary Muscles:{' '}</span>
+                      <span className={styles["selected-exercise-secondary-muscle-value"]}>{secondaryMuscles.join(', ')}</span>
                     </div> :
                     ''
                   }
@@ -121,15 +148,51 @@ export default function Exercises() {
 
               <div className={styles["selected-exercise-statistics-wrapper"]}>
                 <div>
-                  <button className={styles["selected-exercise-statistics-progress-button"]}>Progress</button>
-                  <button className={styles["selected-exercise-statistics-history-button"]}>History</button>
+                  <button className={progressClicked ? styles["clicked-statistics-button"] : styles["selected-exercise-statistics-progress-button"]} onClick={handleProgressBtn}>Progress</button>
+                  <button className={historyClicked ? styles["clicked-statistics-button"] : styles["selected-exercise-statistics-history-button"]} onClick={handleHistoryBtn}>History</button>
                 </div>
 
                 <hr className={styles["selected-exercise-statistics-hr"]} />
 
-                <Line
-                  data={data}
-                />
+                {progressClicked ?
+                  <Line
+                    data={data}
+                  /> :
+                  <div className={styles["selected-exercise-history-wrapper"]}>
+                    {latestSet && (
+                      <div className={styles["history-stat-card"]}>
+                        <p className={styles["history-stat-label"]}>Latest Set</p>
+                        <p className={styles["history-stat-value"]}>
+                          {latestSet.weight} x {latestSet.reps}
+                        </p>
+                      </div>
+                    )}
+
+                    {latestBestSet && (
+                      <div className={styles["history-stat-card"]}>
+                        <p className={styles["history-stat-label"]}>Best Set</p>
+                        <p className={styles["history-stat-value"]}>
+                          {latestBestSet.weight} x {latestBestSet.reps}
+                        </p>
+                      </div>
+                    )}
+
+                    {firstLoggedSet && (
+                      <div className={styles["history-stat-card"]}>
+                        <p className={styles["history-stat-label"]}>First Set</p>
+                        <p className={styles["history-stat-value"]}>
+                          {firstLoggedSet.weight} x {firstLoggedSet.reps}
+                        </p>
+                      </div>
+                    )}
+
+                    <div className={styles["history-stat-card"]}>
+                      <p className={styles["history-stat-label"]}>Workouts</p>
+                      <p className={styles["history-stat-value"]}>{filteredWorkouts?.length}</p>
+                    </div>
+                  </div>
+                }
+
               </div>
             </>
             :
