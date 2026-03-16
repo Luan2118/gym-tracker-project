@@ -12,6 +12,7 @@ export default function Exercises() {
   const [selectedUpperBodyEx, setSelectedUpperBodyEx] = useState(false);
   const [selectedLowerBodyEx, setSelectedLowerBodyEx] = useState(false);
   const [selectedExerciseId, setSelectedExerciseId] = useState('');
+  const [clickedExImg, setClickedExImg] = useState(false);
 
   const selectedExercise = selectedExerciseId ? exercises.find((ex) => ex.id === selectedExerciseId) : '';
 
@@ -50,6 +51,7 @@ export default function Exercises() {
     setSelectedExerciseId(exerciseId)
   }
 
+
   return (
     <div className={styles["exercise-page"]}>
       <header>
@@ -74,7 +76,9 @@ export default function Exercises() {
               </div>
               <div>
 
-                <img src={`${EXERCISE_BASE_PREFIX}${selectedExercise.images[0]}`} alt={selectedExercise.name} className={styles["selected-exercise-image"]} />
+                <button onClick={() => setClickedExImg((prev) => !prev)} className={styles["selected-exercise-image-button"]}>
+                  <img src={`${EXERCISE_BASE_PREFIX}${clickedExImg ? selectedExercise.images[0] : selectedExercise.images[1]}`} alt={selectedExercise.name} className={styles["selected-exercise-image"]} />
+                </button>
               </div>
             </div> :
             ''}

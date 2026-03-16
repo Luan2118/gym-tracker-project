@@ -48,6 +48,16 @@
   font-size: 1.9rem;
 }
 
+.selected-exercise-image-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
 .selected-exercise-image {
   max-width: 50rem;
   border-radius: 1rem;
@@ -164,8 +174,8 @@
   min-height: 0;
   overflow-y: auto;
   margin-bottom: 2rem;
-  scrollbar-width: 1.5rem;                
-  scrollbar-color: #6f6f6f #222;  
+  scrollbar-width: 1.5rem;
+  scrollbar-color: #6f6f6f #222;
 }
 
 
