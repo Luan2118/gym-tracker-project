@@ -1,6 +1,6 @@
 import styles from './WorkoutHistoryItem.module.css'
 import arrowDown from '../../../assets/workout-history/arrow-down.png'
-import arrowUp from '../../../assets/workout-history/arrow-up.png'
+import formatISODate from '../../../utils/formatISODate';
 import { useState } from 'react';
 import ExerciseSetsStat from '../../../components/Exercises/ExerciseSetsStat';
 
@@ -40,7 +40,7 @@ export default function WorkoutHistoryItem({ workoutHistory, filteredWorkoutHist
               <span className={styles["workout-history-item-workout-day-text"]}>Workout Day: {workout.workoutDay}</span>
 
               <hr className={styles["verticalLine"]} />
-              <span className={styles["workout-history-item-day-text"]}>Date: {workout.date}</span>
+              <span className={styles["workout-history-item-day-text"]}>Date: {formatISODate(workout.date)}</span>
             </span>
 
             <img src={arrowDown} alt="" className={workout.id === selectedWorkoutHisId ?styles["arrow-up-icon"] : styles["arrow-down-icon"]} />
