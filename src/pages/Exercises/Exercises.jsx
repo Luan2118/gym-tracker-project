@@ -3,6 +3,10 @@ import styles from './Exercises.module.css'
 import searchIcon from '../../assets/searchIcon.png'
 import { exercises, EXERCISE_BASE_PREFIX } from '../../data/exercises'
 import { useState } from 'react'
+import { Line } from 'react-chartjs-2';
+import { Chart as ChartJS, LineElement, PointElement, CategoryScale, LinearScale, Title} from 'chart.js';
+
+ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale, Title);
 
 
 export default function Exercises() {
@@ -25,7 +29,6 @@ export default function Exercises() {
       return muscle.charAt(0).toUpperCase() + muscle.slice(1)
     }) : ''
 
-  console.log(selectedExercise.primaryMuscles)
 
   const filteredExercises =
     searchText ? exercises.filter((ex) => ex.name.toLowerCase().includes(searchText)) :
@@ -43,14 +46,10 @@ export default function Exercises() {
 
   const muscleGroupList = [];
 
-  const filteredMuscleGroupEx = exercises.forEach((e) => {
-    if (!muscleGroupList.includes(e.muscleGroup)) muscleGroupList.push(e.muscleGroup);
-  })
 
   function handleSelectExercise(exerciseId) {
     setSelectedExerciseId(exerciseId)
   }
-
 
   return (
     <div className={styles["exercise-page"]}>
@@ -62,26 +61,49 @@ export default function Exercises() {
 
         <div className={styles["main-content-wrapper"]}>
           {selectedExerciseId ?
-            <div className={styles["selected-exercise-wrapper"]}>
-              <div className={styles["selected-exercise-info"]}>
-                <div className={styles["selected-exercise-name"]}>{selectedExercise.name}</div>
-                <div className={styles["selected-exercise-primary-muscle"]}> Primary Muscle: {primaryMuscle}</div>
-                {secondaryMuscles.length > 0 ?
-                  <div className={styles["selected-exercise-secondary-muscle"]}>
-                    Secondary Muscles:{' '}
-                    {secondaryMuscles.join(', ')}
-                  </div> :
-                  ''
-                }
-              </div>
-              <div>
+            <>
+              <div className={styles["selected-exercise-wrapper"]}>
+                <div className={styles["selected-exercise-info"]}>
+                  <div className={styles["selected-exercise-name"]}>{selectedExercise.name}</div>
+                  <div className={styles["selected-exercise-primary-muscle"]}> Primary Muscle: {primaryMuscle}</div>
+                  {secondaryMuscles.length > 0 ?
+                    <div className={styles["selected-exercise-secondary-muscle"]}>
+                      Secondary Muscles:{' '}
+                      {secondaryMuscles.join(', ')}
+                    </div> :
+                    ''
+                  }
+                </div>
+                <div>
 
-                <button onClick={() => setClickedExImg((prev) => !prev)} className={styles["selected-exercise-image-button"]}>
-                  <img src={`${EXERCISE_BASE_PREFIX}${clickedExImg ? selectedExercise.images[0] : selectedExercise.images[1]}`} alt={selectedExercise.name} className={styles["selected-exercise-image"]} />
-                </button>
+                  <button onClick={() => setClickedExImg((prev) => !prev)} className={styles["selected-exercise-image-button"]}>
+                    <img src={`${EXERCISE_BASE_PREFIX}${clickedExImg ? selectedExercise.images[0] : selectedExercise.images[1]}`} alt={selectedExercise.name} className={styles["selected-exercise-image"]} />
+                  </button>
+                </div>
               </div>
-            </div> :
+
+              <div className={styles["selected-exercise-statistics-wrapper"]}>
+                <div>
+                  <button className={styles["selected-exercise-statistics-progress-button"]}>Progress</button>
+                  <button className={styles["selected-exercise-statistics-history-button"]}>History</button>
+                </div>
+
+                <hr className={styles["selected-exercise-statistics-hr"]} />
+                
+                  <Line
+                    data={{
+                      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                      datasets: [{
+                        label: '# of Votes',
+                        data: [12, 19, 3, 5, 2, 3],
+                      }]
+                    }}
+                  />
+              </div>
+            </>
+            :
             ''}
+
         </div>
 
         <div className={styles["filter-exercises-wrapper"]}>
