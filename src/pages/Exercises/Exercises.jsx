@@ -128,8 +128,8 @@ export default function Exercises() {
                 <div className={styles["selected-exercise-info"]}>
                   <div className={styles["selected-exercise-name"]}>{selectedExercise.name}</div>
                   <div>
-                     <span className={styles["selected-exercise-primary-muscle-label"]}>Primary Muscle: </span> 
-                     <span className={styles["selected-exercise-primary-muscle-value"]}>{primaryMuscle}</span></div>
+                    <span className={styles["selected-exercise-primary-muscle-label"]}>Primary Muscle: </span>
+                    <span className={styles["selected-exercise-primary-muscle-value"]}>{primaryMuscle}</span></div>
                   {secondaryMuscles.length > 0 ?
                     <div>
                       <span className={styles["selected-exercise-secondary-muscle-label"]}>Secondary Muscles:{' '}</span>
@@ -186,10 +186,12 @@ export default function Exercises() {
                       </div>
                     )}
 
-                    <div className={styles["history-stat-card"]}>
-                      <p className={styles["history-stat-label"]}>Workouts</p>
-                      <p className={styles["history-stat-value"]}>{filteredWorkouts?.length}</p>
-                    </div>
+                    {filteredWorkouts.length > 0 &&
+                      <div className={styles["history-stat-card"]}>
+                        <p className={styles["history-stat-label"]}>Workouts</p>
+                        <p className={styles["history-stat-value"]}>{filteredWorkouts?.length}</p>
+                      </div>
+                    }
                   </div>
                 }
 
