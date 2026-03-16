@@ -4,13 +4,16 @@ import searchIcon from '../../assets/searchIcon.png'
 import { exercises, EXERCISE_BASE_PREFIX } from '../../data/exercises'
 import { useState } from 'react'
 import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS, LineElement, PointElement, CategoryScale, LinearScale, Title} from 'chart.js';
+import { Chart as ChartJS, LineElement, PointElement, CategoryScale, LinearScale, Title } from 'chart.js';
+import formatISODate from '../../utils/formatISODate'
+import { useOutletContext } from 'react-router-dom'
 
 ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale, Title);
 
 
 export default function Exercises() {
 
+  const { workoutHistory } = useOutletContext();
   const [searchText, setSearchText] = useState('');
   const [selectedMuscleOption, setSelectedMuscleOption] = useState('');
   const [selectedUpperBodyEx, setSelectedUpperBodyEx] = useState(false);
@@ -51,6 +54,40 @@ export default function Exercises() {
     setSelectedExerciseId(exerciseId)
   }
 
+  console.log(workoutHistory)
+
+  const filteredWorkouts = workoutHistory.filter(workout =>
+    workout.exercises.some(ex => ex.exerciseId === selectedExerciseId)
+  );
+
+  const data = {
+    labels: filteredWorkouts.map(workout => formatISODate(workout.date)),
+    datasets: [
+      {
+        label: 'Heaviest Weight',
+        data: filteredWorkouts.map(workout => {
+          const exercise = workout.exercises.find(
+            ex => ex.exerciseId === selectedExerciseId
+          );
+
+          return Math.max(...exercise.sets.map(set => set.weight));
+        }),
+      },
+    ],
+  };
+
+
+
+
+
+  // {
+  //   labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  //     datasets: [{
+  //       label: '# of Votes',
+  //       data: [12, 19, 3, 5, 2, 3],
+  //     }]
+  // }
+
   return (
     <div className={styles["exercise-page"]}>
       <header>
@@ -89,16 +126,10 @@ export default function Exercises() {
                 </div>
 
                 <hr className={styles["selected-exercise-statistics-hr"]} />
-                
-                  <Line
-                    data={{
-                      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                      datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
-                      }]
-                    }}
-                  />
+
+                <Line
+                  data={data}
+                />
               </div>
             </>
             :
