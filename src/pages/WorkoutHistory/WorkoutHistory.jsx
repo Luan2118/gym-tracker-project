@@ -9,11 +9,25 @@ export default function WorkoutHistory() {
   const [selectedSplitName, setSelectedSplitName] = useState('');
   const [selectedWorkoutDayName, setSelectedWorkoutDayName] = useState('');
   const [selectedSort, setSelectedSort] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+
 
   const sortedWorkoutHistory = [...workoutHistory].sort((a, b) => { return new Date(b.date) - new Date(a.date) })
   const trainingSplitOptions = [];
 
   const [filteredWorkoutHistory, setFilteredWorkoutHistory] = useState(sortedWorkoutHistory);
+
+  const itemsPerPage = 10;
+
+  const totalPages = Math.max(1, Math.ceil(filteredWorkoutHistory.length / itemsPerPage))
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage
+
+  const paginatedFilteredWorkoutHistory = filteredWorkoutHistory.slice(startIndex, endIndex)
+
+  const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+
 
   workoutHistory.forEach((w) => {
     if (!trainingSplitOptions.some((split) => split.trainingSplitName === w.trainingSplitName)) {
@@ -64,9 +78,9 @@ export default function WorkoutHistory() {
       if (selectedSort === 'newest') sortedWorkoutHistory.sort((a, b) => { return new Date(b.date) - new Date(a.date) })
 
       if (selectedSort === 'oldest') sortedWorkoutHistory.sort((a, b) => { return new Date(a.date) - new Date(b.date) })
-      
-      setFilteredWorkoutHistory(sortedWorkoutHistory)
 
+      setFilteredWorkoutHistory(sortedWorkoutHistory)
+      setCurrentPage(1);
       return;
     }
 
@@ -75,6 +89,8 @@ export default function WorkoutHistory() {
     if (selectedSort === 'oldest') result.sort((a, b) => { return new Date(a.date) - new Date(b.date) })
 
     setFilteredWorkoutHistory(result)
+    setCurrentPage(1);
+
   }
 
   function clearFilters() {
@@ -82,6 +98,7 @@ export default function WorkoutHistory() {
     setSelectedSplitName('');
     setSelectedWorkoutDayName('');
     setFilteredWorkoutHistory(sortedWorkoutHistory)
+    setCurrentPage(1);
   }
   return (
     <>
@@ -128,10 +145,34 @@ export default function WorkoutHistory() {
         <div className={styles["content-main"]}>
           {
             filteredWorkoutHistory.length > 0 ?
-              <WorkoutHistoryItem
-                workoutHistory={workoutHistory}
-                filteredWorkoutHistory={filteredWorkoutHistory}
-              /> :
+              <>
+                <WorkoutHistoryItem
+                  workoutHistory={workoutHistory}
+                  filteredWorkoutHistory={paginatedFilteredWorkoutHistory}
+                />
+                <div className={styles["pagination-wrapper"]}>
+                  <button type="button" className={styles["pagination-button"]} onClick={() => setCurrentPage((prev) => prev - 1)} disabled={currentPage === 1}>Prev</button>
+
+                  {pageNumbers.map((page) => (
+                    <button
+                      key={page}
+                      type="button"
+                      className={
+                        currentPage === page
+                          ? styles["active-page-button"]
+                          : styles["page-button"]
+                      }
+                      onClick={() => setCurrentPage(page)}
+                    >
+                      {page}
+                    </button>
+                  ))}
+
+                  <button type="button" className={styles["pagination-button"]} onClick={() => setCurrentPage((prev) => prev + 1)} disabled={currentPage === totalPages}>Next</button>
+                </div>
+              </>
+
+              :
               <div>No matched workouts</div>
           }
         </div>
