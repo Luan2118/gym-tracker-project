@@ -94,7 +94,9 @@ export default function BodyWeight() {
     setCurrentPage(1);
   }
 
-
+  function deleteBodyWeight(id) {
+    setBodyWeights((prev) => prev.filter((bw) => bw.id !== id))
+  }
   return (
     <>
       <header>
@@ -130,7 +132,7 @@ export default function BodyWeight() {
           </section>
 
           <ul >
-            <BodyWeightList bodyWeights={paginatedBodyWeights} />
+            <BodyWeightList bodyWeights={paginatedBodyWeights} deleteBodyWeight={deleteBodyWeight}/>
           </ul>
 
           <div className={styles["pagination-wrapper"]}>

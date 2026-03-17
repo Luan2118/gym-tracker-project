@@ -1,7 +1,7 @@
 import styles from './BodyWeightItem.module.css'
 import formatISODate from '../../../utils/formatISODate'
 
-export default function BodyWeightItem({bodyWeights}) {
+export default function BodyWeightItem({bodyWeights, deleteBodyWeight}) {
   return (
     <>
       {bodyWeights.map((bodyweight) => {
@@ -22,7 +22,7 @@ export default function BodyWeightItem({bodyWeights}) {
 
             <div>
               <button type='button' className={styles['body-weight-edit-button']}>Edit</button>
-              <button type='button' className={styles['body-weight-delete-button']}>Delete</button>
+              <button type='button' className={styles['body-weight-delete-button']} onClick={() => deleteBodyWeight(bodyweight.id)}>Delete</button>
             </div>
           </li>
         )

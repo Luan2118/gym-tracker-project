@@ -1,11 +1,11 @@
 import BodyWeightItem from "./BodyWeightItem"
 
 
-export default function BodyWeightList({bodyWeights}) {
+export default function BodyWeightList({bodyWeights, deleteBodyWeight}) {
 
   
 
   return (
-    <BodyWeightItem bodyWeights={bodyWeights}/>
+    <BodyWeightItem bodyWeights={bodyWeights} deleteBodyWeight={deleteBodyWeight}/>
   )
 }
