@@ -22,6 +22,8 @@ export default function BodyWeight() {
   const [filter, setFilter] = useState(null);
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
+  const [editBodyWeightId, setEditBodyWeightId] = useState(null);
+  const [editBodyWeightInputText, setEditBodyWeightInputText] = useState('');
 
   useEffect(() => {
     localStorage.setItem('bodyWeights', JSON.stringify(bodyWeights))
@@ -97,6 +99,31 @@ export default function BodyWeight() {
   function deleteBodyWeight(id) {
     setBodyWeights((prev) => prev.filter((bw) => bw.id !== id))
   }
+
+  function handleEditBodyWeight(id) {
+    setEditBodyWeightId(id);
+  }
+
+  function handleEditBwInput(e) {
+    setEditBodyWeightInputText(e.target.value)
+  }
+
+  function handleSaveBodyWeight() {
+    setBodyWeights((prev) => 
+      prev.map((bw) => {
+      if (bw.id !== editBodyWeightId ) return bw;
+
+      return {
+        ...bw,
+        bw : editBodyWeightInputText
+      }
+    })
+    )
+    setEditBodyWeightId(null);
+    setEditBodyWeightInputText('');
+  }
+
+  console.log(bodyWeights)
   return (
     <>
       <header>
@@ -132,7 +159,7 @@ export default function BodyWeight() {
           </section>
 
           <ul >
-            <BodyWeightList bodyWeights={paginatedBodyWeights} deleteBodyWeight={deleteBodyWeight}/>
+            <BodyWeightList bodyWeights={paginatedBodyWeights} deleteBodyWeight={deleteBodyWeight} handleEditBodyWeight={handleEditBodyWeight} editBodyWeightId={editBodyWeightId} handleSaveBodyWeight={handleSaveBodyWeight} handleEditBwInput={handleEditBwInput} editBodyWeightInputText={editBodyWeightInputText}/>
           </ul>
 
           <div className={styles["pagination-wrapper"]}>
@@ -162,7 +189,7 @@ export default function BodyWeight() {
 
           <div className={styles["weight-input-wrapper"]}>
             <label htmlFor="body-weight" className={styles["weight-input-label"]}>Weight: </label>
-            <input type="text" id="body-weight" className={styles["weight-input"]} value={bodyWeightInputText} onChange={(e) => setBodyWeightInputText(e.target.value)} />
+            <input type="number" id="body-weight" className={styles["weight-input"]} value={bodyWeightInputText} onChange={(e) => setBodyWeightInputText(e.target.value)} />
           </div>
 
           <button className={styles["add-weight-button"]} onClick={addBodyWeight}>Add Weight</button>

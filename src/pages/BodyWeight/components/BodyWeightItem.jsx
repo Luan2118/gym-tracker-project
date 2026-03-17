@@ -1,7 +1,7 @@
 import styles from './BodyWeightItem.module.css'
 import formatISODate from '../../../utils/formatISODate'
 
-export default function BodyWeightItem({bodyWeights, deleteBodyWeight}) {
+export default function BodyWeightItem({ bodyWeights, deleteBodyWeight, handleEditBodyWeight, editBodyWeightId, handleEditBwInput, bodyWeighteditBodyWeightInputTextInput, handleSaveBodyWeight }) {
   return (
     <>
       {bodyWeights.map((bodyweight) => {
@@ -15,13 +15,24 @@ export default function BodyWeightItem({bodyWeights, deleteBodyWeight}) {
               <span className={styles['seperator']}>
                 :
               </span>
-              <div className={styles['body-weight']}>
-                {bodyweight.bw} kg
-              </div>
+              {editBodyWeightId === bodyweight.id ?
+                <div  >
+                  <label htmlFor="edit-body-weight"></label>
+                  <input id="edit-body-weight" type="number" className={styles['edit-body-weight']}  onChange={handleEditBwInput} value={editBodyWeightInputText}/>
+                </div> :
+
+                <div className={styles['body-weight']}>
+                  {bodyweight.bw} kg
+                </div>
+              }
+
             </div>
 
             <div>
-              <button type='button' className={styles['body-weight-edit-button']}>Edit</button>
+              {editBodyWeightId === bodyweight.id ?
+                <button type='button' className={styles['body-weight-save-button']} onClick={handleSaveBodyWeight}>Save</button> :
+                <button type='button' className={styles['body-weight-edit-button']} onClick={() => handleEditBodyWeight(bodyweight.id)}>Edit</button>
+              }
               <button type='button' className={styles['body-weight-delete-button']} onClick={() => deleteBodyWeight(bodyweight.id)}>Delete</button>
             </div>
           </li>

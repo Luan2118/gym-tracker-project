@@ -41,16 +41,45 @@
   margin-left: 1rem;
   cursor: pointer;
 }
+
 .body-weight-delete-button {
   background-color: rgb(201, 59, 59);
 }
 
 .body-weight-edit-button:hover,
-.body-weight-delete-button:hover {
-  opacity: 0.8
+.body-weight-delete-button:hover,
+.body-weight-save-button:hover {
+  opacity: 0.8;
 }
 
 .body-weight-edit-button:active,
-.body-weight-delete-button:active {
-  opacity: 0.8
+.body-weight-delete-button:active,
+.body-weight-save-button:active {
+  opacity: 0.7;
+}
+
+.body-weight-save-button {
+  background-color: rgb(46, 160, 67);
+  color: white;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+
+.edit-body-weight {
+  font-size: 2.7rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  margin-left: 0.5rem;
+  border: none;
+}
+
+.body-weight,
+.edit-body-weight {
+  max-width: 13rem;
+  box-sizing: border-box;
 }
