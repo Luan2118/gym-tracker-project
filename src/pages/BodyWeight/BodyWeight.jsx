@@ -22,9 +22,7 @@ export default function BodyWeight() {
   const [filter, setFilter] = useState(null);
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
-  
-  console.log(bodyWeights)
-  
+
   useEffect(() => {
     localStorage.setItem('bodyWeights', JSON.stringify(bodyWeights))
   }, [bodyWeights])
@@ -48,6 +46,19 @@ export default function BodyWeight() {
             filter === 'customDate' ? customDate :
               sortedByDateBodyWeights
 
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const itemsPerPage = 10;
+  const totalPages = Math.max(1, Math.ceil(visibleBodyWeights.length / itemsPerPage));
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  const paginatedBodyWeights = visibleBodyWeights.slice(startIndex, endIndex);
+
+  const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+
   useEffect(() => {
     if (feedback !== 'added') return;
 
@@ -67,18 +78,22 @@ export default function BodyWeight() {
     })
 
     setFeedback('added')
+    setCurrentPage(1);
   }
 
   function handleCustomDate(e) {
     setDateTo(e.target.value);
     setFilter('customDate')
+    setCurrentPage(1);
   }
 
   function applyPreset(preset) {
     setFilter(preset);
     setDateFrom('');
     setDateTo('')
+    setCurrentPage(1);
   }
+
 
   return (
     <>
@@ -116,8 +131,29 @@ export default function BodyWeight() {
           </section>
 
           <ul >
-            <BodyWeightList bodyWeights={visibleBodyWeights} />
+            <BodyWeightList bodyWeights={paginatedBodyWeights} />
           </ul>
+
+          <div className={styles["pagination-wrapper"]}>
+            <button type="button" className={styles["pagination-button"]} onClick={() => setCurrentPage((prev) => prev - 1)} disabled={currentPage === 1}>Prev</button>
+
+            {pageNumbers.map((page) => (
+              <button
+                key={page}
+                type="button"
+                className={
+                  currentPage === page
+                    ? styles["active-page-button"]
+                    : styles["page-button"]
+                }
+                onClick={() => setCurrentPage(page)}
+              >
+                {page}
+              </button>
+            ))}
+
+            <button type="button" className={styles["pagination-button"]} onClick={() => setCurrentPage((prev) => prev + 1)} disabled={currentPage === totalPages}>Next</button>
+          </div>
         </div>
 
 

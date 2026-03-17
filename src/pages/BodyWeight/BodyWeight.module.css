@@ -165,3 +165,44 @@ h2 {
   margin-right: 3rem;
   cursor: pointer;
 }
+
+.pagination-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.pagination-button,
+.page-button,
+.active-page-button {
+  border: 1px solid rgb(74, 74, 74);
+  background-color: rgb(31, 31, 31);
+  color: rgb(232, 232, 232);
+  padding: 0.45rem 0.8rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  font: inherit;
+}
+
+.pagination-button:hover,
+.page-button:hover {
+  background-color: rgb(42, 42, 42);
+  border-color: rgb(102, 102, 102);
+}
+
+.active-page-button {
+  background-color: rgb(58, 58, 58);
+  border-color: rgb(138, 138, 138);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+
+.pagination-button:disabled,
+.page-button:disabled,
+.active-page-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
