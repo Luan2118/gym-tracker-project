@@ -105,7 +105,6 @@ export default function BodyWeight() {
       <div className={styles["content-wrapper"]}>
         <div className={styles["content-main-wrapper"]}>
           <section className={styles["filter-section-wrapper"]}>
-            <h2>Filter</h2>
             <fieldset className={styles["fieldset-wrapper"]}>
               <legend className={styles["legend-text"]}>Date:</legend>
 
