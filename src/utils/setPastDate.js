@@ -2,5 +2,5 @@ export default function setPastDate(number) {
   const today = new Date();
 
 
-  return new Date((new Date().setDate(today.getDate() - number)));
+  return new Date((new Date().setDate(today.getDate() - number))).toISOString();
 }

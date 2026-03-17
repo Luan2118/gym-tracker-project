@@ -1,67 +1,42 @@
 import styles from './BodyWeight.module.css'
 import BodyWeightList from './components/BodyWeightList'
-import formatDate from '../../utils/formatDate';
 import setPastDate from '../../utils/setPastDate';
 import { useEffect, useState } from 'react';
 
 export default function BodyWeight() {
 
-  const today = new Date();
-  const formattedToday = formatDate(today);
-  const lastWeekDate = formatDate(setPastDate(7));
-  const lastTwoWeeksDate = formatDate(setPastDate(14));
-  const lastMonthDate = formatDate(setPastDate(30));
-  const lastTwoMonthsDate = formatDate(setPastDate(60));
+  const today = new Date().toISOString();
+  const lastWeekDate = setPastDate(7);
+  const lastTwoWeeksDate = setPastDate(14);
+  const lastMonthDate = setPastDate(30);
+  const lastTwoMonthsDate = setPastDate(60);
 
-  const initialBodyWeightData = [
-    // february
-    { bw: '83.6', id: crypto.randomUUID(), date: '2026-02-14' },
-    { bw: '83.2', id: crypto.randomUUID(), date: '2026-02-12' },
-    { bw: '82.9', id: crypto.randomUUID(), date: '2026-02-10' },
+  const [bodyWeights, setBodyWeights] = useState(() => {
+    const stored = localStorage.getItem('bodyWeights');
 
-    // --- last week 
-    { bw: '75.9', id: crypto.randomUUID(), date: '2026-01-17' },
-    { bw: '75.7', id: crypto.randomUUID(), date: '2026-01-15' },
-    { bw: '75.6', id: crypto.randomUUID(), date: '2026-01-13' },
-    { bw: '75.4', id: crypto.randomUUID(), date: '2026-01-11' },
-    { bw: '75.3', id: crypto.randomUUID(), date: '2026-01-10' },
+    return stored ? JSON.parse(stored) : [];
+  });
 
-    // --- last 2 weeks 
-    { bw: '75.2', id: crypto.randomUUID(), date: '2026-01-08' },
-    { bw: '75.0', id: crypto.randomUUID(), date: '2026-01-06' },
-    { bw: '74.9', id: crypto.randomUUID(), date: '2026-01-04' },
-    { bw: '74.8', id: crypto.randomUUID(), date: '2026-01-03' },
-
-    // --- last month 
-    { bw: '74.6', id: crypto.randomUUID(), date: '2025-12-30' },
-    { bw: '74.4', id: crypto.randomUUID(), date: '2025-12-24' },
-    { bw: '74.2', id: crypto.randomUUID(), date: '2025-12-18' },
-
-    // --- last 2 months 
-    { bw: '73.9', id: crypto.randomUUID(), date: '2025-12-10' },
-    { bw: '73.6', id: crypto.randomUUID(), date: '2025-11-28' },
-    { bw: '73.3', id: crypto.randomUUID(), date: '2025-11-18' },
-  ];
-
-  const string = "hello"
-  const num = 5;
-
-
-  const [bodyWeights, setBodyWeights] = useState(initialBodyWeightData);
   const [bodyWeightInputText, setBodyWeightInputText] = useState('');
   const [feedback, setFeedback] = useState(null)
   const [filter, setFilter] = useState(null);
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
+  
+  console.log(bodyWeights)
+  
+  useEffect(() => {
+    localStorage.setItem('bodyWeights', JSON.stringify(bodyWeights))
+  }, [bodyWeights])
 
   const sortedByDateBodyWeights = [...bodyWeights].sort((a, b) => {
     return new Date(b.date) - new Date(a.date)
   })
 
-  const lastWeek = sortedByDateBodyWeights.filter((bw) => formattedToday > bw.date && lastWeekDate <= bw.date)
-  const lastTwoWeeks = sortedByDateBodyWeights.filter((bw) => formattedToday > bw.date && lastTwoWeeksDate <= bw.date)
-  const lastMonth = sortedByDateBodyWeights.filter((bw) => formattedToday > bw.date && lastMonthDate <= bw.date)
-  const lastTwoMonths = sortedByDateBodyWeights.filter((bw) => formattedToday > bw.date && lastTwoMonthsDate <= bw.date)
+  const lastWeek = sortedByDateBodyWeights.filter((bw) => today > bw.date && lastWeekDate <= bw.date)
+  const lastTwoWeeks = sortedByDateBodyWeights.filter((bw) => today > bw.date && lastTwoWeeksDate <= bw.date)
+  const lastMonth = sortedByDateBodyWeights.filter((bw) => today > bw.date && lastMonthDate <= bw.date)
+  const lastTwoMonths = sortedByDateBodyWeights.filter((bw) => today > bw.date && lastTwoMonthsDate <= bw.date)
   const customDate = sortedByDateBodyWeights.filter((bw) => dateFrom <= bw.date && dateTo >= bw.date)
 
 
@@ -87,7 +62,7 @@ export default function BodyWeight() {
     setBodyWeights((prev) => {
       return [
         ...prev,
-        { bw: bodyWeightInputText, id: crypto.randomUUID(), date: formattedToday }
+        { bw: bodyWeightInputText, id: crypto.randomUUID(), date: today }
       ]
     })
 
@@ -133,9 +108,9 @@ export default function BodyWeight() {
             <div className={styles["filter-buttons-wrapper"]}>
               <button type='button' className={filter === 'lastWeek' ? styles["clicked-filter-button"] : styles["last-week-button"]} onClick={() => applyPreset('lastWeek')}>Last Week</button>
               <button type='button' className={filter === 'lastTwoWeeks' ? styles["clicked-filter-button"] : styles["last-2-weeks-button"]} onClick={() => applyPreset('lastTwoWeeks')}>Last 2 Weeks</button>
-              <button type='button' className={ filter === 'lastMonth' ? styles["clicked-filter-button"] : styles["last-month-button"]} onClick={() => applyPreset('lastMonth')}>Last Month</button>
+              <button type='button' className={filter === 'lastMonth' ? styles["clicked-filter-button"] : styles["last-month-button"]} onClick={() => applyPreset('lastMonth')}>Last Month</button>
               <button type='button' className={filter === 'lastTwoMonths' ? styles["clicked-filter-button"] : styles["last-2-months-button"]} onClick={() => applyPreset('lastTwoMonths')}>Last 2 Months</button>
-              <button type='button' className={ filter === 'all' ? styles["clicked-filter-button"] : styles["show-all-button"]} onClick={() => applyPreset('all')}>Show All</button>
+              <button type='button' className={filter === 'all' ? styles["clicked-filter-button"] : styles["show-all-button"]} onClick={() => applyPreset('all')}>Show All</button>
             </div>
 
           </section>
