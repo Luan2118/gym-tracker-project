@@ -11,7 +11,8 @@
 }
 
 .no-active-workout-text {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
+  text-align: center;
 }
 
 .content-wrapper {
@@ -26,10 +27,15 @@
 }
 
 .content-main {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
   background-color: rgb(41, 41, 41);
+  border: 1px solid rgb(255, 255, 255, 0.06);
   padding: 2rem;
   border-radius: 1rem;
-  flex: 1 1 auto
+  flex: 1 1 auto;
+  box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -42,15 +48,13 @@
   border: none;
   border-radius: 1rem;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .start-workout-button:hover {
-  opacity: 0.9;
+  background-color: rgb(52, 153, 71);
 }
 
-.start-workout-button:active {
-  opacity: 0.8;
-}
 
 .cancel-workout-button {
   background-color: rgb(185, 60, 60);
@@ -73,17 +77,18 @@
 
 
 .dialog-popup {
-  background-color: rgb(29, 29, 29);
+  background-color: rgb(30, 30, 30);
   color: white;
   border: none;
   padding: 1rem 2rem;
   border-radius: 1rem;
+  border: 1px solid rgb(255, 255, 255, 0.06);
+  box-shadow: 0 6px 50px rgba(0, 0, 0, 0.4);
 }
 
 .form-wrapper {
   display: flex;
   flex-direction: column;
-  align-self: self-start;
   padding: 1.5rem 2.5rem;
   border-radius: 1rem;
 }
@@ -94,36 +99,36 @@
 }
 
 .training-split-text {
-  font-size: 2.2rem;
+  font-size: 2.3rem;
+  font-weight: 700;
   margin-right: 2rem;
 }
 
 .select-input {
-  background-color: rgb(75, 75, 75);
+  border: 1px solid rgb(255, 255, 255, 0.06);
+  background-color: rgb(56, 56, 56);
   color: white;
   font-size: 1.8rem;
   padding: 1rem;
   border-radius: 1rem;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .select-input:hover {
-  opacity: 0.8;
+  background-color: rgb(68, 68, 68);
 }
 
 .close-dialog-button {
-  background-color: rgb(29, 29, 29);
+  background-color: rgb(30, 30, 30);
   border: none;
   cursor: pointer;
   margin-left: 10rem;
+  transition: 0.2s ease;
 }
 
 .close-dialog-button:hover {
   opacity: 0.8;
-}
-
-.close-dialog-button:active {
-  opacity: 0.7;
 }
 
 .close-dialog-img {
@@ -136,10 +141,13 @@
   align-items: center;
 }
 
-
+.workout-day-text {
+  font-size: 2rem;
+  font-weight: 600;
+}
 
 .workout-day-button {
-  background-color: rgb(75, 75, 75);
+  background-color: rgb(56, 56, 56);
   color: white;
   border-radius: 1rem;
   padding: 0.8rem 1.5rem;
@@ -149,7 +157,7 @@
 }
 
 .workout-day-button-active {
-  background-color: rgb(141, 141, 141);
+  background-color: rgb(100, 100, 100);
   color: white;
   border-radius: 1rem;
   padding: 0.8rem 1.5rem;
@@ -159,12 +167,9 @@
 }
 
 .workout-day-button:hover {
-  opacity: 0.8;
+  background-color: rgb(68, 68, 68);
 }
 
-.workout-day-button:active {
-  opacity: 0.7;
-}
 
 .start-workout-confirm-button {
   background-color: rgb(46, 160, 67);
@@ -176,22 +181,16 @@
   cursor: pointer;
   margin-top: 4rem;
   align-self: self-end;
+  transition: 0x2s ease;
 }
 
 .start-workout-confirm-button:hover {
-  opacity: 0.8;
+  background-color: rgb(52, 153, 71);
 }
-
-.start-workout-confirm-button:active {
-  opacity: 0.7;
-}
-
-
-
-
 
 .exercise-name-img-wrapper {
-  background-color: rgb(37, 37, 37);
+  background-color: rgb(41, 41, 41);
+  border: 1px solid rgb(255, 255, 255, 0.06);
   display: flex;
   padding: 1rem 2rem;
   border-radius: 1rem;
@@ -207,7 +206,8 @@
 }
 
 .set-wrapper {
-  background-color: rgb(37, 37, 37);
+  background-color: rgb(41, 41, 41);
+  border: 1px solid rgb(255, 255, 255, 0.06);
   color: white;
   padding: 1rem 2rem;
   border-radius: 1rem;
@@ -258,23 +258,18 @@
 }
 
 .active-workout-split,
-.active-workout-workout-day {
-  background-color: rgb(37, 37, 37);
+.active-workout-workout-day,
+.active-workout-timer {
+  background-color: rgb(36, 36, 36);
+  border: 1px solid rgb(255, 255, 255, 0.06);
   text-align: left;
   padding: 1.5rem 2.5rem;
   border-radius: 1rem;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   margin-right: 2rem;
+  font-weight: 600;
 }
 
-.active-workout-timer {
-  background-color: rgb(37, 37, 37);
-  text-align: left;
-  max-width: 17rem;
-  padding: 1.5rem 2.5rem;
-  border-radius: 1rem;
-  font-size: 2.5rem;
-}
 
 .finish-workout-button {
   background-color: rgb(39, 134, 56);
@@ -286,12 +281,12 @@
   border-radius: 1rem;
   cursor: pointer;
   margin-top: 1rem;
+  max-width: 20rem;
+  align-self: center;
+  transition: 0.2s ease;
 }
 
 .finish-workout-button:hover {
-  opacity: 0.8;
+  background-color: rgb(52, 153, 71);
 }
 
-.finish-workout-button:active {
-  opacity: 0.7
-}

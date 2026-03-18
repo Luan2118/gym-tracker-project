@@ -166,7 +166,7 @@ export default function ActiveWorkout() {
             <>
               <div className={styles["active-workout-header"]}>
                 <div className={styles["active-workout-split"]}>Split: {selectedTrainingSplit?.name}</div>
-                <div className={styles["active-workout-workout-day"]}>Workout Day: {selectedWorkoutDay?.name ?? '-'}</div>
+                <div className={styles["active-workout-workout-day"]}>{selectedWorkoutDay?.name ?? '-'}</div>
                 <div className={styles["active-workout-timer"]}>Timer: 00:00</div>
               </div>
 
@@ -217,7 +217,7 @@ export default function ActiveWorkout() {
                 return (
                   <div key={workoutday.id}>
                     <div className={styles["workout-day-button-wrapper"]}>
-                      <div>Workout Day: </div>
+                      <div className={styles["workout-day-text"]}>Workout Day: </div>
                       <button type='button' className={selectedWorkoutDayId === workoutday.id ? styles["workout-day-button-active"] : styles["workout-day-button"]} onClick={() => selectWorkoutDay(workoutday.id)}>{workoutday.name}</button>
                     </div>
 

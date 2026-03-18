@@ -1,4 +1,4 @@
-import styles from './ActiveExerciseCard.module.css'
+  import styles from './ActiveExerciseCard.module.css'
 import ExerciseSetsStat from '../../../components/Exercises/ExerciseSetsStat';
 
 export default function ActiveExerciseCard({ ex, activeExercises, workoutHistory, handleWeightSet, handleRepsSet }) {
@@ -21,7 +21,7 @@ export default function ActiveExerciseCard({ ex, activeExercises, workoutHistory
       />
 
       <div className={styles["active-workout-set-wrapper"]}>
-        <div>Current set :</div>
+        <div className={styles["active-workout-current-set-text"]}>Current set :</div>
         {ex.sets.map((set, index) => {
           return (
             <div key={set.id} className={styles["active-workout-set-wrapper"]}>
@@ -32,10 +32,10 @@ export default function ActiveExerciseCard({ ex, activeExercises, workoutHistory
 
                 <div className={styles["active-workout-set-input-wrapper"]}>
                   <label htmlFor={`weight-${set.id}`} className={styles["sr-only"]}>Weight</label>
-                  <input type="text" id={`weight-${set.id}`} className={styles["active-workout-weight-input"]} onChange={(e) => handleWeightSet(e, set.id, ex.exerciseId)} />
+                  <input type="number" id={`weight-${set.id}`} className={styles["active-workout-weight-input"]} onChange={(e) => handleWeightSet(e, set.id, ex.exerciseId)} />
                   x
                   <label htmlFor={`reps-${set.id}`} className={styles["sr-only"]}>Reps</label>
-                  <input type="text" id={`reps-${set.id}`} className={styles["active-workout-reps-input"]} onChange={(e) => handleRepsSet(e, set.id, ex.exerciseId)} />
+                  <input type="number" id={`reps-${set.id}`} className={styles["active-workout-reps-input"]} onChange={(e) => handleRepsSet(e, set.id, ex.exerciseId)} />
                 </div>
               </fieldset>
             </div>
