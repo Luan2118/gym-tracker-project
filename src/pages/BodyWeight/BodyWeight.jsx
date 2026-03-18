@@ -59,6 +59,13 @@ export default function BodyWeight() {
 
   const paginatedBodyWeights = visibleBodyWeights.slice(startIndex, endIndex);
 
+  const startPage = Math.max(1, currentPage - 2);
+  const endPage = Math.min(totalPages, currentPage + 2);
+
+  const pageNumbers = Array.from(
+    { length: endPage - startPage + 1 },
+    (_, index) => startPage + index
+  );
   const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   useEffect(() => {
@@ -109,15 +116,15 @@ export default function BodyWeight() {
   }
 
   function handleSaveBodyWeight() {
-    setBodyWeights((prev) => 
+    setBodyWeights((prev) =>
       prev.map((bw) => {
-      if (bw.id !== editBodyWeightId ) return bw;
+        if (bw.id !== editBodyWeightId) return bw;
 
-      return {
-        ...bw,
-        bw : editBodyWeightInputText
-      }
-    })
+        return {
+          ...bw,
+          bw: editBodyWeightInputText
+        }
+      })
     )
     setEditBodyWeightId(null);
     setEditBodyWeightInputText('');
@@ -159,7 +166,7 @@ export default function BodyWeight() {
           </section>
 
           <ul >
-            <BodyWeightList bodyWeights={paginatedBodyWeights} deleteBodyWeight={deleteBodyWeight} handleEditBodyWeight={handleEditBodyWeight} editBodyWeightId={editBodyWeightId} handleSaveBodyWeight={handleSaveBodyWeight} handleEditBwInput={handleEditBwInput} editBodyWeightInputText={editBodyWeightInputText}/>
+            <BodyWeightList bodyWeights={paginatedBodyWeights} deleteBodyWeight={deleteBodyWeight} handleEditBodyWeight={handleEditBodyWeight} editBodyWeightId={editBodyWeightId} handleSaveBodyWeight={handleSaveBodyWeight} handleEditBwInput={handleEditBwInput} editBodyWeightInputText={editBodyWeightInputText} />
           </ul>
 
           <div className={styles["pagination-wrapper"]}>
