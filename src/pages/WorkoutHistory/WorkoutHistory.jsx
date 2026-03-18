@@ -26,7 +26,11 @@ export default function WorkoutHistory() {
 
   const paginatedFilteredWorkoutHistory = filteredWorkoutHistory.slice(startIndex, endIndex)
 
-  const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+  const startPage = Math.max(1, currentPage - 2);
+  const endPage = Math.min(totalPages, currentPage + 2)
+
+  
+  const pageNumbers = Array.from({ length: endPage - startPage + 1 }, (_, index) => startPage + index);
 
 
   workoutHistory.forEach((w) => {
