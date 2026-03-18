@@ -1,13 +1,223 @@
-.content-wrapper {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.main-content-wrapper {
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
-  min-width: 0;
+}
+
+.overview-wrapper {
+  margin-top: 2rem;
+}
+
+.overview-card-wrapper {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.overview-card {
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  background-color: rgb(41, 41, 41);
+  flex: auto;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.overview-card-text {
+  color: rgb(180, 180, 180);
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.overview-card-value-additional {
+  font-size: 1.4rem;
+  color: rgb(180, 180, 180);
+}
+
+.overview-card-value {
+  font-size: 2.3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.panel-content-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.panel-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(41, 41, 41);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+  padding: 1.5rem 1.8rem;
 }
 
 
-section {
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panel-title {
+  font-size: 2rem;
+  color: rgb(255, 255, 255);
+  margin-bottom: 2rem;
+}
+
+.view-all-button {
+  font-size: 1.5rem;
   background-color: rgb(41, 41, 41);
-  padding: 12rem;
-  text-align: center;
+  border: none;
+  color: rgb(201, 201, 201);
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.view-all-button:hover {
+  color: rgb(221, 221, 221);
+}
+
+.week-summary-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.week-summary-card {
+  background-color: rgb(48, 48, 48);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+}
+
+.week-summary-title {
+  font-size: 1.4rem;
+  color: rgb(180, 180, 180);
+  margin-bottom: 0.8rem;
+}
+
+.week-summary-value {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+}
+
+
+
+
+
+
+.quick-actions-buttons-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.start-workout-button,
+.log-body-weight-button,
+.add-training-split-button,
+.browse-exercises-button {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(48, 48, 48);
+  font-size: 1.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+  cursor: pointer;
+  padding: 1.3rem 2rem;
+  align-items: flex-start;
+  transition: 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.start-workout-button:hover,
+.log-body-weight-button:hover,
+.add-training-split-button:hover,
+.browse-exercises-button:hover {
+  background-color: rgb(61, 61, 61);
+  transform: translateY(-3px);
+}
+
+.quick-actions-title {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.quick-actions-text,
+.recent-workout-workout-day-date {
+  font-size: 1.4rem;
+  color: rgb(180, 180, 180);
+}
+
+.recent-workout-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.recent-workout-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(48, 48, 48);
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+}
+
+.recent-workout-workout-day-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.recent-workout-workout-day-exercises {
+  font-size: 1.4rem;
+  background-color: rgb(44, 44, 44);
+  color: rgb(221, 221, 221);
+  padding: 0.6rem 0.9rem;
+  border-radius: 1rem;
+}
+
+.weight-summary-current-text {
+  font-size: 1.6rem;
+  color: rgb(180, 180, 180);
+  margin-bottom: 0.7rem;
+}
+
+.weight-summary-current-weight {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.weight-summary-previous-info-wrapper,
+.weight-summary-change-info-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+}
+
+.weight-summary-previous-text,
+.weight-summary-previous-weight,
+.weight-summary-change-text,
+.weight-summary-change-value {
+  color: rgb(189, 189, 189);
 }
