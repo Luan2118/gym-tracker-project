@@ -40,7 +40,7 @@
 
 
 .start-workout-button {
-  background-color: rgb(46, 160, 67);
+  background-color: rgb(39, 134, 56);
   color: white;
   font-weight: 600;
   font-size: 2.2rem;
@@ -172,7 +172,7 @@
 
 
 .start-workout-confirm-button {
-  background-color: rgb(46, 160, 67);
+  background-color: rgb(39, 134, 56);
   color: white;
   font-size: 2rem;
   border: none;
@@ -181,7 +181,7 @@
   cursor: pointer;
   margin-top: 4rem;
   align-self: self-end;
-  transition: 0x2s ease;
+  transition: 0.2s ease;
 }
 
 .start-workout-confirm-button:hover {
@@ -289,4 +289,3 @@
 .finish-workout-button:hover {
   background-color: rgb(52, 153, 71);
 }
-
