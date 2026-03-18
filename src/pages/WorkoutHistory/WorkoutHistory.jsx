@@ -142,8 +142,8 @@ export default function WorkoutHistory() {
 
           </div>
 
-          <button type='submit' disabled={!selectedWorkoutDayName && !selectedSplitName && !selectedSort} >Filter</button>
-          <button type='button' onClick={clearFilters}>Clear</button>
+          <button type='submit' disabled={!selectedWorkoutDayName && !selectedSplitName && !selectedSort} className={styles["filter-button"]}>Filter</button>
+          <button type='button' onClick={clearFilters} className={styles["clear-button"]}>Clear</button>
         </form>
 
         <div className={styles["content-main"]}>

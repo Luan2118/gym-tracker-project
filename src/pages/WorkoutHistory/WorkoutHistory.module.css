@@ -1,4 +1,3 @@
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -11,7 +10,7 @@
   border: 0;
 }
 
-.content-wrapper{
+.content-wrapper {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -29,6 +28,7 @@ h2 {
   border-radius: 1rem;
   padding: 2rem;
   background-color: rgb(41, 41, 41);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .filter-wrapper {
@@ -39,36 +39,25 @@ h2 {
 }
 
 .filter-input {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background-color: rgb(70, 70, 70);
+  color: white;
   border-radius: 1rem;
   padding: 1rem 2rem;
   margin-right: 2rem;
   border: none;
   cursor: pointer;
   font-size: 1.8rem;
+  transition: 0.3s ease;
 }
 
 .filter-input:hover {
-  opacity: 0.8;
+  background-color: rgb(60, 60, 60);
 }
-
-.filter-input:active {
-  opacity: 0.7
-}
-
-.active-workout-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: rgb(35, 35, 35);
-  padding: 2rem 3rem;
-  border-radius: 1rem;
-  margin-top: 2rem;
-}
-
 
 .fieldset-wrapper {
   display: flex;
-  align-items:  center;
+  align-items: center;
   border: none;
   padding: 0;
   margin: 0;
@@ -78,6 +67,34 @@ h2 {
 .content-main {
   display: flex;
   flex-direction: column;
+}
+
+.filter-button,
+.clear-button {
+  background-color: rgb(70, 70, 70);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: 0.3s ease;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  margin-right: 1rem;
+  color: white;
+}
+
+.filter-button:hover,
+.clear-button:hover {
+  background-color: rgb(60, 60, 60);
+}
+
+.filter-button:active,
+.clear-button:active {
+  background-color: rgb(50, 50, 50);
+}
+
+.filter-button:disabled {
+  background-color: rgb(70, 70, 70);
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .pagination-wrapper {
@@ -119,4 +136,3 @@ h2 {
   opacity: 0.45;
   cursor: not-allowed;
 }
-

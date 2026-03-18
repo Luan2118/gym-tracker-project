@@ -7,7 +7,8 @@
 .workout-history-item-button {
   display: flex;
   justify-content: space-between;
-  background-color: rgb(35, 35, 35);
+  background-color: rgb(36, 36, 36);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   text-align: left;
   padding: 1.5rem 2.5rem;
   border-radius: 1rem;
@@ -17,10 +18,11 @@
   border: none;
   cursor:pointer;
   width: 100%;
+  transition: 0.2s ease;
 }
 
 .workout-history-item-button:hover {
-  opacity: 0.8;
+  background-color: rgb(32, 32, 32);
 }
 
 .workout-history-item-button:active {
@@ -56,18 +58,18 @@
 }
 
 .selected-workout-history-wrapper {
-  background-color: rgb(30, 30, 30);
   width: 97%;
   align-self: center;
   border-radius: 1rem;
-  padding: 1rem;
 }
 
 .selected-workout-history-exercise-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(35, 35, 35);
+  background-color: rgb(33, 33, 33);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
   padding: 2rem 3rem;
   border-radius: 1rem;
   margin-top: 1rem;
