@@ -17,7 +17,7 @@ export default function WorkoutHistory() {
 
   const [filteredWorkoutHistory, setFilteredWorkoutHistory] = useState(sortedWorkoutHistory);
 
-  const itemsPerPage = 10;
+  const itemsPerPage = 5;
 
   const totalPages = Math.max(1, Math.ceil(filteredWorkoutHistory.length / itemsPerPage))
 

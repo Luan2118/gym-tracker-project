@@ -1,7 +1,7 @@
 import styles from './BodyWeightItem.module.css'
 import formatISODate from '../../../utils/formatISODate'
 
-export default function BodyWeightItem({ bodyWeights, deleteBodyWeight, handleEditBodyWeight, editBodyWeightId, handleEditBwInput, bodyWeighteditBodyWeightInputTextInput, handleSaveBodyWeight }) {
+export default function BodyWeightItem({ bodyWeights, deleteBodyWeight, handleEditBodyWeight, editBodyWeightId, handleEditBwInput, editBodyWeightInputText, handleSaveBodyWeight }) {
   return (
     <>
       {bodyWeights.map((bodyweight) => {
