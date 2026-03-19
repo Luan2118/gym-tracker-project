@@ -23,9 +23,10 @@
 .added-exercise-button {
   display: flex;
   align-items: center;
-  background-color: rgb(37, 37, 37);
+  background-color: rgb(52, 52, 52);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
   color: white;
-  border: none;
   font-size: 2rem;
   padding: 1rem 2rem;
   margin-right: 1.8rem;
@@ -44,7 +45,7 @@
 }
 
 .search-exercise-input {
-  font-size: 2.3rem;
+  font-size: 2rem;
   padding: 1rem 2rem;
   border: none;
   border-radius: 1rem;
@@ -58,6 +59,7 @@
   background-color: rgb(29, 29, 29);
   border: none;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
 
@@ -78,7 +80,8 @@
 .set-wrapper {
   display: flex;
   justify-content: space-between;
-  background-color: rgb(37, 37, 37);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background-color: rgb(52, 52, 52);
   color: white;
   padding: 1rem 2rem;
   border-radius: 1rem;
@@ -102,8 +105,8 @@
 
 
 .reps-input {
-  background-color: rgb(54, 54, 54);
-  border: none;
+  background-color: rgb(75, 75, 75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   max-width: 3rem;
   margin-right: 1rem;
   font-size: 2rem;
@@ -112,7 +115,7 @@
 }
 
 .reps-input-2 {
-  background-color: rgb(54, 54, 54);
+  background-color: rgb(75, 75, 75);
   border: none;
   max-width: 3rem;
   margin-left: 1rem;
@@ -121,8 +124,16 @@
   text-align: center;
 }
 
+.reps-input-2::-webkit-outer-spin-button,
+.reps-input::-webkit-inner-spin-button,
+.reps-input-2::-webkit-outer-spin-button,
+.reps-input::-webkit-inner-spin-button  {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
 .delete-set-icon {
-  background-color: rgb(37, 37, 37);
   border: none;
   cursor: pointer;
   max-width: 2.4rem;
@@ -130,8 +141,9 @@
 
 
 .delete-set-button {
-  background-color: rgb(37, 37, 37);
+  background-color: rgb(52, 52, 52);
   border: none;
+  transition: 0.2s ease;
 }
 
 .delete-set-button:hover {
@@ -143,19 +155,19 @@
 }
 
 .add-set-button {
+  background-color: rgb(29, 29, 29);
+  border: none;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: 3.5rem;
   margin-top: 1.5rem;
   color: white;
+  transition: 0.2s ease;
 }
 
-.add-set-button {
-  background-color: rgb(29, 29, 29);
-  border: none;
-  cursor: pointer;
-}
+
 
 .add-set-button:hover {
   opacity: 0.8;
@@ -170,7 +182,7 @@
 }
 
 .search-exercise-list-wrapper {
-  background-color: rgb(37, 37, 37);
+  background-color: rgb(30, 30, 30);
   max-width: 38.5rem;
   max-height: 18rem;
   margin-top: 0.5rem;
@@ -190,21 +202,22 @@
 .search-exercise-list-button {
   display: flex;
   align-items: center;
-  background-color: rgb(37, 37, 37);
+  background-color: rgb(52, 52, 52);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   color: white;
-  border: none;
   font-size: 1.8rem;
   padding: 1rem 2rem;
   width: 100%;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .search-exercise-list-button:hover {
-  background-color: rgb(46, 46, 46);
+  background-color: rgb(62, 62, 62);
 }
 
 .search-exercise-list-button:active {
-  opacity: 0.8;
+  background-color: rgb(72, 72, 72);
 }
 
 .search-exercise-icon {

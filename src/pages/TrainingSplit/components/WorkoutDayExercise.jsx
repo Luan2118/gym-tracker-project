@@ -35,10 +35,10 @@ export default function WorkoutDayExercise({ addedExercise, workoutDayId, select
 
               <div className={styles["reps-input-wrapper"]}>
                 <label htmlFor={`weight-${set.id}`} className={styles["sr-only"]}>Weight</label>
-                <input type="text" id={`weight-${set.id}`} className={styles["reps-input"]} onChange={e => handleWeightSet(e, workoutDayId, addedExercise.rowId, set.id)} value={set.weight} />
+                <input type="number" id={`weight-${set.id}`} className={styles["reps-input"]} onChange={e => handleWeightSet(e, workoutDayId, addedExercise.rowId, set.id)} value={set.weight} />
                 x
                 <label htmlFor={`reps-${set.id}`} className={styles["sr-only"]}>Reps</label>
-                <input type="text" id={`reps-${set.id}`} className={styles["reps-input-2"]} onChange={e => handleRepsSet(e, workoutDayId, addedExercise.rowId, set.id)} value={set.reps} />
+                <input type="number" id={`reps-${set.id}`} className={styles["reps-input-2"]} onChange={e => handleRepsSet(e, workoutDayId, addedExercise.rowId, set.id)} value={set.reps} />
               </div>
             </fieldset>
 
