@@ -2,7 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(31, 31, 31);
+  background-color: rgb(41, 41, 41);
+  border: 1px solid rgb(255, 255, 255, 0.06);
   font-size: 2.7rem;
   padding: 2rem 3rem;
   border-radius: 1rem;
@@ -16,7 +17,8 @@
 
 
 .body-weight-date {
-  background-color: rgb(75, 75, 75);
+  background-color: rgb(55, 55, 55);
+  border: 1px solid rgb(255, 255, 255, 0.06);
   padding: 1rem 2rem;
   border-radius: 1rem;
   margin-right: 0.5rem;
@@ -24,62 +26,96 @@
 
 
 .body-weight {
-  background-color: rgb(75, 75, 75);
+  background-color: rgb(55, 55, 55);
+  border: 1px solid rgb(255, 255, 255, 0.06);
   padding: 1rem 2rem;
   border-radius: 1rem;
   margin-left: 0.5rem;
 }
 
-.body-weight-edit-button,
-.body-weight-delete-button {
-  background-color: rgb(75, 75, 75);
+.body-weight-edit-button {
+  background-color: rgb(70, 70, 70);
+  border: 1px solid rgb(255, 255, 255, 0.06);
   color: white;
   border: none;
   border-radius: 1rem;
   padding: 1rem 2rem;
   font-size: 2rem;
   margin-left: 1rem;
+  transition: 0.2s ease;
   cursor: pointer;
 }
 
+.body-weight-edit-button:hover {
+  background-color: rgb(75, 75, 75);
+
+}
+
+.body-weight-edit-button:active {
+  background-color: rgb(85, 85, 85);
+
+}
+
 .body-weight-delete-button {
-  background-color: rgb(201, 59, 59);
+  transition: 0.2s ease;
+  color: white;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  margin-left: 1rem;
+  transition: 0.2s ease;
+  cursor: pointer;
+  background-color: rgb(185, 60, 60);
 }
 
-.body-weight-edit-button:hover,
-.body-weight-delete-button:hover,
-.body-weight-save-button:hover {
-  opacity: 0.8;
+.body-weight-delete-button:hover {
+  background-color: rgb(205, 75, 75);
+
 }
 
-.body-weight-edit-button:active,
-.body-weight-delete-button:active,
-.body-weight-save-button:active {
-  opacity: 0.7;
+.body-weight-delete-button:active {
+  background-color: rgb(160, 48, 48);
+
 }
+
 
 .body-weight-save-button {
-  background-color: rgb(46, 160, 67);
+  background-color: rgb(39, 134, 56);
   color: white;
   border: none;
   border-radius: 1rem;
   padding: 1rem 2rem;
   font-size: 2rem;
   margin-left: 1rem;
+  transition: 0.2s ease;
   cursor: pointer;
 }
 
+.body-weight-save-button:hover {
+  background-color: rgb(52, 153, 71);
+}
+
+.body-weight-save-button:active {
+  background-color: rgb(30, 112, 45);
+}
 
 .edit-body-weight {
-  font-size: 2.7rem;
+  font-size: 2rem;
   padding: 1rem 2rem;
   border-radius: 1rem;
   margin-left: 0.5rem;
+  max-width: 12rem;
   border: none;
 }
 
-.body-weight,
-.edit-body-weight {
-  max-width: 13rem;
+.edit-body-weight::-webkit-outer-spin-button,
+.edit-body-weight::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.body-weight {
+  max-width: 20rem;
   box-sizing: border-box;
 }

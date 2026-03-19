@@ -142,7 +142,7 @@ export default function BodyWeight() {
         <div className={styles["content-main-wrapper"]}>
           <section className={styles["filter-section-wrapper"]}>
             <fieldset className={styles["fieldset-wrapper"]}>
-              <legend className={styles["legend-text"]}>Date:</legend>
+              <legend className={styles["sr-only"]}>Date:</legend>
 
               <div className={styles["date-from-wrapper"]}>
                 <label htmlFor="date-from" className={styles["date-from-label"]}>From</label>

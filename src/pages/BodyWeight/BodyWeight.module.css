@@ -1,3 +1,15 @@
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 h2 {
   padding: 0;
   margin: 0;
@@ -17,6 +29,7 @@ h2 {
   flex-direction: column;
   margin-bottom: 1rem;
   background-color: rgb(41, 41, 41);
+  border: 1px solid rgb(255, 255, 255, 0.06);
   height: fit-content;
   padding: 2rem;
   border-radius: 1rem;
@@ -30,39 +43,44 @@ h2 {
 
 
 .weight-input-label {
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .weight-input {
-  font-size: 2rem;
+  font-size: 1.8rem;
   border: none;
   padding: 1rem 2rem;
   border-radius: 1rem;
   margin-right: 4rem;
   margin-left: 2rem;
   max-width: 7rem;
-  border: none;
+}
+
+.weight-input::-webkit-outer-spin-button,
+.weight-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 
-
 .add-weight-button {
-  background-color: rgb(46, 160, 67);
+  background-color: rgb(39, 134, 56);
   color: white;
   font-size: 2.2rem;
   padding: 1rem 2rem;
   border: none;
   border-radius: 1rem;
   cursor: pointer;
+  transition: 0.2s ease;
   margin-top: 1.5rem;
 }
 
 .add-weight-button:hover {
-  opacity: 0.8;
+  background-color: rgb(52, 153, 71);
 }
 
 .add-weight-button:active {
-  opacity: 0.7;
+  background-color: rgb(30, 112, 45);
 }
 
 .body-weight-added {
@@ -70,16 +88,12 @@ h2 {
   margin-top: 1.5rem;
 }
 
-/* .content-main-wrapper{
-
-} */
-
 .filter-section-wrapper {
   display: flex;
   flex-direction: column;
   background-color: rgb(41, 41, 41);
+  border: 1px solid rgb(255, 255, 255, 0.06);
   padding: 2rem;
-  flex: 1 1 auto;
   max-height: 20rem;
   border-radius: 1rem;
   margin-bottom: 3rem;
@@ -93,35 +107,28 @@ h2 {
   margin-bottom: 2rem;
 }
 
-.legend-text {
-  text-align: start;
-  font-size: 2.5rem;
-  font-weight: 600;
-  margin-top: 1.5rem;
-  padding: 0;
-}
+
 
 .date-from-wrapper,
 .date-to-wrapper {
   text-align: start;
-  margin-top: 1.5rem;
   margin-right: 1.5rem;
 }
 
 .date-from-label,
 .date-to-label {
-  margin-right: 1.5rem;
-  font-size: 2.2rem;
+  margin-right: 1.2rem;
+  font-size: 2rem;
 }
 
 
 .date-from-input,
 .date-to-input {
   background-color: rgb(75, 75, 75);
+  border: 1px solid rgb(255, 255, 255, 0.06);
   color: white;
   font-size: 1.5rem;
   padding: 1rem 2rem;
-  border: none;
   border-radius: 1rem;
   cursor: pointer;
 }
@@ -132,14 +139,16 @@ h2 {
 .last-month-button,
 .last-2-months-button,
 .show-all-button {
+  border: 1px solid rgb(255, 255, 255, 0.06);
   background-color: rgb(75, 75, 75);
   color: white;
   font-size: 2rem;
-  border: none;
   border-radius: 1rem;
   padding: 1rem 2rem;
-  margin-right: 3rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .last-week-button:hover,
@@ -147,7 +156,7 @@ h2 {
 .last-month-button:hover,
 .last-2-months-button:hover,
 .show-all-button:hover {
-  opacity: 0.9
+  background-color: rgb(85, 85, 85);
 }
 
 .last-week-button:active,
@@ -155,7 +164,7 @@ h2 {
 .last-month-button:active,
 .last-2-months-button:active,
 .show-all-button:active {
-  opacity: 0.8
+  background-color: rgb(95, 95, 95);
 }
 
 
@@ -166,8 +175,10 @@ h2 {
   border: none;
   border-radius: 1rem;
   padding: 1rem 2rem;
-  margin-right: 3rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .pagination-wrapper {
