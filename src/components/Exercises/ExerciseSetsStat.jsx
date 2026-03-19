@@ -14,7 +14,7 @@ export default function ExerciseSetsStat({ ex, exerciseId, workoutHistory, activ
       </div>
 
       <div>
-        <div>Best set:</div>
+        <div className={styles["active-workout-best-set-title"]}> Best set:</div>
         {ex.sets.map((set, index) => {
 
           const bestSet = getBestSet(exerciseId, set.id, activeExIds, workoutHistory)
@@ -29,7 +29,7 @@ export default function ExerciseSetsStat({ ex, exerciseId, workoutHistory, activ
       </div>
 
       <div>
-        <div>Previous set:</div>
+        <div className={styles["active-workout-previous-set-title"]}>Previous set:</div>
         {ex.sets.map((set, index) => {
           const prevSet = getPrevSet(exerciseId, set.id, lastWorkout)
           return (

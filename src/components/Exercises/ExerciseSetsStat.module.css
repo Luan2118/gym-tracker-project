@@ -4,17 +4,31 @@
   max-width: 20rem;
 }
 
-.active-workout-ex-icon{
+.active-workout-ex-icon {
   max-height: 17rem;
   max-width: 17rem;
   margin-right: 2rem;
 }
 
+.active-workout-ex-name {
+  font-weight: 600;
+}
+
+
 .active-workout-b-p-set-wrapper {
- text-align: left;
- display: flex;
+  font-size: 2rem;
+  text-align: left;
+  display: flex;
 }
 
 .active-workout-b-p-set {
+  font-size: 1.8rem;
   margin-right: 1rem;
+}
+
+.active-workout-best-set-title,
+.active-workout-previous-set-title {
+  font-weight: 600;
+  color: rgb(240, 240, 240);
+  margin-bottom: 0.5rem;
 }
