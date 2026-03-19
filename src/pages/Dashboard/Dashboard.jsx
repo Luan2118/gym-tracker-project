@@ -1,7 +1,23 @@
-import { Link } from 'react-router-dom'
+import { Link, useOutletContext } from 'react-router-dom'
 import styles from './Dashboard.module.css'
 
 export default function Dashboard() {
+
+  const { bodyWeights } = useOutletContext();
+
+  const latestBodyWeight = [...bodyWeights].sort((a, b) => new Date(b.date) - new Date(a.date))
+
+
+  const latestEntry = latestBodyWeight.length > 0 ? latestBodyWeight[0] : [];
+
+  const entryDate = new Date(latestEntry.date);
+  const today = new Date();
+
+  const diffMs = today - entryDate;
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+  console.log(diffDays);
+
   return (
     <>
       <header>
@@ -15,8 +31,8 @@ export default function Dashboard() {
           <div className={styles['overview-card-wrapper']}>
             <div className={styles['overview-card']}>
               <div className={styles['overview-card-text']}>Latest Weight:</div>
-              <div className={styles['overview-card-value']}>68 kg</div>
-              <div className={styles['overview-card-value-additional']}>Updated 2 days ago</div>
+              <div className={styles['overview-card-value']}>{latestEntry.bw} kg</div>
+              <div className={styles['overview-card-value-additional']}>Updated {diffDays !== 0 ? `${diffDays} days ago `: 'today'}</div>
 
             </div>
 
