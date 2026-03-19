@@ -2,6 +2,7 @@ import styles from './BodyWeight.module.css'
 import BodyWeightList from './components/BodyWeightList'
 import setPastDate from '../../utils/setPastDate';
 import { useEffect, useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
 
 export default function BodyWeight() {
 
@@ -11,12 +12,8 @@ export default function BodyWeight() {
   const lastMonthDate = setPastDate(30);
   const lastTwoMonthsDate = setPastDate(60);
 
-  const [bodyWeights, setBodyWeights] = useState(() => {
-    const stored = localStorage.getItem('bodyWeights');
-
-    return stored ? JSON.parse(stored) : [];
-  });
-
+  const {bodyWeights,setBodyWeights} = useOutletContext();
+  
   const [bodyWeightInputText, setBodyWeightInputText] = useState('');
   const [feedback, setFeedback] = useState(null)
   const [filter, setFilter] = useState(null);
@@ -25,9 +22,6 @@ export default function BodyWeight() {
   const [editBodyWeightId, setEditBodyWeightId] = useState(null);
   const [editBodyWeightInputText, setEditBodyWeightInputText] = useState('');
 
-  useEffect(() => {
-    localStorage.setItem('bodyWeights', JSON.stringify(bodyWeights))
-  }, [bodyWeights])
 
   const sortedByDateBodyWeights = [...bodyWeights].sort((a, b) => {
     return new Date(b.date) - new Date(a.date)
