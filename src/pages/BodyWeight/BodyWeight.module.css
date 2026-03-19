@@ -180,7 +180,6 @@ h2 {
   cursor: pointer;
   transition: 0.2s ease;
 }
-
 .pagination-wrapper {
   display: flex;
   align-items: center;
@@ -192,23 +191,24 @@ h2 {
 .pagination-button,
 .page-button,
 .active-page-button {
-  border: 1px solid rgb(74, 74, 74);
-  background-color: rgb(31, 31, 31);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgb(52, 52, 52);
   color: rgb(232, 232, 232);
   padding: 0.45rem 0.8rem;
   border-radius: 0.6rem;
   cursor: pointer;
   font: inherit;
+  transition: 0.2s ease;
 }
 
 .pagination-button:hover,
 .page-button:hover {
-  background-color: rgb(42, 42, 42);
+  background-color: rgb(70 ,70, 70);
   border-color: rgb(102, 102, 102);
 }
 
 .active-page-button {
-  background-color: rgb(58, 58, 58);
+  background-color: rgb(85, 85, 85);
   border-color: rgb(138, 138, 138);
   color: rgb(255, 255, 255);
   font-weight: 600;
