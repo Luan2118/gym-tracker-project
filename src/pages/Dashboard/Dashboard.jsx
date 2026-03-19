@@ -35,9 +35,19 @@ export default function Dashboard() {
 
   const subText =
     thisWeekWorkouts.length === 0 ? 'No workouts yet' :
-    thisWeekWorkouts.length === 1 ? 'Needs work' :
-    thisWeekWorkouts.length === 2 ? 'Getting there' : 'Good consistency' 
-        
+      thisWeekWorkouts.length === 1 ? 'Needs work' :
+        thisWeekWorkouts.length === 2 ? 'Getting there' : 'Good consistency'
+
+
+  const totalWorkouts = workoutHistory.length;
+
+  const totalWorkoutSubtext =
+    totalWorkouts === 0 ? 'Start your first workout'
+      : totalWorkouts < 10 ? 'Getting started'
+        : totalWorkouts < 25 ? 'Building momentum'
+          : totalWorkouts < 50 ? 'Putting in the work'
+            : totalWorkouts < 100 ? 'Strong track record'
+              : 'Built through consistency';
   return (
     <>
       <header>
@@ -70,8 +80,8 @@ export default function Dashboard() {
 
             <div className={styles['overview-card']}>
               <div className={styles['overview-card-text']}>Total Workouts:</div>
-              <div className={styles['overview-card-value']}>12</div>
-              <div className={styles['overview-card-value-additional']}>Keep going!</div>
+              <div className={styles['overview-card-value']}>{workoutHistory.length}</div>
+              <div className={styles['overview-card-value-additional']}>{totalWorkoutSubtext}</div>
             </div>
           </div>
         </section>
