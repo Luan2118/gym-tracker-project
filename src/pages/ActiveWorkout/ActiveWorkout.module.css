@@ -41,6 +41,7 @@
 
 .start-workout-button {
   background-color: rgb(39, 134, 56);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
   color: white;
   font-weight: 600;
   font-size: 2.2rem;
@@ -58,6 +59,7 @@
 
 .cancel-workout-button {
   background-color: rgb(185, 60, 60);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
   color: white;
   font-weight: 600;
   font-size: 2.2rem;
@@ -65,10 +67,11 @@
   border: none;
   border-radius: 1rem;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .cancel-workout-button:hover {
-  opacity: 0.9;
+  background-color: rgb(205, 75, 75);
 }
 
 .cancel-workout-button:active {
@@ -83,7 +86,7 @@
   padding: 1rem 2rem;
   border-radius: 1rem;
   border: 1px solid rgb(255, 255, 255, 0.06);
-  box-shadow: 0 6px 50px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 50px rgba(0, 0, 0, 0.4);
 }
 
 .form-wrapper {
@@ -189,7 +192,7 @@
 }
 
 .exercise-name-img-wrapper {
-  background-color: rgb(41, 41, 41);
+  background-color: rgb(52, 52, 52);
   border: 1px solid rgb(255, 255, 255, 0.06);
   display: flex;
   padding: 1rem 2rem;
@@ -206,7 +209,7 @@
 }
 
 .set-wrapper {
-  background-color: rgb(41, 41, 41);
+  background-color: rgb(52, 52, 52);
   border: 1px solid rgb(255, 255, 255, 0.06);
   color: white;
   padding: 1rem 2rem;
@@ -225,7 +228,8 @@
 }
 
 .set-text {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
+  font-weight: 500;
 }
 
 .set-input-wrapper {
@@ -234,8 +238,8 @@
 }
 
 .weight-input {
-  background-color: rgb(54, 54, 54);
-  border: none;
+  background-color: rgb(60, 60, 60);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   max-width: 3rem;
   margin-right: 1rem;
   font-size: 1.8rem;
@@ -244,8 +248,8 @@
 }
 
 .reps-input {
-  background-color: rgb(54, 54, 54);
-  border: none;
+  background-color: rgb(60, 60, 60);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   max-width: 3rem;
   margin-left: 1rem;
   font-size: 1.8rem;
@@ -260,7 +264,7 @@
 .active-workout-split,
 .active-workout-workout-day,
 .active-workout-timer {
-  background-color: rgb(36, 36, 36);
+  background-color: rgb(52, 52, 52);
   border: 1px solid rgb(255, 255, 255, 0.06);
   text-align: left;
   padding: 1.5rem 2.5rem;
