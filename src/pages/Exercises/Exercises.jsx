@@ -233,8 +233,8 @@ export default function Exercises() {
             </select>
 
             <div className={styles["filter-upper-lower-wrapper"]}>
-              <button className={selectedUpperBodyEx ? styles["clicked-filter-button"] : styles["upper-body-exercises"]} onClick={() => setSelectedUpperBodyEx((prev) => !prev)}>Upper Body Exercises</button>
-              <button className={selectedLowerBodyEx ? styles["clicked-filter-button"] : styles["lower-body-exercises"]} onClick={() => setSelectedLowerBodyEx((prev) => !prev)}>Lower Body Exercises</button>
+              <button className={selectedUpperBodyEx ? styles["clicked-filter-button"] : styles["upper-body-exercises-button"]} onClick={() => setSelectedUpperBodyEx((prev) => !prev)}>Upper Body Exercises</button>
+              <button className={selectedLowerBodyEx ? styles["clicked-filter-button"] : styles["lower-body-exercises-button"]} onClick={() => setSelectedLowerBodyEx((prev) => !prev)}>Lower Body Exercises</button>
             </div>
 
           </section>
