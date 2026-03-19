@@ -5,8 +5,7 @@
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
+    white-space: nowrap;
   border: 0;
 }
 
@@ -39,20 +38,19 @@ h2 {
 }
 
 .filter-input {
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  background-color: rgb(70, 70, 70);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgb(60, 60, 60);
   color: white;
   border-radius: 1rem;
   padding: 1rem 2rem;
   margin-right: 2rem;
-  border: none;
   cursor: pointer;
   font-size: 1.8rem;
   transition: 0.3s ease;
 }
 
 .filter-input:hover {
-  background-color: rgb(60, 60, 60);
+  background-color: rgb(75, 75, 75);
 }
 
 .fieldset-wrapper {
@@ -71,7 +69,7 @@ h2 {
 
 .filter-button,
 .clear-button {
-  background-color: rgb(70, 70, 70);
+  background-color: rgb(60, 60, 60);
   border: 1px solid rgba(255, 255, 255, 0.06);
   transition: 0.3s ease;
   cursor: pointer;
@@ -79,20 +77,21 @@ h2 {
   border-radius: 1rem;
   margin-right: 1rem;
   color: white;
+  transition: 0.2s ease;
 }
 
 .filter-button:hover,
 .clear-button:hover {
-  background-color: rgb(60, 60, 60);
+  background-color: rgb(75, 75, 75);
 }
 
 .filter-button:active,
 .clear-button:active {
-  background-color: rgb(50, 50, 50);
+  background-color: rgb(85, 85, 85);
 }
 
 .filter-button:disabled {
-  background-color: rgb(70, 70, 70);
+  background-color: rgb(55, 55, 55);
   opacity: 0.45;
   cursor: not-allowed;
 }
@@ -108,23 +107,24 @@ h2 {
 .pagination-button,
 .page-button,
 .active-page-button {
-  border: 1px solid rgb(74, 74, 74);
-  background-color: rgb(31, 31, 31);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgb(52, 52, 52);
   color: rgb(232, 232, 232);
   padding: 0.45rem 0.8rem;
   border-radius: 0.6rem;
   cursor: pointer;
   font: inherit;
+  transition: 0.2s ease;
 }
 
 .pagination-button:hover,
 .page-button:hover {
-  background-color: rgb(42, 42, 42);
+  background-color: rgb(70 ,70, 70);
   border-color: rgb(102, 102, 102);
 }
 
 .active-page-button {
-  background-color: rgb(58, 58, 58);
+  background-color: rgb(85, 85, 85);
   border-color: rgb(138, 138, 138);
   color: rgb(255, 255, 255);
   font-weight: 600;
