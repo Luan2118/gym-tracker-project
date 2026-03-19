@@ -1,14 +1,16 @@
 import { Link, useOutletContext } from 'react-router-dom'
 import styles from './Dashboard.module.css'
+import formatISODate from '../../utils/formatISODate';
 
 export default function Dashboard() {
 
-  const { bodyWeights } = useOutletContext();
+  // Body Weight card
+  const { bodyWeights, workoutHistory } = useOutletContext();
 
-  const latestBodyWeight = [...bodyWeights].sort((a, b) => new Date(b.date) - new Date(a.date))
+  const sortedBodyWeights = [...bodyWeights].sort((a, b) => new Date(b.date) - new Date(a.date))
 
 
-  const latestEntry = latestBodyWeight.length > 0 ? latestBodyWeight[0] : [];
+  const latestEntry = sortedBodyWeights.length > 0 ? sortedBodyWeights[0] : [];
 
   const entryDate = new Date(latestEntry.date);
   const today = new Date();
@@ -16,8 +18,15 @@ export default function Dashboard() {
   const diffMs = today - entryDate;
   const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
 
-  console.log(diffDays);
 
+  // Last Workout card
+  const sortedWorkoutHistory = [...workoutHistory].sort((a, b) => new Date(b.date) - new Date(a.date))
+
+  const lastWorkout = sortedWorkoutHistory.length > 0 ? sortedWorkoutHistory[0] : [];
+
+  const lastWorkoutDate = formatISODate(lastWorkout.date)
+
+  console.log(lastWorkout)
   return (
     <>
       <header>
@@ -38,8 +47,8 @@ export default function Dashboard() {
 
             <div className={styles['overview-card']}>
               <div className={styles['overview-card-text']}>Last Workout:</div>
-              <div className={styles['overview-card-value']}>Upper</div>
-              <div className={styles['overview-card-value-additional']}>16 Mar 2026</div>
+              <div className={styles['overview-card-value']}>{lastWorkout.workoutDay}</div>
+              <div className={styles['overview-card-value-additional']}>{lastWorkoutDate}</div>
             </div>
 
             <div className={styles['overview-card']}>
