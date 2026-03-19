@@ -1,6 +1,7 @@
 import { Link, useOutletContext } from 'react-router-dom'
 import styles from './Dashboard.module.css'
 import formatISODate from '../../utils/formatISODate';
+import setPastDate from '../../utils/setPastDate';
 
 export default function Dashboard() {
 
@@ -26,7 +27,17 @@ export default function Dashboard() {
 
   const lastWorkoutDate = formatISODate(lastWorkout.date)
 
-  console.log(lastWorkout)
+
+  // This Week workouts count
+  const last7Days = new Date(setPastDate(7))
+  const thisWeekWorkouts = workoutHistory.filter((w) => new Date(w.date) >= last7Days)
+  console.log(thisWeekWorkouts)
+
+  const subText =
+    thisWeekWorkouts.length === 0 ? 'No workouts yet' :
+    thisWeekWorkouts.length === 1 ? 'Needs work' :
+    thisWeekWorkouts.length === 2 ? 'Getting there' : 'Good consistency' 
+        
   return (
     <>
       <header>
@@ -41,7 +52,7 @@ export default function Dashboard() {
             <div className={styles['overview-card']}>
               <div className={styles['overview-card-text']}>Latest Weight:</div>
               <div className={styles['overview-card-value']}>{latestEntry.bw} kg</div>
-              <div className={styles['overview-card-value-additional']}>Updated {diffDays !== 0 ? `${diffDays} days ago `: 'today'}</div>
+              <div className={styles['overview-card-value-additional']}>Updated {diffDays !== 0 ? `${diffDays} days ago ` : 'today'}</div>
 
             </div>
 
@@ -53,8 +64,8 @@ export default function Dashboard() {
 
             <div className={styles['overview-card']}>
               <div className={styles['overview-card-text']}>This Week:</div>
-              <div className={styles['overview-card-value']}>3 workouts</div>
-              <div className={styles['overview-card-value-additional']}>Good consistency</div>
+              <div className={styles['overview-card-value']}>{thisWeekWorkouts.length} workouts </div>
+              <div className={styles['overview-card-value-additional']}>{subText}</div>
             </div>
 
             <div className={styles['overview-card']}>
