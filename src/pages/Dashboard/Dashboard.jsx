@@ -165,12 +165,12 @@ export default function Dashboard() {
                 <span className={styles['quick-actions-text']}>Begin your workout</span>
               </Link>
 
-              <Link to="/body-weight" className={styles['log-body-weight-button']} >
+              <Link to="/body-weight/?log=true" className={styles['log-body-weight-button']} >
                 <span className={styles['quick-actions-title']}>Log Body Weight</span>
                 <span className={styles['quick-actions-text']}>Track your latest weigh-in</span>
               </Link>
 
-              <Link to="/training-split?dialog=open" className={styles['add-training-split-button']}>
+              <Link to="/training-split?dialog=open " className={styles['add-training-split-button']}>
                 <span className={styles['quick-actions-title']}>Add Training Split</span>
                 <span className={styles['quick-actions-text']}>Create your training split</span>
               </Link>

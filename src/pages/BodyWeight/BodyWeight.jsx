@@ -1,8 +1,8 @@
 import styles from './BodyWeight.module.css'
 import BodyWeightList from './components/BodyWeightList'
 import setPastDate from '../../utils/setPastDate';
-import { useEffect, useState } from 'react';
-import { useOutletContext } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
+import { useNavigate, useOutletContext, useSearchParams } from 'react-router-dom';
 
 export default function BodyWeight() {
 
@@ -22,6 +22,15 @@ export default function BodyWeight() {
   const [editBodyWeightId, setEditBodyWeightId] = useState(null);
   const [editBodyWeightInputText, setEditBodyWeightInputText] = useState('');
 
+  const bwInputRef = useRef(null);
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(searchParams.get('log') === 'true') {
+      bwInputRef.current.focus()
+    }
+  },[searchParams]);
 
 
   const sortedByDateBodyWeights = [...bodyWeights].sort((a, b) => {
@@ -83,6 +92,7 @@ export default function BodyWeight() {
 
     setFeedback('added')
     setCurrentPage(1);
+    navigate('')
   }
 
   function handleCustomDate(e) {
@@ -191,7 +201,7 @@ export default function BodyWeight() {
 
           <div className={styles["weight-input-wrapper"]}>
             <label htmlFor="body-weight" className={styles["weight-input-label"]}>Weight: </label>
-            <input type="number" id="body-weight" className={styles["weight-input"]} value={bodyWeightInputText} onChange={(e) => setBodyWeightInputText(e.target.value)} />
+            <input type="number" id="body-weight" className={styles["weight-input"]} value={bodyWeightInputText} onChange={(e) => setBodyWeightInputText(e.target.value)} ref={bwInputRef}/>
           </div>
 
           <button className={styles["add-weight-button"]} onClick={addBodyWeight}>Add Weight</button>
