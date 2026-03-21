@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useOutletContext, useSearchParams } from 'react-router-dom'
+import { useNavigate, useOutletContext, useSearchParams } from 'react-router-dom'
 import styles from './ActiveWorkout.module.css'
 import closeX from '../../assets/activeWorkout/x-close.png'
 import ActiveExerciseCard from './components/ActiveExerciseCard'
@@ -17,6 +17,7 @@ export default function ActiveWorkout() {
   const [activeExercises, setActiveExercises] = useState([]);
 
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (searchParams.get('dialog') === 'open') {
@@ -51,6 +52,7 @@ export default function ActiveWorkout() {
   }
 
   function closeDialog() {
+    navigate('');
     dialogRef.current.close()
   }
 
