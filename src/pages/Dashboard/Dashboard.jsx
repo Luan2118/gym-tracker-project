@@ -20,6 +20,7 @@ export default function Dashboard() {
   const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
 
 
+
   // Last Workout card
   const sortedWorkoutHistory = [...workoutHistory].sort((a, b) => new Date(b.date) - new Date(a.date))
 
@@ -77,9 +78,15 @@ export default function Dashboard() {
   const avgBodyWeight = totalBodyWeight / thisWeekBodyWeight.length
 
 
-  // Workouts This Week
+  //Weight summary
+  const previousEntry = sortedBodyWeights.length > 0 ? sortedBodyWeights[1] : [];
 
-  console.log(thisWeekWorkouts)
+  const bwChange = latestEntry.bw - previousEntry.bw
+
+
+  console.log(bwChange < 0)
+
+
   return (
     <>
       <header>
@@ -208,18 +215,18 @@ export default function Dashboard() {
               current
             </div>
             <div className={styles['weight-summary-current-weight']}>
-              68 kg
+              {latestEntry.bw} kg
             </div>
 
             <div >
               <div className={styles['weight-summary-previous-info-wrapper']}>
                 <div className={styles['weight-summary-previous-text']}>Previous</div>
-                <div className={styles['weight-summary-previous-weight']}>67 kg</div>
+                <div className={styles['weight-summary-previous-weight']}>{previousEntry.bw} kg</div>
               </div>
 
               <div className={styles['weight-summary-change-info-wrapper']}>
                 <div className={styles['weight-summary-change-text']}>Change</div>
-                <div className={styles['weight-summary-change-value']}>-1 kg</div>
+                <div className={styles['weight-summary-change-value']}>{bwChange > 0 ? `+${bwChange.toFixed(1)}` : bwChange.toFixed(1)} kg</div>
               </div>
             </div>
 
