@@ -66,6 +66,9 @@ export default function Dashboard() {
     return workoutAcc + workout.exercises.length
   }, 0)
 
+  // total weight ins
+  const thisWeekBodyWeight = bodyWeights.filter((bw) => new Date(bw.date) >= last7Days)
+  console.log(thisWeekBodyWeight)
   return (
     <>
       <header>
@@ -121,7 +124,7 @@ export default function Dashboard() {
 
               <div className={styles['week-summary-card']}>
                 <div className={styles['week-summary-title']}>Weigh-ins</div>
-                <div className={styles['week-summary-value']}>5</div>
+                <div className={styles['week-summary-value']}>{thisWeekBodyWeight.length}</div>
               </div>
 
               <div className={styles['week-summary-card']}>
