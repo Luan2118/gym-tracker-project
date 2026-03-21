@@ -31,7 +31,6 @@ export default function Dashboard() {
   // This Week workouts count
   const last7Days = new Date(setPastDate(7))
   const thisWeekWorkouts = workoutHistory.filter((w) => new Date(w.date) >= last7Days)
-  console.log(thisWeekWorkouts)
 
   const subText =
     thisWeekWorkouts.length === 0 ? 'No workouts yet' :
@@ -48,6 +47,18 @@ export default function Dashboard() {
           : totalWorkouts < 50 ? 'Putting in the work'
             : totalWorkouts < 100 ? 'Strong track record'
               : 'Built through consistency';
+
+
+  // This Week Summary
+
+  const totalSets = thisWeekWorkouts.reduce((workoutAcc, workout) => {
+    const setsInWorkout = workout.exercises.reduce((exAcc, ex) => {
+      return exAcc + ex.sets.length
+    }, 0)
+
+    return workoutAcc + setsInWorkout
+  }, 0)
+
   return (
     <>
       <header>
@@ -93,12 +104,12 @@ export default function Dashboard() {
             <div className={styles['week-summary-wrapper']}>
               <div className={styles['week-summary-card']}>
                 <div className={styles['week-summary-title']}>Workouts</div>
-                <div className={styles['week-summary-value']}>3</div>
+                <div className={styles['week-summary-value']}>{thisWeekWorkouts.length}</div>
               </div>
 
               <div className={styles['week-summary-card']}>
                 <div className={styles['week-summary-title']}>Total Sets</div>
-                <div className={styles['week-summary-value']}>42</div>
+                <div className={styles['week-summary-value']}>{totalSets}</div>
               </div>
 
               <div className={styles['week-summary-card']}>
