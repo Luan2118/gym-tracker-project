@@ -68,7 +68,13 @@ export default function Dashboard() {
 
   // total weight ins
   const thisWeekBodyWeight = bodyWeights.filter((bw) => new Date(bw.date) >= last7Days)
-  console.log(thisWeekBodyWeight)
+
+  // avg weight
+  const totalBodyWeight = thisWeekBodyWeight.reduce((bwAcc, bw) => {
+    return bwAcc + bw.bw
+  }, 0)
+
+  const avgBodyWeight = totalBodyWeight / thisWeekBodyWeight.length
   return (
     <>
       <header>
@@ -129,7 +135,7 @@ export default function Dashboard() {
 
               <div className={styles['week-summary-card']}>
                 <div className={styles['week-summary-title']}>Avg Weight</div>
-                <div className={styles['week-summary-value']}>66 kg</div>
+                <div className={styles['week-summary-value']}>{avgBodyWeight.toFixed(1)} kg</div>
               </div>
             </div>
           </section>
