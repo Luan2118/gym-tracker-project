@@ -83,9 +83,9 @@ export default function Dashboard() {
 
   const bwChange = latestEntry.bw - previousEntry.bw
 
+  // Weigh this week
 
-  console.log(bwChange < 0)
-
+  const thisWeeksBodyWeight = sortedBodyWeights.filter((bw) => new Date(bw.date) > last7Days)
 
   return (
     <>
@@ -207,28 +207,46 @@ export default function Dashboard() {
 
           <section className={styles['panel-wrapper']}>
             <div className={styles['panel-header']}>
-              <h2 className={styles['panel-title']}>Weight Summary</h2>
+              <h2 className={styles['panel-title']}>Weight this Week</h2>
               <Link to="/body-weight" className={styles['view-all-button']}>View All</Link>
             </div>
 
-            <div className={styles['weight-summary-current-text']}>
-              current
-            </div>
-            <div className={styles['weight-summary-current-weight']}>
-              {latestEntry.bw} kg
-            </div>
+            <div className={styles['weight-this-week-content-wrapper']} >
 
-            <div >
-              <div className={styles['weight-summary-previous-info-wrapper']}>
-                <div className={styles['weight-summary-previous-text']}>Previous</div>
-                <div className={styles['weight-summary-previous-weight']}>{previousEntry.bw} kg</div>
+              <div className={styles['weight-this-week-card-wrapper']}>
+                {thisWeeksBodyWeight.map((bw) => {
+                  return (
+                    <div className={styles['weight-this-week-card']} key={bw.id}>
+                      <div className={styles['weight-this-week-date']}>{formatISODate(bw.date)}:</div>
+                      <div className={styles['weight-this-week-value']}>{bw.bw} kg</div>
+                    </div>
+                  )
+                })}
               </div>
 
-              <div className={styles['weight-summary-change-info-wrapper']}>
-                <div className={styles['weight-summary-change-text']}>Change</div>
-                <div className={styles['weight-summary-change-value']}>{bwChange > 0 ? `+${bwChange.toFixed(1)}` : bwChange.toFixed(1)} kg</div>
+              <div className={styles['weight-this-week-summary']}>
+                <div className={styles['weight-summary-current-text']}>
+                  Current
+                </div>
+                <div className={styles['weight-summary-current-weight']}>
+                  {latestEntry.bw} kg
+                </div>
+
+                <div className={styles['weight-summary-previous-info-wrapper']}>
+                  <div className={styles['weight-summary-previous-text']}>Previous</div>
+                  <div className={styles['weight-summary-previous-weight']}>{previousEntry.bw} kg</div>
+                </div>
+
+                <div className={styles['weight-summary-change-info-wrapper']}>
+                  <div className={styles['weight-summary-change-text']}>Change</div>
+                  <div className={styles['weight-summary-change-value']}>
+                    {bwChange > 0 ? `+${bwChange.toFixed(1)}` : bwChange.toFixed(1)} kg
+                  </div>
+                </div>
               </div>
             </div>
+
+
 
           </section>
 

@@ -53,7 +53,7 @@
 .panel-content-wrapper {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .panel-wrapper {
@@ -64,6 +64,8 @@
   border-radius: 1rem;
   padding: 1.5rem 1.8rem;
 }
+
+
 
 
 .panel-header {
@@ -115,11 +117,6 @@
   font-weight: 700;
   color: rgb(255, 255, 255);
 }
-
-
-
-
-
 
 .quick-actions-buttons-wrapper {
   display: grid;
@@ -194,30 +191,91 @@
   border-radius: 1rem;
 }
 
+.weight-this-week-content-wrapper {
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+.weight-this-week-content-wrapper {
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.weight-this-week-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1 1 32rem;
+  min-width: 0;
+}
+
+.weight-this-week-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(48, 48, 48);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+  padding: 1.4rem 1.8rem;
+}
+
+.weight-this-week-date {
+  color: rgb(205, 205, 205);
+  font-size: 1.5rem;
+}
+
+.weight-this-week-value {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+}
+
+.weight-this-week-summary {
+  flex: 0 0 26rem;
+  background-color: rgb(48, 48, 48);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1.2rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: stretch;
+}
+
 .weight-summary-current-text {
-  font-size: 1.6rem;
-  color: rgb(180, 180, 180);
-  margin-bottom: 0.7rem;
+  font-size: 1.3rem;
+  color: rgb(160, 160, 160);
+  margin-bottom: 0.6rem;
 }
 
 .weight-summary-current-weight {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
-  margin-bottom: 1.5rem;
+  color: rgb(255, 255, 255);
+  margin-bottom: 2rem;
 }
 
 .weight-summary-previous-info-wrapper,
 .weight-summary-change-info-wrapper {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-
+  align-items: center;
+  padding: 1.2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .weight-summary-previous-text,
+.weight-summary-change-text {
+  font-size: 1.5rem;
+  color: rgb(180, 180, 180);
+}
+
 .weight-summary-previous-weight,
-.weight-summary-change-text,
 .weight-summary-change-value {
-  color: rgb(189, 189, 189);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
 }
