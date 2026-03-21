@@ -1,5 +1,5 @@
-import { useRef, useState } from 'react'
-import { useOutletContext } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { useOutletContext, useSearchParams } from 'react-router-dom'
 import styles from './ActiveWorkout.module.css'
 import closeX from '../../assets/activeWorkout/x-close.png'
 import ActiveExerciseCard from './components/ActiveExerciseCard'
@@ -16,7 +16,13 @@ export default function ActiveWorkout() {
   const [selectedWorkoutDayId, setSelectedWorkoutDayId] = useState('');
   const [activeExercises, setActiveExercises] = useState([]);
 
+  const [searchParams] = useSearchParams();
 
+  useEffect(() => {
+    if (searchParams.get('dialog') === 'open') {
+      dialogRef.current.showModal()
+    }
+  }, [searchParams])
 
   function handleStartWorkout() {
     openDialog();
@@ -47,6 +53,8 @@ export default function ActiveWorkout() {
   function closeDialog() {
     dialogRef.current.close()
   }
+
+
 
 
   function handleSelectCategory(e) {

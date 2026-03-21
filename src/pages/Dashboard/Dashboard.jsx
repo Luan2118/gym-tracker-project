@@ -160,7 +160,7 @@ export default function Dashboard() {
             <h2 className={styles['panel-title']}>Quick actions</h2>
 
             <div className={styles['quick-actions-buttons-wrapper']}>
-              <Link to='/active-workout' className={styles['start-workout-button']}>
+              <Link to='/active-workout?dialog=open' className={styles['start-workout-button']}>
                 <span className={styles['quick-actions-title']}>Start Workout</span>
                 <span className={styles['quick-actions-text']}>Begin your workout</span>
               </Link>
