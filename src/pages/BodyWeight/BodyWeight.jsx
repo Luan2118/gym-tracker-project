@@ -23,6 +23,7 @@ export default function BodyWeight() {
   const [editBodyWeightInputText, setEditBodyWeightInputText] = useState('');
 
 
+
   const sortedByDateBodyWeights = [...bodyWeights].sort((a, b) => {
     return new Date(b.date) - new Date(a.date)
   })
@@ -76,7 +77,7 @@ export default function BodyWeight() {
     setBodyWeights((prev) => {
       return [
         ...prev,
-        { bw: bodyWeightInputText, id: crypto.randomUUID(), date: today }
+        { bw: Number(bodyWeightInputText), id: crypto.randomUUID(), date: today }
       ]
     })
 
