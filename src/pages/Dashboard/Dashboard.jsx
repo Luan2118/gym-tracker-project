@@ -51,12 +51,19 @@ export default function Dashboard() {
 
   // This Week Summary
 
+  // total sets 
   const totalSets = thisWeekWorkouts.reduce((workoutAcc, workout) => {
     const setsInWorkout = workout.exercises.reduce((exAcc, ex) => {
       return exAcc + ex.sets.length
     }, 0)
 
     return workoutAcc + setsInWorkout
+  }, 0)
+
+  // total exercises
+
+  const totalExercises = thisWeekWorkouts.reduce((workoutAcc, workout) => {
+    return workoutAcc + workout.exercises.length
   }, 0)
 
   return (
@@ -103,18 +110,13 @@ export default function Dashboard() {
 
             <div className={styles['week-summary-wrapper']}>
               <div className={styles['week-summary-card']}>
-                <div className={styles['week-summary-title']}>Workouts</div>
-                <div className={styles['week-summary-value']}>{thisWeekWorkouts.length}</div>
-              </div>
-
-              <div className={styles['week-summary-card']}>
                 <div className={styles['week-summary-title']}>Total Sets</div>
                 <div className={styles['week-summary-value']}>{totalSets}</div>
               </div>
 
               <div className={styles['week-summary-card']}>
-                <div className={styles['week-summary-title']}>Exercises</div>
-                <div className={styles['week-summary-value']}>18</div>
+                <div className={styles['week-summary-title']}>Total Exercises</div>
+                <div className={styles['week-summary-value']}>{totalExercises}</div>
               </div>
 
               <div className={styles['week-summary-card']}>
