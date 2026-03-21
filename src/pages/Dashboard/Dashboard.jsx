@@ -30,7 +30,7 @@ export default function Dashboard() {
 
   // This Week workouts count
   const last7Days = new Date(setPastDate(7))
-  const thisWeekWorkouts = workoutHistory.filter((w) => new Date(w.date) >= last7Days)
+  const thisWeekWorkouts = sortedWorkoutHistory.filter((w) => new Date(w.date) >= last7Days)
 
   const subText =
     thisWeekWorkouts.length === 0 ? 'No workouts yet' :
@@ -75,6 +75,11 @@ export default function Dashboard() {
   }, 0)
 
   const avgBodyWeight = totalBodyWeight / thisWeekBodyWeight.length
+
+
+  // Workouts This Week
+
+  console.log(thisWeekWorkouts)
   return (
     <>
       <header>
@@ -169,35 +174,26 @@ export default function Dashboard() {
 
           <section className={styles['panel-wrapper']}>
             <div className={styles['panel-header']}>
-              <h2 className={styles['panel-title']}>Recent Workouts</h2>
+              <h2 className={styles['panel-title']}>Workouts This Week</h2>
               <Link to="workout-history" className={styles['view-all-button']}>View All</Link>
             </div>
 
             <div className={styles['recent-workout-card-wrapper']}>
 
-              <div className={styles['recent-workout-card']}>
-                <div>
-                  <div className={styles['recent-workout-workout-day-title']}>Upper</div>
-                  <div className={styles['recent-workout-workout-day-date']}>16 Mar 2026</div>
-                </div>
-                <div className={styles['recent-workout-workout-day-exercises']}>6 exercises</div>
-              </div>
+              {thisWeekWorkouts.map((w) => {
+                return (
+                  <div className={styles['recent-workout-card']} key={w.id}>
+                    <div>
+                      <div className={styles['recent-workout-workout-day-title']}>{w.workoutDay}</div>
+                      <div className={styles['recent-workout-workout-day-date']}>{formatISODate(w.date)}</div>
+                    </div>
+                    <div className={styles['recent-workout-workout-day-exercises']}>{w.exercises.reduce((exAcc, ex) => {
+                      return exAcc + 1
+                    }, 0)} exercises</div>
+                  </div>
+                )
+              })}
 
-              <div className={styles['recent-workout-card']}>
-                <div>
-                  <div className={styles['recent-workout-workout-day-title']}>Upper</div>
-                  <div className={styles['recent-workout-workout-day-date']}>16 Mar 2026</div>
-                </div>
-                <div className={styles['recent-workout-workout-day-exercises']}>6 exercises</div>
-              </div>
-
-              <div className={styles['recent-workout-card']}>
-                <div>
-                  <div className={styles['recent-workout-workout-day-title']}>Upper</div>
-                  <div className={styles['recent-workout-workout-day-date']}>16 Mar 2026</div>
-                </div>
-                <div className={styles['recent-workout-workout-day-exercises']}>6 exercises</div>
-              </div>
             </div>
 
           </section>
