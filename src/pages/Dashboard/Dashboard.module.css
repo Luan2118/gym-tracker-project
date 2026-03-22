@@ -191,17 +191,11 @@
   border-radius: 1rem;
 }
 
+
 .weight-this-week-content-wrapper {
   display: flex;
   gap: 2rem;
   align-items: stretch;
-  flex-wrap: wrap;
-}
-.weight-this-week-content-wrapper {
-  display: flex;
-  gap: 2rem;
-  align-items: stretch;
-  flex-wrap: wrap;
 }
 
 .weight-this-week-card-wrapper {
