@@ -52,21 +52,64 @@
   transform: rotate(180deg);
   max-width: 4rem;
 }
-
 .selected-workout-history-wrapper {
-  width: 97%;
-  align-self: center;
-  border-radius: 1rem;
+  width: 86%;
+  margin: 1rem auto 0;
+  padding-top: 0.4rem;
 }
 
-.selected-workout-history-exercise-wrapper {
+.selected-workout-history-exercise-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(55, 55, 55);
+  gap: 1.8rem;
+  padding: 1.2rem 1.5rem;
+  margin-top: 0.8rem;
+  background-color: rgb(52, 52, 52);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 2px 80px rgba(0, 0, 0, 0.2);
-  padding: 2rem 3rem;
   border-radius: 1rem;
-  margin-top: 1rem;
+}
+
+.selected-workout-history-left {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.selected-workout-history-ex-icon {
+  max-width: 12rem;
+  border-radius: 1rem;
+}
+
+.selected-workout-history-ex-name {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: white;
+}
+
+.selected-workout-history-sets-column {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.selected-workout-history-set-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.7rem 1rem;
+  background-color: rgb(43, 43, 43);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10rem;
+  white-space: nowrap;
+}
+
+.selected-workout-history-set-label {
+  font-size: 1.4rem;
+  color: rgb(180, 180, 180);
+}
+
+.selected-workout-history-set-value {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: white;
 }
