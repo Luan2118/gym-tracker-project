@@ -4,11 +4,12 @@ import searchIcon from '../../assets/searchIcon.png'
 import { exercises, EXERCISE_BASE_PREFIX } from '../../data/exercises'
 import { useState } from 'react'
 import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS, LineElement, PointElement, CategoryScale, LinearScale, Title } from 'chart.js';
+import { Chart as ChartJS, LineElement, PointElement, CategoryScale, LinearScale, Title, Tooltip } from 'chart.js';
 import formatISODate from '../../utils/formatISODate'
 import { useOutletContext } from 'react-router-dom'
+import setPastDate from '../../utils/setPastDate'
 
-ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale, Title);
+ChartJS.register(LineElement, PointElement, CategoryScale, LinearScale, Title, Tooltip);
 
 
 export default function Exercises() {
@@ -22,6 +23,7 @@ export default function Exercises() {
   const [clickedExImg, setClickedExImg] = useState(false);
   const [progressClicked, setProgressClicked] = useState(true);
   const [historyClicked, setHistoryClicked] = useState(false);
+  const [chartFilter, setChartFilter] = useState('last30');
 
   const selectedExercise = selectedExerciseId ? exercises.find((ex) => ex.id === selectedExerciseId) : '';
 
@@ -57,26 +59,115 @@ export default function Exercises() {
   }
 
 
-  const filteredWorkouts = workoutHistory.filter(workout =>
+  const filteredWorkouts = [...workoutHistory].sort((a, b) => new Date(a.date) - new Date(b.date)).filter(workout =>
     workout.exercises.some(ex => ex.exerciseId === selectedExerciseId)
   );
 
+  const filteredWorkoutsData =
+    chartFilter === 'last30' ? filteredWorkouts.filter((w) => new Date(w.date) >= new Date(setPastDate(30))) :
+      chartFilter === 'last60' ? filteredWorkouts.filter((w) => new Date(w.date) >= new Date(setPastDate(60))) :
+        chartFilter === 'last90' ? filteredWorkouts.filter((w) => new Date(w.date) >= new Date(setPastDate(90))) : filteredWorkouts
+
+
+  // const data = {
+  //   labels: filteredWorkoutsData.map(workout => formatISODate(workout.date).slice(0, 5)),
+  //   datasets: [
+  //     {
+  //       label: 'Heaviest Weight',
+  //       data: filteredWorkoutsData.map(workout => {
+  //         const exercise = workout.exercises.find(
+  //           ex => ex.exerciseId === selectedExerciseId
+  //         );
+
+  //         return Math.max(...exercise.sets.map(set => set.weight));
+  //       }),
+  //       backgroundColor: 'rgb(173, 173, 173)',
+  //       borderColor: 'rgb(131, 131, 131)'
+  //     },
+  //   ],
+  // };
+
   const data = {
-    labels: filteredWorkouts.map(workout => formatISODate(workout.date)),
+    labels: filteredWorkoutsData.map((workout) =>
+      formatISODate(workout.date).slice(0, 5)
+    ),
     datasets: [
       {
         label: 'Heaviest Weight',
-        data: filteredWorkouts.map(workout => {
+        data: filteredWorkoutsData.map((workout) => {
           const exercise = workout.exercises.find(
-            ex => ex.exerciseId === selectedExerciseId
+            (ex) => ex.exerciseId === selectedExerciseId
           );
 
-          return Math.max(...exercise.sets.map(set => set.weight));
+          return Math.max(...exercise.sets.map((set) => set.weight));
         }),
+        borderColor: 'rgb(200, 200, 200)',
+        borderWidth: 3,
+        pointBackgroundColor: 'rgb(230, 230, 230)',
+        pointBorderColor: 'rgb(85, 85, 85)',
+        pointBorderWidth: 2,
       },
     ],
   };
 
+const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      display: false,
+    },
+    title: {
+      display: true,
+      text: 'Heaviest Weight Progress',
+      color: 'rgb(238, 238, 238)',
+      font: {
+        size: 20,
+        weight: '600',
+      },
+      padding: {
+        bottom: 18,
+      },
+    },
+    tooltip: {
+      displayColors: false,
+      backgroundColor: 'rgb(95, 95, 95)',
+      titleColor: 'rgb(245, 245, 245)',
+      bodyColor: 'rgb(245, 245, 245)',
+      bodyFont: {
+        weight: 'bold',
+      },
+      callbacks: {
+        label: (context) => {
+          return `Weight: ${context.formattedValue} kg`;
+        },
+      },
+    },
+  },
+  scales: {
+    x: {
+      ticks: {
+        color: 'rgb(200, 200, 200)',
+      },
+      grid: {
+        color: 'rgba(255, 255, 255, 0.08)',
+      },
+      border: {
+        display: false,
+      },
+    },
+    y: {
+      ticks: {
+        color: 'rgb(200, 200, 200)',
+      },
+      grid: {
+        color: 'rgba(255, 255, 255, 0.08)',
+      },
+      border: {
+        display: false,
+      },
+    },
+  },
+};
   function handleProgressBtn() {
     setProgressClicked(true);
     setHistoryClicked(false);
@@ -104,14 +195,6 @@ export default function Exercises() {
   const firstLoggedSet = [...filteredWorkouts].sort((a, b) => new Date(a.date) - new Date(b.date))[0]?.exercises.find((ex) => ex.exerciseId === selectedExerciseId).sets[0]
 
   const latestSet = [...filteredWorkouts].sort((a, b) => new Date(b.date) - new Date(a.date))[0]?.exercises.find((ex) => ex.exerciseId === selectedExerciseId).sets[0]
-
-  // {
-  //   labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-  //     datasets: [{
-  //       label: '# of Votes',
-  //       data: [12, 19, 3, 5, 2, 3],
-  //     }]
-  // }
 
   return (
     <div className={styles["exercise-page"]}>
@@ -155,9 +238,20 @@ export default function Exercises() {
                 <hr className={styles["selected-exercise-statistics-hr"]} />
 
                 {progressClicked ?
-                  <Line
-                    data={data}
-                  /> :
+                  <>
+
+                    <div className={styles["selected-exercise-buttons-wrapper"]}>
+                      <button className={styles["selected-exercise-last-30-btn"]} onClick={() => setChartFilter('last30')}>Last 30 Days</button>
+                      <button className={styles["selected-exercise-last-60-btn"]} onClick={() => setChartFilter('last60')}>Last 60 Days</button>
+                      <button className={styles["selected-exercise-last-90-btn"]} onClick={() => setChartFilter('last90')}>Last 90 Days</button>
+                      <button className={styles["selected-exercise-all-btn"]} onClick={() => setChartFilter('all')}>All</button>
+                    </div>
+                    <div className={styles["heaviest-weight-chart-wrapper"]}>
+                      <Line
+                        data={data} options={options}
+                      />
+                    </div>
+                  </> :
                   <div className={styles["selected-exercise-history-wrapper"]}>
                     {latestSet && (
                       <div className={styles["history-stat-card"]}>
