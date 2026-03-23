@@ -21,7 +21,8 @@
 
 .exercise-item-img {
   margin-right: 2rem;
-  max-height: 11rem;
+  max-width: 11rem;
+  border-radius: 1rem;
 }
 
 .exercise-item-name {

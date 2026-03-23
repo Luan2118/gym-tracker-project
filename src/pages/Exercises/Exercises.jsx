@@ -69,24 +69,6 @@ export default function Exercises() {
         chartFilter === 'last90' ? filteredWorkouts.filter((w) => new Date(w.date) >= new Date(setPastDate(90))) : filteredWorkouts
 
 
-  // const data = {
-  //   labels: filteredWorkoutsData.map(workout => formatISODate(workout.date).slice(0, 5)),
-  //   datasets: [
-  //     {
-  //       label: 'Heaviest Weight',
-  //       data: filteredWorkoutsData.map(workout => {
-  //         const exercise = workout.exercises.find(
-  //           ex => ex.exerciseId === selectedExerciseId
-  //         );
-
-  //         return Math.max(...exercise.sets.map(set => set.weight));
-  //       }),
-  //       backgroundColor: 'rgb(173, 173, 173)',
-  //       borderColor: 'rgb(131, 131, 131)'
-  //     },
-  //   ],
-  // };
-
   const data = {
     labels: filteredWorkoutsData.map((workout) =>
       formatISODate(workout.date).slice(0, 5)
