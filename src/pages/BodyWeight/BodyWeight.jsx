@@ -12,8 +12,8 @@ export default function BodyWeight() {
   const lastMonthDate = setPastDate(30);
   const lastTwoMonthsDate = setPastDate(60);
 
-  const {bodyWeights,setBodyWeights} = useOutletContext();
-  
+  const { bodyWeights, setBodyWeights } = useOutletContext();
+
   const [bodyWeightInputText, setBodyWeightInputText] = useState('');
   const [feedback, setFeedback] = useState(null)
   const [filter, setFilter] = useState(null);
@@ -27,10 +27,10 @@ export default function BodyWeight() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(searchParams.get('log') === 'true') {
+    if (searchParams.get('log') === 'true') {
       bwInputRef.current.focus()
     }
-  },[searchParams]);
+  }, [searchParams]);
 
 
   const sortedByDateBodyWeights = [...bodyWeights].sort((a, b) => {
@@ -201,11 +201,13 @@ export default function BodyWeight() {
 
           <div className={styles["weight-input-wrapper"]}>
             <label htmlFor="body-weight" className={styles["weight-input-label"]}>Weight: </label>
-            <input type="number" id="body-weight" className={styles["weight-input"]} value={bodyWeightInputText} onChange={(e) => setBodyWeightInputText(e.target.value)} ref={bwInputRef}/>
+            <input type="number" id="body-weight" className={styles["weight-input"]} value={bodyWeightInputText} onChange={(e) => setBodyWeightInputText(e.target.value)} ref={bwInputRef} />
           </div>
 
           <button className={styles["add-weight-button"]} onClick={addBodyWeight}>Add Weight</button>
-          {feedback === 'added' ? <div className={styles["body-weight-added"]}>&#9989; Body weight added</div> : ''}
+          {feedback === 'added' ?
+            <div className={styles["body-weight-added"]}><span className={styles["body-weight-added-icon"]}>&#9989;</span> Body weight added</div>
+            : ''}
         </div>
 
       </div>

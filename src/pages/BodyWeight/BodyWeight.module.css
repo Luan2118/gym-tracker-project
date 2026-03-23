@@ -43,11 +43,11 @@ h2 {
 
 
 .weight-input-label {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
 }
 
 .weight-input {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   border: none;
   padding: 1rem 2rem;
   border-radius: 1rem;
@@ -62,11 +62,10 @@ h2 {
   margin: 0;
 }
 
-
 .add-weight-button {
   background-color: rgb(39, 134, 56);
   color: white;
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   padding: 1rem 2rem;
   border: none;
   border-radius: 1rem;
@@ -84,10 +83,22 @@ h2 {
 }
 
 .body-weight-added {
-  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
   margin-top: 1.5rem;
+  padding: 1rem 1.4rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: rgb(235, 235, 235);
+  background-color: rgb(62, 62, 62);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
 }
 
+.body-weight-added-icon {
+  font-size: 1.8rem;
+}
 .filter-section-wrapper {
   display: flex;
   flex-direction: column;
@@ -108,7 +119,6 @@ h2 {
 }
 
 
-
 .date-from-wrapper,
 .date-to-wrapper {
   text-align: start;
@@ -118,7 +128,7 @@ h2 {
 .date-from-label,
 .date-to-label {
   margin-right: 1.2rem;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 
@@ -142,7 +152,7 @@ h2 {
   border: 1px solid rgb(255, 255, 255, 0.06);
   background-color: rgb(75, 75, 75);
   color: white;
-  font-size: 2rem;
+  font-size: 1.8rem;
   border-radius: 1rem;
   padding: 1rem 2rem;
   margin-right: 1rem;
@@ -171,7 +181,7 @@ h2 {
 .clicked-filter-button {
   background-color: rgb(59, 130, 246);
   color: white;
-  font-size: 2rem;
+  font-size: 1.8rem;
   border: none;
   border-radius: 1rem;
   padding: 1rem 2rem;
