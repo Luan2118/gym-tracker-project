@@ -30,15 +30,12 @@
 
 .workout-history-item-names {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
-.verticalLine {
-  width: 1px;
-  height: 40px;
-  border: none;
-  margin: 0 12px;
-}
+
 
 .workout-history-item-training-split-text,
 .workout-history-item-workout-day-text,

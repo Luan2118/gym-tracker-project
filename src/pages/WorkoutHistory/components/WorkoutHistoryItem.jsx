@@ -33,15 +33,13 @@ export default function WorkoutHistoryItem({ workoutHistory, filteredWorkoutHist
       return (
         <div key={workout.id} className={styles["workout-history-item-wrapper"]}>
           <button className={styles["workout-history-item-button"]} onClick={() => displaySelectedWorkoutHist(workout.id)}>
-            <span className={styles["workout-history-item-names"]}>
+            <div className={styles["workout-history-item-names"]}>
               <span className={styles["workout-history-item-training-split-text"]}>Split: {workout.trainingSplitName}</span>
 
-              <hr className={styles["verticalLine"]} />
               <span className={styles["workout-history-item-workout-day-text"]}>Workout Day: {workout.workoutDay}</span>
 
-              <hr className={styles["verticalLine"]} />
               <span className={styles["workout-history-item-day-text"]}>Date: {formatISODate(workout.date)}</span>
-            </span>
+            </div>
 
             <img src={arrowDown} alt="" className={workout.id === selectedWorkoutHisId ?styles["arrow-up-icon"] : styles["arrow-down-icon"]} />
           </button>
