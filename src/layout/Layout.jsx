@@ -38,15 +38,24 @@ export default function Layout() {
     localStorage.setItem('bodyWeights', JSON.stringify(bodyWeights))
   }, [bodyWeights])
 
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+
+
+
   return (
-    <div className={styles['layout']}>
+    <div className={isSidebarOpen ? styles['layout-sidebar-open'] : styles['layout']}>
 
       <a className={styles['skip-link']} href="#main">Skip to Content</a>
 
-      <Sidebar />
+      <Sidebar 
+      isSidebarOpen={isSidebarOpen}
+      setIsSidebarOpen={setIsSidebarOpen}
+      />
 
       <main id='main' className={styles['main-content']} tabIndex={-1}>
-        <Outlet context={{trainingSplits, setTrainingSplits, workoutHistory, setWorkoutHistory, bodyWeights, setBodyWeights}}/>
+        <Outlet context={{trainingSplits, setTrainingSplits, workoutHistory, setWorkoutHistory, bodyWeights, setBodyWeights}} />
       </main>
     </div>
   )

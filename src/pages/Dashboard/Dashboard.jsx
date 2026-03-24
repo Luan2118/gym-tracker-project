@@ -72,8 +72,6 @@ export default function Dashboard() {
 
   // avg weight
   const totalBodyWeight = thisWeekBodyWeight.reduce((bwAcc, bw) => {
-    console.log(bw.bw)
-    console.log(typeof bw.bw)
     return bwAcc + bw.bw
   }, 0)
 

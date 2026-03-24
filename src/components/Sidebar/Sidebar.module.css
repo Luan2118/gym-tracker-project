@@ -23,11 +23,39 @@ main {
 }
 
 .menu-button-wrapper {
+  background-color: rgb(41, 41, 41);
   display: none;
 }
 
+.menu-button-wrapper-sidebar-open {
+  display: none;
+}
+
+.menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.8rem;
+  background-color: rgb(41, 41, 41);
+  border: none;
+  flex: 1 1 auto;
+}
+
+.menu-button-icon {
+  width: clamp(4.2rem, 4.2vw, 6.2rem)
+}
+
+
 .sidebar {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  margin-right: 1rem;
+  background-color: rgb(41, 41, 41);
+  padding: 3rem;
+}
+
+.sidebar-is-open {
+  display: flex;
   flex-direction: column;
   margin-right: 1rem;
   background-color: rgb(41, 41, 41);
@@ -40,14 +68,23 @@ main {
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .title-header {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 3rem;
+}
+
+.close-menu-btn {
+  margin-left: 4rem;
+  background-color: rgb(41, 41, 41);
+  border:none;
+}
+
+.close-menu-icon {
+  max-width: 2rem;
 }
 
 .sidebar-nav-link {
@@ -70,5 +107,11 @@ main {
 
   .menu-button-wrapper {
     display: block;
+  }
+}
+
+@media (min-width: 940px) {
+  .close-menu-btn {
+    display: none;
   }
 }

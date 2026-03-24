@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useOutletContext } from 'react-router-dom'
 import dashboard from '../../assets/dashboard.png'
 import title from '../../assets/title.png'
 import active from '../../assets/active-workout.png'
@@ -7,23 +7,42 @@ import exercisesPage from '../../assets/exercises.png'
 import bodyweight from '../../assets/bodyweight.png'
 import trainingSplit from '../../assets/trainingSplit.png'
 import menuIcon from '../../assets/menu-icon.png'
+import closeIcon from '../../assets/x-close.png'
 import styles from './Sidebar.module.css'
+import { useRef } from 'react'
 
 
-export default function Sidebar() {
+export default function Sidebar({ isSidebarOpen, setIsSidebarOpen }) {
+
+  const sidebarRef = useRef(null);
+
+  function handleMenuButton() {
+    setIsSidebarOpen((prev) => !prev)
+  }
+
+  console.log(isSidebarOpen)
+
+  function handleCloseMenu() {
+    setIsSidebarOpen((prev) => !prev)
+  }
+
   return (
     <>
-      <div className={styles['menu-button-wrapper']}>
-        <button className={styles['menu-button']}>
-          <img src={menuIcon} alt="Menu" />
+      <div className={isSidebarOpen ? styles['menu-button-wrapper-sidebar-open'] : styles['menu-button-wrapper']}>
+        <button className={styles['menu-button']} onClick={handleMenuButton}>
+          <img src={menuIcon} alt="Menu" className={styles['menu-button-icon']} />
         </button>
       </div>
 
-      <aside className={styles['sidebar']}>
+      <aside className={isSidebarOpen ? styles['sidebar-is-open'] : styles['sidebar']}>
 
         <header className={styles['title-header']}>
           <img className={styles['title-img']} src={title} alt='' aria-hidden="true" />
           <div className={styles['title']}>Gym Tracker</div>
+
+          <button className={styles['close-menu-btn']} onClick={handleCloseMenu}>
+            <img src={closeIcon} alt="Close Menu" className={styles['close-menu-icon']} />
+          </button>
         </header>
         <hr aria-hidden="true" />
 
