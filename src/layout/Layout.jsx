@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom"
 import { useState, useEffect } from "react";
 import Sidebar from '../components/Sidebar/Sidebar'
+import styles from './Layout.module.css'
 
 export default function Layout() {
 
@@ -38,13 +39,13 @@ export default function Layout() {
   }, [bodyWeights])
 
   return (
-    <div className='layout'>
+    <div className={styles['layout']}>
 
-      <a className='skip-link' href="#main">Skip to Content</a>
+      <a className={styles['skip-link']} href="#main">Skip to Content</a>
 
       <Sidebar />
 
-      <main id='main' className='main-content' tabIndex={-1}>
+      <main id='main' className={styles['main-content']} tabIndex={-1}>
         <Outlet context={{trainingSplits, setTrainingSplits, workoutHistory, setWorkoutHistory, bodyWeights, setBodyWeights}}/>
       </main>
     </div>

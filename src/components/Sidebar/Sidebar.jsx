@@ -6,60 +6,67 @@ import history from '../../assets/history.png'
 import exercisesPage from '../../assets/exercises.png'
 import bodyweight from '../../assets/bodyweight.png'
 import trainingSplit from '../../assets/trainingSplit.png'
+import menuIcon from '../../assets/menu-icon.png'
+import styles from './Sidebar.module.css'
 
-
-import './Sidebar.css'
 
 export default function Sidebar() {
   return (
-      <aside className='sidebar'>
+    <>
+      <div className={styles['menu-button-wrapper']}>
+        <button className={styles['menu-button']}>
+          <img src={menuIcon} alt="Menu" />
+        </button>
+      </div>
 
-        <header className='title-header'>
-            <img className='title-img' src={title} alt='' aria-hidden="true"/>
-            <div className='title'>Gym Tracker</div>
+      <aside className={styles['sidebar']}>
+
+        <header className={styles['title-header']}>
+          <img className={styles['title-img']} src={title} alt='' aria-hidden="true" />
+          <div className={styles['title']}>Gym Tracker</div>
         </header>
-        <hr aria-hidden="true"/>
+        <hr aria-hidden="true" />
 
         <nav>
           <ul>
             <li>
-                <Link to='/' className='sidebar-nav-link'>
-                  <img src={dashboard} alt='' aria-hidden="true"/>
-                  <div>DashBoard</div>
-                </Link>
+              <Link to='/' className={styles['sidebar-nav-link']}>
+                <img src={dashboard} alt='' aria-hidden="true" />
+                <div>DashBoard</div>
+              </Link>
             </li>
 
             <li>
-                <Link to='/active-workout' className='sidebar-nav-link'>
-                  <img src={active} alt='' aria-hidden="true"/>
-                  <div>Active Workout</div>
-                </Link>
+              <Link to='/active-workout' className={styles['sidebar-nav-link']}>
+                <img src={active} alt='' aria-hidden="true" />
+                <div>Active Workout</div>
+              </Link>
             </li>
 
             <li>
-                <Link to='/workout-history' className='sidebar-nav-link'>
-                  <img src={history} alt='' aria-hidden="true"/>
-                  <div>Workout History</div>
-                </Link>
+              <Link to='/workout-history' className={styles['sidebar-nav-link']}>
+                <img src={history} alt='' aria-hidden="true" />
+                <div>Workout History</div>
+              </Link>
             </li>
 
             <li>
-              <Link className='sidebar-nav-link' to="/exercises">
-                <img src={exercisesPage} alt='' aria-hidden="true"/>
+              <Link className={styles['sidebar-nav-link']} to="/exercises">
+                <img src={exercisesPage} alt='' aria-hidden="true" />
                 <div>Exercises</div>
               </Link>
             </li>
-            
+
             <li>
-              <Link className='sidebar-nav-link' to="/training-split">
-                <img src={trainingSplit} alt='' aria-hidden="true"/>
+              <Link className={styles['sidebar-nav-link']} to="/training-split">
+                <img src={trainingSplit} alt='' aria-hidden="true" />
                 <div>Training Split</div>
               </Link>
             </li>
 
-             <li>
-              <Link className='sidebar-nav-link' to="/body-weight">
-                <img src={bodyweight} alt='' aria-hidden="true"/>
+            <li>
+              <Link className={styles['sidebar-nav-link']} to="/body-weight">
+                <img src={bodyweight} alt='' aria-hidden="true" />
                 <div>Body Weight</div>
               </Link>
             </li>
@@ -67,6 +74,7 @@ export default function Sidebar() {
           </ul>
         </nav>
       </aside>
+    </>
 
   )
 }
