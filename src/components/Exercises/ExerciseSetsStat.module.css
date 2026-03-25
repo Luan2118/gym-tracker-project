@@ -1,29 +1,47 @@
+.active-workout-wrapper-outer {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
 .active-workout-name-wrapper {
   display: flex;
   align-items: center;
-  max-width: 20rem;
+  justify-content: center;
+  max-width: 25rem;
 }
 
 .active-workout-ex-icon {
-  max-height: 17rem;
-  max-width: 17rem;
+  width: clamp(12rem, 14vw, 17rem);
   margin-right: 2rem;
+  border-radius: 1rem;
 }
 
 .active-workout-ex-name {
   font-weight: 600;
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
 }
 
 
 .active-workout-b-p-set-wrapper {
-  font-size: 2rem;
-  text-align: left;
   display: flex;
+  font-size: 2rem;
+  background-color: rgb(43, 43, 43);
+  border: 1px solid rgb(255, 255, 255 0.06);
+  padding: clamp(0.5rem, 2vw, 0.8rem) clamp(1.3rem, 2vw, 1.8rem);
+  border-radius: 10rem;
+  margin-bottom: 0.7rem;
 }
 
 .active-workout-b-p-set {
-  font-size: 1.8rem;
+  font-size: clamp(1.5rem, 3vw, 1.6rem);
   margin-right: 1rem;
+}
+
+.active-workout-b-p-set-value {
+  color: rgb(240, 240, 240);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3vw, 1.8rem);
 }
 
 .active-workout-best-set-title,
@@ -31,4 +49,43 @@
   font-weight: 600;
   color: rgb(240, 240, 240);
   margin-bottom: 0.5rem;
+  font-size: clamp(1.6rem, 3vw, 2rem);
 }
+
+.active-workout-wrapper-previous-set-wrapper,
+.active-workout-best-set-wrapper {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.active-workout-wrapper-previous-set-wrapper {
+  margin-left: 2.5rem;
+}
+
+.active-workout-best-previous-set-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 480px) {
+  .active-workout-best-previous-set-wrapper {
+    justify-content: flex-start;
+  }
+
+}
+
+@media (min-width: 730px) {
+  .active-workout-wrapper-outer {
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 auto;
+  }
+
+  .active-workout-best-previous-set-wrapper {
+    justify-content: center;
+    flex: 1 1 auto;
+  }
+}
+

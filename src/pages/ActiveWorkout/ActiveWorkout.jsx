@@ -32,7 +32,7 @@ export default function ActiveWorkout() {
     setActiveWorkout(false);
   }
 
-  function handleCancelWorkout () {
+  function handleCancelWorkout() {
     setActiveWorkout(false);
     setActiveExercises([]);
 
@@ -199,24 +199,26 @@ export default function ActiveWorkout() {
 
         <div className={styles["start-workout-wrapper"]}>
           {!activeWorkout ?
-          <button type='button' className={styles["start-workout-button"]} onClick={handleStartWorkout}>
-            Start Workout
-          </button>:
-          <button className={styles["cancel-workout-button"]}  onClick={handleCancelWorkout}>Cancel Workout</button>
+            <button type='button' className={styles["start-workout-button"]} onClick={handleStartWorkout}>
+              Start Workout
+            </button> :
+            <button className={styles["cancel-workout-button"]} onClick={handleCancelWorkout}>Cancel Workout</button>
           }
 
           <dialog ref={dialogRef} className={styles["dialog-popup"]}>
             <form className={styles["form-wrapper"]} onSubmit={handleSubmitStartWorkout}>
               <div className={styles["form-header-wrapper"]}>
-                <label htmlFor="training-split" className={styles["training-split-text"]}>Training Split: </label>
-                <select id="training-split" className={styles["select-input"]} onChange={handleSelectCategory} value={splitSelectId}>
-                  <option value="" id="" disabled>Select a Split</option>
-                  {trainingSplits.map((trainingSplit) => {
-                    return (
-                      <option value={trainingSplit.id} className={styles["select-option"]} key={trainingSplit.id}>{trainingSplit.name}</option>
-                    )
-                  })}
-                </select>
+                <div>
+                  <label htmlFor="training-split" className={styles["training-split-text"]}>Training Split: </label>
+                  <select id="training-split" className={styles["select-input"]} onChange={handleSelectCategory} value={splitSelectId}>
+                    <option value="" id="" disabled>Select a Split</option>
+                    {trainingSplits.map((trainingSplit) => {
+                      return (
+                        <option value={trainingSplit.id} className={styles["select-option"]} key={trainingSplit.id}>{trainingSplit.name}</option>
+                      )
+                    })}
+                  </select>
+                </div>
 
                 <button type='button' aria-label='close dialog' className={styles["close-dialog-button"]} onClick={closeDialog}>
                   <img src={closeX} alt="" className={styles["close-dialog-img"]} />
@@ -238,7 +240,7 @@ export default function ActiveWorkout() {
                             <div key={exer.exerciseId}>
                               <div className={styles["exercise-name-img-wrapper"]}>
                                 <img src={`${EXERCISE_BASE_PREFIX}${exer.images[0]}`} alt="" className={styles["exercise-img"]} />
-                                <div>{exer.exerciseName}</div>
+                                <div className={styles["exercise-name"]}>{exer.exerciseName}</div>
                               </div>
                               {exer.sets.map((set, index) => {
                                 return (
@@ -246,12 +248,12 @@ export default function ActiveWorkout() {
                                     <fieldset className={styles["fieldset-wrapper"]}>
                                       <legend className={styles["sr-only"]}>Set {index + 1}</legend>
 
-                                      <div className={styles["set-text"]}>Set {index + 1}</div>
+                                      <div className={styles["set-text"]}>Set {index + 1}: </div>
 
                                       <div className={styles["set-input-wrapper"]}>
                                         <label htmlFor={`weight-${set.id}`} className={styles["sr-only"]}>Weight</label>
                                         <input type="text" id={`weight-${set.id}`} className={styles["weight-input"]} value={set.weight} readOnly />
-                                        x
+                                        ×
                                         <label htmlFor={`reps-${set.id}`} className={styles["sr-only"]}>Reps</label>
                                         <input type="text" id={`reps-${set.id}`} className={styles["reps-input"]} value={set.reps} readOnly />
                                       </div>
