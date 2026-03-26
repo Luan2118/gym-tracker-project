@@ -31,7 +31,7 @@ export default function WorkoutDayExercise({ addedExercise, workoutDayId, select
             <fieldset className={styles["fieldset-wrapper"]}>
               <legend className={styles["sr-only"]}>Set {index + 1}</legend>
 
-              <div className={styles.setLabel}>Set {index + 1}</div>
+              <div className={styles["set-title"]}>Set {index + 1}</div>
 
               <div className={styles["reps-input-wrapper"]}>
                 <label htmlFor={`weight-${set.id}`} className={styles["sr-only"]}>Weight</label>
@@ -50,7 +50,7 @@ export default function WorkoutDayExercise({ addedExercise, workoutDayId, select
       })}
       {addedExercise.confirm && <button type='button' className={styles["add-set-button"]} aria-label='Add set' onClick={() => addSet(workoutDayId, addedExercise.rowId)}>
         <img className={styles["add-set-icon"]} src={plusIcon} alt='' />
-        <span>Add set</span>
+        <span className={styles["add-set-text"]}>Add set</span>
       </button>}
 
       {addedExercise.confirm ? '' :

@@ -363,10 +363,12 @@ export default function TrainingSplit() {
         <dialog ref={dialogRef} className={styles["add-training-split-dialog"]}>
           <form className={styles["form-wrapper"]} onSubmit={submitTrainingSplit}>
             <div className={styles["training-split-name-wrapper"]}>
-              <label htmlFor="training-split-name"></label>
-              <input type="text" id="training-split-name" placeholder='Training Split Name' className={styles["training-split-name-input"]} onChange={(e) => setTrainingSplitInputText(e.target.value)} value={trainingSplitInputText} />
+              <div className={styles["training-split-name-add-workout-wrapper"]}>
+                <label htmlFor="training-split-name"></label>
+                <input type="text" id="training-split-name" placeholder='Training Split Name' className={styles["training-split-name-input"]} onChange={(e) => setTrainingSplitInputText(e.target.value)} value={trainingSplitInputText} />
 
-              <button type='button' className={styles["add-workout-button"]} onClick={addWorkoutDay}>Add Workout</button>
+                <button type='button' className={styles["add-workout-button"]} onClick={addWorkoutDay}>Add Workout</button>
+              </div>
 
               <button type='button' className={styles["close-dialog-button"]} aria-label='Close dialog' onClick={closeDialog}>
                 <img className={styles["close-dialog-img"]} src={close} alt='' />

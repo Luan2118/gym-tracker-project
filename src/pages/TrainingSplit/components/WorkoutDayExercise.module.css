@@ -27,25 +27,29 @@
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.06);
   color: white;
-  font-size: 2rem;
-  padding: 1rem 2rem;
+  font-size: clamp(1.6rem, 2vw, 2rem);
+  padding: clamp(0.7rem, 2.5vw, 1rem) clamp(1.5rem, 2.5vw, 2rem);
   margin-right: 1.8rem;
   margin-left: 1.8rem;
   width: 100%;
   cursor: pointer;
+  gap: 1rem;
 }
 
 .added-exercise-icon {
-  max-width: 12rem;
+  max-width: clamp(8rem, 10vw, 12rem);
+  border-radius: 1rem;
 }
 
 .added-exercise-name {
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  font-weight: 700;
   margin-left: auto;
   margin-right: auto;
 }
 
 .search-exercise-input {
-  font-size: 2rem;
+  font-size: clamp(1.6rem, 2vw, 2rem);
   padding: 1rem 2rem;
   border: none;
   border-radius: 1rem;
@@ -74,7 +78,7 @@
 
 .search-exercise-delete-icon,
 .add-set-icon {
-  max-width: 2.5rem;
+  width: clamp(2.2rem, 2vw, 2.5rem);
 }
 
 .set-wrapper {
@@ -83,7 +87,7 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
   background-color: rgb(52, 52, 52);
   color: white;
-  padding: 1rem 2rem;
+  padding: clamp(0.7rem, 2.5vw, 1rem) clamp(1.5rem, 2.5vw, 2rem);
   border-radius: 1rem;
   margin-left: 4.3rem;
   margin-top: 1.5rem;
@@ -92,10 +96,17 @@
 
 .fieldset-wrapper {
   display: flex;
+  align-items: center;
   border: none;
   padding: 0;
   margin: 0;
   width: 100%;
+}
+
+.set-title {
+   font-size: clamp(1.6rem, 2vw, 2rem);
+  font-weight: 500;
+  color: rgb(200, 200, 200);
 }
 
 .reps-input-wrapper {
@@ -109,9 +120,11 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   max-width: 3rem;
   margin-right: 1rem;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 2vw, 2rem);
   color: white;
   text-align: center;
+  font-weight: 600;
+  border-radius: 1rem;
 }
 
 .reps-input-2 {
@@ -119,15 +132,17 @@
   border: none;
   max-width: 3rem;
   margin-left: 1rem;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 2vw, 2rem);
   color: white;
+  font-weight: 600;
   text-align: center;
+  border-radius: 1rem;
 }
 
 .reps-input-2::-webkit-outer-spin-button,
 .reps-input::-webkit-inner-spin-button,
 .reps-input-2::-webkit-outer-spin-button,
-.reps-input::-webkit-inner-spin-button  {
+.reps-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -152,6 +167,10 @@
 
 .delete-set-button:active {
   opacity: 0.7
+}
+
+.add-set-text {
+  font-size: clamp(1.5rem, 2vw, 2rem);
 }
 
 .add-set-button {
@@ -206,10 +225,11 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
   color: white;
   font-size: 1.8rem;
-  padding: 1rem 2rem;
+  padding: clamp(0.7rem, 2.5vw, 1rem) clamp(1.5rem, 2.5vw, 2rem);
   width: 100%;
   cursor: pointer;
   transition: 0.2s ease;
+  gap: 1rem;  
 }
 
 .search-exercise-list-button:hover {
@@ -221,10 +241,12 @@
 }
 
 .search-exercise-icon {
-  max-width: 12rem;
+  max-width: clamp(10rem, 10vw, 12rem);
+  border-radius: 1rem;
 }
 
 .search-exercise-name {
   margin-left: auto;
   margin-right: auto;
+  font-size: clamp(1.4rem, 2vw, 2rem);
 }
