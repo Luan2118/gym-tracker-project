@@ -32,9 +32,16 @@ h2 {
 
 .filter-wrapper {
   display: flex;
-  width: auto;
-  padding: 0;
+  align-items: center;
+  flex-wrap: wrap;
   margin-bottom: 3rem;
+}
+
+.filter-input-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .filter-input {
@@ -42,10 +49,10 @@ h2 {
   background-color: rgb(60, 60, 60);
   color: white;
   border-radius: 1rem;
-  padding: 1rem 2rem;
+  padding: clamp(0.7rem, 2.5vw, 1rem) clamp(1.5rem, 2.5vw, 2rem);
   margin-right: 2rem;
   cursor: pointer;
-  font-size: 1.8rem;
+  font-size: clamp(1.5rem, 1vw, 1.8rem);
   transition: 0.3s ease;
 }
 
@@ -67,17 +74,23 @@ h2 {
   flex-direction: column;
 }
 
+.filter-button-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 .filter-button,
 .clear-button {
   background-color: rgb(60, 60, 60);
   border: 1px solid rgba(255, 255, 255, 0.06);
   transition: 0.3s ease;
   cursor: pointer;
-  padding: 1rem 2rem;
+  padding: clamp(0.7rem, 2.5vw, 1rem) clamp(1.5rem, 2.5vw, 2rem);
   border-radius: 1rem;
   margin-right: 1rem;
   color: white;
   transition: 0.2s ease;
+  font-size: clamp(1.5rem, 1vw, 1.8rem);
 }
 
 .filter-button:hover,
@@ -113,7 +126,7 @@ h2 {
   padding: 0.45rem 0.8rem;
   border-radius: 0.6rem;
   cursor: pointer;
-  font: inherit;
+  font-size: clamp(1.5rem, 3vw, 1.8rem);
   transition: 0.2s ease;
 }
 

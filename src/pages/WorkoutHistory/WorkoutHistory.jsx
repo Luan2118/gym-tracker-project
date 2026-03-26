@@ -29,7 +29,7 @@ export default function WorkoutHistory() {
   const startPage = Math.max(1, currentPage - 2);
   const endPage = Math.min(totalPages, currentPage + 2)
 
-  
+
   const pageNumbers = Array.from({ length: endPage - startPage + 1 }, (_, index) => startPage + index);
 
 
@@ -112,7 +112,7 @@ export default function WorkoutHistory() {
 
       <div className={styles["section-wrapper"]}>
         <form className={styles["filter-wrapper"]} onSubmit={(e) => handleFilterForm(e)}>
-          <div>
+          <div className={styles["filter-input-wrapper"]}>
             <label htmlFor="training-split" className={styles["sr-only"]}>Training Split</label>
             <select id="training-split" className={styles["filter-input"]} onChange={(e) => setSelectedSplitName(e.target.value)} value={selectedSplitName}>
               <option value="" disabled>Select Training Split</option>
@@ -142,8 +142,10 @@ export default function WorkoutHistory() {
 
           </div>
 
-          <button type='submit' disabled={!selectedWorkoutDayName && !selectedSplitName && !selectedSort} className={styles["filter-button"]}>Filter</button>
-          <button type='button' onClick={clearFilters} className={styles["clear-button"]}>Clear</button>
+          <div className={styles["filter-button-wrapper"]}>
+            <button type='submit' disabled={!selectedWorkoutDayName && !selectedSplitName && !selectedSort} className={styles["filter-button"]}>Filter</button>
+            <button type='button' onClick={clearFilters} className={styles["clear-button"]}>Clear</button>
+          </div>
         </form>
 
         <div className={styles["content-main"]}>
