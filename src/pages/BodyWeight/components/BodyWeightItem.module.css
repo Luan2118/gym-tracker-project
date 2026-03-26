@@ -4,35 +4,42 @@
   align-items: center;
   background-color: rgb(41, 41, 41);
   border: 1px solid rgb(255, 255, 255, 0.06);
-  font-size: 2.7rem;
-  padding: 2rem 3rem;
+  padding: clamp(1.2rem, 2vw, 1.8rem) clamp(1.2rem, 2vw, 2.2rem);
   border-radius: 1rem;
   margin-bottom: 0.5rem;
+  gap: 1rem;
 }
 
 .body-weight-data-wrapper {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
+  min-width: 20rem;
 }
 
 
 .body-weight-date {
   background-color: rgb(55, 55, 55);
   border: 1px solid rgb(255, 255, 255, 0.06);
-  padding: 1rem 2rem;
+  padding: clamp(0.7rem, 2.5vw, 1rem) clamp(1.5rem, 2.5vw, 2rem);
   border-radius: 1rem;
-  margin-right: 0.5rem;
-  font-size: 2rem;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
 }
 
 
 .body-weight {
   background-color: rgb(55, 55, 55);
   border: 1px solid rgb(255, 255, 255, 0.06);
-  padding: 1rem 2rem;
+  padding: clamp(0.7rem, 2.5vw, 1rem) clamp(1.5rem, 2.5vw, 2rem);
   border-radius: 1rem;
-  font-size: 2rem;
-  margin-left: 0.5rem;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+}
+
+.body-weight-buttons-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .body-weight-edit-button {
@@ -41,8 +48,8 @@
   color: white;
   border: none;
   border-radius: 1rem;
-  padding: 1rem 2rem;
-  font-size: 1.6rem;
+  padding: clamp(0.7rem, 2.5vw, 1rem) clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.3rem, 3vw, 1.5rem);
   margin-left: 1rem;
   transition: 0.2s ease;
   cursor: pointer;
@@ -63,8 +70,8 @@
   color: white;
   border: none;
   border-radius: 1rem;
-  padding: 1rem 2rem;
-  font-size: 1.6rem;
+  padding: clamp(0.7rem, 2.5vw, 1rem) clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.3rem, 3vw, 1.5rem);
   margin-left: 1rem;
   transition: 0.2s ease;
   cursor: pointer;
@@ -87,8 +94,8 @@
   color: white;
   border: none;
   border-radius: 1rem;
-  padding: 1rem 2rem;
-  font-size: 1.6rem;
+  padding: clamp(0.7rem, 2.5vw, 1rem) clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.3rem, 3vw, 1.5rem);
   margin-left: 1rem;
   transition: 0.2s ease;
   cursor: pointer;
@@ -103,11 +110,11 @@
 }
 
 .edit-body-weight {
-  font-size: 2rem;
-  padding: 1rem 2rem;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  padding: clamp(0.7rem, 2.5vw, 1rem) clamp(1.5rem, 2.5vw, 2rem);
   border-radius: 1rem;
   margin-left: 0.5rem;
-  max-width: 12rem;
+  max-width: clamp(5rem, 2vw, 12rem);
   border: none;
 }
 
