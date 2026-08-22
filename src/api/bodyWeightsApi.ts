@@ -11,7 +11,6 @@ export async function getBodyWeights(): Promise<BodyWeight[]> {
     .from('body_weights')
     .select('id, bw, date')
     .order('date', { ascending: false })
-    .order('created_at', { ascending: false });
 
   if (error) {
     throw new Error(`Failed to fetch body weights: ${error.message}`)
