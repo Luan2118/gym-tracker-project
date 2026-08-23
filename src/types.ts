@@ -47,7 +47,6 @@ export type TrainingSplitExercise = BaseExercise<TrainingSplitSet> & {
 export type TrainingSplitWorkoutDay = {
   id: string
   name: string
-  confirm: boolean
   exercises: TrainingSplitExercise[]
 }
 

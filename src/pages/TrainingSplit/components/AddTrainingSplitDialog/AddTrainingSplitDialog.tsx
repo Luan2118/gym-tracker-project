@@ -65,15 +65,9 @@ export default function AddTrainingSplitDialog({ dialogRef, submitTrainingSplit,
           return (
             <div key={workoutDay.id} className={styles["workout-day-wrapper"]} >
               <div className={styles["workout-day-inner-wrapper"]} >
-                {
-                  workoutDay.confirm ?
-                    <div className={styles["workout-day-name-text"]}>{workoutDay.name}</div> :
-                    <>
-                      <label htmlFor={workoutDay.id} className={styles["sr-only"]}>Workout day</label>
-                      <input type="text" id={workoutDay.id} placeholder='Upper, Push, Legs' className={styles["workout-day-input"]} onChange={(e) => handleWorkoutDayInputText(workoutDay.id, e)} value={workoutDay.name} />
 
-                    </>
-                }
+                <label htmlFor={workoutDay.id} className={styles["sr-only"]}>Workout day</label>
+                <input type="text" id={workoutDay.id} placeholder='Upper, Push, Legs' className={styles["workout-day-input"]} onChange={(e) => handleWorkoutDayInputText(workoutDay.id, e)} value={workoutDay.name} />
 
                 <button type='button' className={styles["delete-workout-day-button"]} aria-label='Delete Workout Day' onClick={() => deleteWorkoutDay(workoutDay.id)}>
                   <img className={styles["delete-workout-day-icon"]} src={deleteWorkoutDayIcon} alt='' />
@@ -140,10 +134,10 @@ export default function AddTrainingSplitDialog({ dialogRef, submitTrainingSplit,
         {showUnselectedExerciseError &&
           <p role='alert' className={`${styles["error-message"]} ${styles["form-error-message"]}`}>
             <span aria-hidden='true'>&#10071;</span>
-           Select an exercise for every added exercise row
+            Select an exercise for every added exercise row
           </p>}
 
-     
+
         <button type='submit' className={styles["confirm-button"]} disabled={isAddingTrainingSplit || isUpdatingTrainingSplit}>Confirm</button>
       </form>
     </dialog>

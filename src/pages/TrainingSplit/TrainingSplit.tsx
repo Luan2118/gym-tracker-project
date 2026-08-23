@@ -63,11 +63,10 @@ export default function TrainingSplit() {
     setShowMissingExercisesError(false);
     setShowUnselectedExerciseError(false);
   }
-
   function addWorkoutDay() {
     setWorkoutDays(prev => [
       ...prev,
-      { name: '', id: crypto.randomUUID(), confirm: false, exercises: [] }
+      { name: '', id: crypto.randomUUID(), exercises: [] }
     ])
   }
 
@@ -191,7 +190,6 @@ export default function TrainingSplit() {
     )
 
   }
-
 
   function selectExerciseAgain(rowId: string, workoutDayId: string) {
     setWorkoutDays((prev) =>
